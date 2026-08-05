@@ -1,0 +1,1256 @@
+/* ==========================================================================
+   ABOUT PAGE MULTI-THEME LUXURY SYSTEM (RHYTHMIC DARK & IVORY CONTRAST)
+   ========================================================================== */
+
+.page {
+  --gold: #C8A96A;
+  --gold-light: #E5C983;
+  --gold-dark: #8C7036;
+  --bg-dark: #0c0a08;
+  --border-gold: rgba(200, 169, 106, 0.3);
+  --border-gold-light: rgba(140, 109, 45, 0.25);
+  --text-main: #F5F0E6;
+  --text-muted: #C5B8A5;
+  --text-sub: #9C8E7C;
+  --font-serif: var(--serif, 'Cinzel', 'Playfair Display', Georgia, serif);
+  --font-sans: var(--sans, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.page * {
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* SECTION SEPARATORS */
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  background: transparent;
+}
+
+.dividerLine {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.dividerIcon {
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+/* SECTION HEADERS (DARK THEME) */
+.sectionHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.kicker {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.kickerLine {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+}
+
+.title em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* SECTION HEADERS (LIGHT IVORY THEME) */
+.sectionHeaderLight {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.kickerLight {
+  color: #8C6D2D;
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.kickerLineLight {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: #8C6D2D;
+}
+
+.titleLight {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1a140e;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+}
+
+.titleLight em {
+  color: #8C6D2D;
+  font-style: normal;
+}
+
+.subtitleLight {
+  color: #4a3e32;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* BUTTONS */
+.actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btnGold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: linear-gradient(135deg, #C8A96A 0%, #A68644 100%);
+  color: #0c0a08;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid var(--gold);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(200, 169, 106, 0.25);
+}
+
+.btnGold:hover {
+  background: linear-gradient(135deg, #E5C983 0%, #C8A96A 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(200, 169, 106, 0.4);
+}
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: rgba(21, 17, 13, 0.6);
+  color: var(--text-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid var(--border-gold);
+  transition: all 0.3s ease;
+}
+
+.btnOutline:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(200, 169, 106, 0.12);
+  transform: translateY(-2px);
+}
+
+.btnDarkIvory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: #1c150e;
+  color: #F7F3EB;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid #8C6D2D;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(28, 21, 14, 0.2);
+}
+
+.btnDarkIvory:hover {
+  background: #36291c;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SECTION 1 — HERO (DEEP BLACK GRADIENT)
+   ========================================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 2.25rem 0;
+  background: linear-gradient(135deg, #0B0908 0%, #1A140F 100%);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(200, 169, 106, 0.1);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-bottom: 0.6rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-main);
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.heroTitle em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.heroRole {
+  color: var(--gold-light);
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.heroLead {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+  max-width: 500px;
+}
+
+.heroImageWrap {
+  position: relative;
+  height: 370px;
+  width: 100%;
+  max-width: 320px;
+  justify-self: flex-end;
+}
+
+.heroImageFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 160px 160px 14px 14px;
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(200, 169, 106, 0.15);
+}
+
+.heroImageFrame img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* ==========================================================================
+   SECTION 2 — WHO IS GAURI (WARM IVORY LUXURY LIGHT THEME)
+   ========================================================================== */
+.whoSection {
+  padding: 3.5rem 0;
+  background: #F7F3EB;
+  color: #1a140e;
+  border-bottom: 1px solid rgba(140, 109, 45, 0.3);
+}
+
+.whoGrid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.whoImageFrame {
+  position: relative;
+  height: 420px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(140, 109, 45, 0.4);
+  box-shadow: 0 12px 30px rgba(40, 30, 20, 0.15);
+}
+
+.whoImageFrame img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.whoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.whoParagraph {
+  color: #3b3024;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+.whoStatsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.whoStatItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(140, 109, 45, 0.3);
+  border-radius: 6px;
+  color: #1c150e;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px rgba(40, 30, 20, 0.05);
+}
+
+.whoCheckIcon {
+  color: #8C6D2D;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   SECTION 3 — PROFESSIONAL HIGHLIGHTS (LUXURY BRONZE GRADIENT)
+   ========================================================================== */
+.highlightsSection {
+  padding: 3.5rem 0;
+  background: linear-gradient(135deg, #1B1511 0%, #2A1E15 100%);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.featuredHighlightsBox {
+  margin-bottom: 2rem;
+  padding: 1.35rem 1.5rem;
+  background: rgba(20, 15, 12, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.featuredHighlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem 1.75rem;
+}
+
+.featuredHighlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.featuredHighlightBullet {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.credentialsHeading {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin: 1.75rem 0 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.highlightCard {
+  background: rgba(20, 15, 12, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  background: #332418;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(200, 169, 106, 0.15);
+}
+
+.highlightIcon {
+  font-size: 1.25rem;
+  color: var(--gold);
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.highlightTitle {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   SECTION 4 — MY JOURNEY / TIMELINE (RICH DARK CHOCOLATE)
+   ========================================================================== */
+.journeySection {
+  padding: 3.5rem 0;
+  background: #22160F;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.timelineTrack {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.timelineTrack::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+  z-index: 1;
+}
+
+.timelineNode {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timelineDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid #22160F;
+  box-shadow: 0 0 12px var(--gold);
+  margin-bottom: 0.85rem;
+  margin-left: 0.75rem;
+}
+
+.timelineCard {
+  background: rgba(18, 12, 8, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 1rem 0.85rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.timelineCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  background: rgba(30, 20, 14, 0.95);
+}
+
+.timelineYear {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.timelineTitle {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 0.35rem;
+  line-height: 1.25;
+}
+
+.timelineDesc {
+  color: var(--text-sub);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 5 — ACADEMIC EXCELLENCE (DEEP DARK BRONZE)
+   ========================================================================== */
+.academicsSection {
+  padding: 3.5rem 0;
+  background: #15100B;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.academicGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.academicBadgeCard {
+  background: rgba(28, 20, 14, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.academicBadgeCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  background: rgba(45, 32, 22, 0.95);
+}
+
+.academicBadgeIcon {
+  color: var(--gold);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.academicBadgeTitle {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 0.2rem;
+  line-height: 1.25;
+}
+
+.academicBadgeDesc {
+  color: var(--text-sub);
+  font-size: 0.74rem;
+  margin: 0;
+}
+
+.centerBtn {
+  text-align: center;
+}
+
+/* ==========================================================================
+   SECTION 6 — INTERNATIONAL JOURNEY (WARM IVORY LIGHT THEME)
+   ========================================================================== */
+.internationalSection {
+  padding: 3.5rem 0;
+  background: #F5F1E8;
+  color: #1a140e;
+  border-bottom: 1px solid rgba(140, 109, 45, 0.3);
+}
+
+.internationalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.locationCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.locationCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(140, 109, 45, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(40, 30, 20, 0.05);
+}
+
+.locationIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(140, 109, 45, 0.12);
+  border: 1px solid #8C6D2D;
+  color: #8C6D2D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.locationText h4 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1c150e;
+  margin: 0 0 0.15rem;
+}
+
+.locationText p {
+  color: #4e4032;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.mapGraphic {
+  position: relative;
+  height: 320px;
+  background: #1c150e;
+  border: 1px solid #8C6D2D;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(12, 10, 8, 0.95) 100%);
+}
+
+.mapPins {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.mapPinBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(21, 17, 13, 0.9);
+  border: 1px solid var(--gold);
+  border-radius: 24px;
+  color: var(--gold-light);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  box-shadow: 0 0 15px rgba(200, 169, 106, 0.25);
+}
+
+/* ==========================================================================
+   SECTION 7 — AREAS OF EXPERTISE (DEEP EBONY BLACK)
+   ========================================================================== */
+.expertiseSection {
+  padding: 3.5rem 0;
+  background: #0D0B09;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.expertiseCard {
+  background: rgba(21, 17, 13, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.expertiseCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  background: rgba(35, 27, 20, 0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(200, 169, 106, 0.12);
+}
+
+.expertiseIcon {
+  color: var(--gold);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.expertiseTitle {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   SECTION 8 — RESEARCH & PUBLICATIONS (RICH DARK COFFEE)
+   ========================================================================== */
+.researchSection {
+  padding: 3.5rem 0;
+  background: #18120D;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.researchGrid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.researchImageFrame {
+  position: relative;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.researchImageFrame img {
+  object-fit: cover;
+}
+
+.researchList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.researchItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(200, 169, 106, 0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 0.82rem;
+}
+
+.researchBullet {
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   SECTION 9 — BEYOND LAW / KATHAK (DEEP CRIMSON/BURGUNDY GRADIENT)
+   ========================================================================== */
+.cultureSection {
+  padding: 3.5rem 0;
+  background: radial-gradient(circle at 30% 70%, rgba(65, 20, 18, 0.45) 0%, #0d0a08 75%);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.cultureParagraph {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+.cultureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.cultureImageFrame {
+  position: relative;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.cultureImageFrame img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ==========================================================================
+   SECTION 10 — VALUES & PHILOSOPHY (DARK LUXURY BLACK)
+   ========================================================================== */
+.quoteSection {
+  padding: 4rem 0;
+  background: #0b0907;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.quoteBox {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem 1.5rem;
+  background: rgba(21, 17, 13, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.quoteMark {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--text-main);
+  font-style: italic;
+  margin: 0 0 1.25rem;
+}
+
+.quoteAuthor {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SECTION 11 — WHY WORK WITH GAURI (DEEP OBSIDIAN)
+   ========================================================================== */
+.whySection {
+  padding: 3.5rem 0;
+  background: #120e0b;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.whyCard {
+  background: rgba(21, 17, 13, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.25rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.whyCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  background: rgba(35, 27, 20, 0.95);
+}
+
+.whyIcon {
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 0.15rem;
+}
+
+.whyTitle {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.whyDesc {
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 12 — ACHIEVEMENTS IN NUMBERS (CHOCOLATE BRONZE)
+   ========================================================================== */
+.statsSection {
+  padding: 3.5rem 0;
+  background: #1d150e;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+}
+
+.statCard {
+  background: rgba(18, 12, 8, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.statNumber {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.statLabel {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 13 — GALLERY PREVIEW (DEEP EBONY BLACK)
+   ========================================================================== */
+.gallerySection {
+  padding: 3.5rem 0;
+  background: #0c0a08;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.galleryCard {
+  position: relative;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.galleryCard img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galleryCard:hover img {
+  transform: scale(1.05);
+}
+
+.galleryCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(12, 10, 8, 0.95) 0%, rgba(12, 10, 8, 0.2) 60%, transparent 100%);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.galleryTag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(200, 169, 106, 0.2);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  color: var(--gold-light);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-bottom: 0.35rem;
+}
+
+.galleryTitle {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 14 — TESTIMONIAL PREVIEW (WARM IVORY LIGHT THEME WITH WHITE CARDS)
+   ========================================================================== */
+.testimonialsSection {
+  padding: 3.5rem 0;
+  background: #F8F5EF;
+  color: #1a140e;
+  border-bottom: 1px solid rgba(140, 109, 45, 0.3);
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.testimonialCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(140, 109, 45, 0.3);
+  border-radius: 10px;
+  padding: 1.35rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(40, 30, 20, 0.08);
+}
+
+.testimonialQuote {
+  font-family: var(--font-serif);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #3b3024;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonialAuthorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(140, 109, 45, 0.2);
+}
+
+.testimonialAvatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid #8C6D2D;
+  flex-shrink: 0;
+}
+
+.testimonialAvatar img {
+  object-fit: cover;
+}
+
+.testimonialMeta h4 {
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #1c150e;
+  margin: 0 0 0.1rem;
+}
+
+.testimonialMeta p {
+  font-size: 0.72rem;
+  color: #8C6D2D;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SECTION 15 — CALL TO ACTION (SPOTLIGHT LUXURY GRADIENT)
+   ========================================================================== */
+.ctaSection {
+  padding: 3.5rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(200, 169, 106, 0.18) 0%, #0D0A08 75%), #24180F;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.ctaBox {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.75rem;
+  background: rgba(20, 15, 12, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.ctaBox p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* RESPONSIVE DESIGN BREAKPOINTS */
+@media (max-width: 1024px) {
+  .heroGrid, .whoGrid, .internationalGrid, .researchGrid, .cultureGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heroImageWrap {
+    justify-self: center;
+    max-width: 340px;
+    height: 380px;
+  }
+
+  .highlightsGrid, .expertiseGrid, .academicGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timelineTrack {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .timelineTrack::before {
+    display: none;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .whyGrid, .galleryGrid, .testimonialsGrid, .featuredHighlightsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .highlightsGrid, .expertiseGrid, .academicGrid, .whyGrid, .galleryGrid, .testimonialsGrid, .statsGrid, .featuredHighlightsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineTrack {
+    grid-template-columns: 1fr;
+  }
+
+  .researchList, .whoStatsList {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaBox {
+    padding: 2rem 1.25rem;
+  }
+}
