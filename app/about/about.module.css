@@ -870,7 +870,8 @@
 
 .cultureImageFrame {
   position: relative;
-  height: 420px;
+  height: 500px;
+  background: #0b0907;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-gold);
@@ -878,8 +879,8 @@
 }
 
 .cultureImageFrame img {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* ==========================================================================
