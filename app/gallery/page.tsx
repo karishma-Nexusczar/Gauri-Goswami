@@ -557,6 +557,11 @@ const verifiedEventsRow2 = [
   }
 ];
 
+const allVerifiedEvents = [
+  ...verifiedEventsRow1,
+  ...verifiedEventsRow2
+];
+
 const videoCards = [
   { 
     id: "v1",
@@ -583,6 +588,15 @@ export default function EditorialGalleryPage() {
   const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<typeof videoCards[0] | null>(null);
+  const [eventStartIndex, setEventStartIndex] = useState<number>(0);
+
+  const handlePrevEvent = () => {
+    setEventStartIndex((prev) => (prev > 0 ? prev - 1 : allVerifiedEvents.length - 3));
+  };
+
+  const handleNextEvent = () => {
+    setEventStartIndex((prev) => (prev < allVerifiedEvents.length - 3 ? prev + 1 : 0));
+  };
 
   const heroSlideImages = [
     "/hero-slide-1-kathak.jpg",
@@ -839,7 +853,7 @@ export default function EditorialGalleryPage() {
       {/* SECTION 6 — GLOBAL EVENTS & CULTURAL ENGAGEMENT */}
       <section className="ed-events-section" id="global-events">
         <div className="ed-container">
-          <div className="ed-section-header flex-between">
+          <div className="ed-section-header flex-between align-center">
             <div>
               <span className="ed-section-tag">GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</span>
               <h2>Representing Indian Culture Across International Platforms</h2>
@@ -847,61 +861,58 @@ export default function EditorialGalleryPage() {
                 From prestigious cultural festivals and diplomatic events to academic institutions and international forums, Gauri Goswami has proudly represented the rich cultural heritage of Assam and India through classical and folk dance performances, cultural exchange, and community engagement.
               </p>
             </div>
-            <a href="#gallery" className="ed-header-link">View All Events →</a>
+            <div className="ed-events-header-right">
+              <div className="ed-events-nav-controls">
+                <button
+                  type="button"
+                  className="ed-slider-arrow-btn"
+                  onClick={handlePrevEvent}
+                  aria-label="Previous event"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="ed-slider-arrow-btn"
+                  onClick={handleNextEvent}
+                  aria-label="Next event"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* First Row (3 Cards) */}
-          <div className="ed-events-first-row">
-            {verifiedEventsRow1.map((ev, idx) => (
-              <div 
-                key={idx} 
-                className="ed-event-card"
-                onClick={() => {
-                  setActiveFilter(ev.cat as any);
-                  setSelectedPhotoIndex(0);
-                }}
-              >
-                <div className="ed-event-img-wrap">
-                  <Image src={ev.image} alt={ev.title} fill quality={90} />
-                </div>
-                <div className="ed-event-body">
-                  <div>
-                    <span className="ed-event-role">{ev.role}</span>
-                    <h3>{ev.title}</h3>
-                    <p className="ed-event-loc">{ev.location}</p>
-                    <p className="ed-event-summary">{ev.summary}</p>
+          {/* Smooth Carousel Viewport displaying 3 cards at a time */}
+          <div className="ed-events-carousel-viewport">
+            <div
+              className="ed-events-carousel-track"
+              style={{ transform: `translateX(-${eventStartIndex * (100 / 3)}%)` }}
+            >
+              {allVerifiedEvents.map((ev, idx) => (
+                <div
+                  key={idx}
+                  className="ed-event-card"
+                  onClick={() => {
+                    setActiveFilter(ev.cat as any);
+                    setSelectedPhotoIndex(0);
+                  }}
+                >
+                  <div className="ed-event-img-wrap">
+                    <Image src={ev.image} alt={ev.title} fill quality={90} />
                   </div>
-                  <span className="ed-event-link">View Event →</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Second Row (2 Event Cards) */}
-          <div className="ed-events-second-row">
-            {verifiedEventsRow2.map((ev, idx) => (
-              <div 
-                key={idx} 
-                className="ed-event-card"
-                onClick={() => {
-                  setActiveFilter(ev.cat as any);
-                  setSelectedPhotoIndex(0);
-                }}
-              >
-                <div className="ed-event-img-wrap">
-                  <Image src={ev.image} alt={ev.title} fill quality={90} />
-                </div>
-                <div className="ed-event-body">
-                  <div>
-                    <span className="ed-event-role">{ev.role}</span>
-                    <h3>{ev.title}</h3>
-                    <p className="ed-event-loc">{ev.location}</p>
-                    <p className="ed-event-summary">{ev.summary}</p>
+                  <div className="ed-event-body">
+                    <div>
+                      <span className="ed-event-role">{ev.role}</span>
+                      <h3>{ev.title}</h3>
+                      <p className="ed-event-loc">{ev.location}</p>
+                      <p className="ed-event-summary">{ev.summary}</p>
+                    </div>
+                    <span className="ed-event-link">View Event →</span>
                   </div>
-                  <span className="ed-event-link">View Event →</span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
