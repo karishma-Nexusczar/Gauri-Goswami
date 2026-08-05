@@ -11241,7 +11241,7 @@ footer {
 .ed-showcase-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 25%, rgba(243, 230, 204, 0.95) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 8, 6, 0.82) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -11250,7 +11250,7 @@ footer {
 }
 
 .ed-showcase-large-card:hover .ed-showcase-card-overlay {
-  background: linear-gradient(180deg, rgba(248, 242, 232, 0.2) 0%, rgba(243, 230, 204, 0.98) 100%);
+  background: linear-gradient(180deg, transparent 25%, rgba(10, 8, 6, 0.9) 100%);
 }
 
 .ed-showcase-tag {
@@ -11258,41 +11258,44 @@ footer {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.18em;
-  color: #8C6A14;
+  color: #E9C67A;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
-  background: rgba(233, 198, 122, 0.4);
-  padding: 0.25rem 0.6rem;
+  background: rgba(13, 11, 9, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.65rem;
   border-radius: 4px;
-  border: 1px solid #E6C88C;
+  border: 1px solid rgba(233, 198, 122, 0.4);
   align-self: flex-start;
 }
 
 .ed-showcase-card-overlay h3 {
   font-family: var(--serif);
   font-size: clamp(1.6rem, 2.4vw, 2.2rem);
-  font-weight: 600;
-  color: #4D4032;
+  font-weight: 500;
+  color: #FFFFFF;
   margin: 0 0 0.3rem;
   line-height: 1.15;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .ed-showcase-card-overlay p {
   font-family: var(--sans);
   font-size: 0.85rem;
-  color: #4D4032;
+  color: #F8F2E8;
   margin: 0 0 0.8rem;
   font-weight: 400;
-  opacity: 0.9;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Compact & Sleek Soft Gold Button */
 .ed-showcase-sm-btn {
   align-self: flex-start;
   padding: 0.45rem 1.1rem;
-  border: 1px solid #E6C88C;
-  background: #E9C67A;
-  color: #4D4032;
+  border: 1px solid rgba(233, 198, 122, 0.6);
+  background: rgba(13, 11, 9, 0.85);
+  color: #E9C67A;
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 700;
@@ -11301,14 +11304,14 @@ footer {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(140, 106, 20, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .ed-showcase-large-card:hover .ed-showcase-sm-btn {
-  background: #8C6A14;
-  color: #F8F2E8;
-  border-color: #8C6A14;
-  box-shadow: 0 4px 14px rgba(140, 106, 20, 0.35);
+  background: #E9C67A;
+  color: #4D4032;
+  border-color: #E9C67A;
+  box-shadow: 0 4px 14px rgba(233, 198, 122, 0.4);
 }
 
 .ed-showcase-small-stack {
@@ -11326,13 +11329,13 @@ footer {
   overflow: hidden;
   border: 1px solid #E6C88C;
   cursor: pointer;
-  background: #F3E6CC;
+  background: #14100D;
 }
 
 .ed-showcase-sm-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 15%, rgba(243, 230, 204, 0.95) 100%);
+  background: linear-gradient(180deg, transparent 25%, rgba(10, 8, 6, 0.85) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -11341,25 +11344,27 @@ footer {
 }
 
 .ed-showcase-sm-card:hover .ed-showcase-sm-overlay {
-  background: linear-gradient(180deg, rgba(248, 242, 232, 0.2) 0%, rgba(243, 230, 204, 0.98) 100%);
-  border-color: #8C6A14;
+  background: linear-gradient(180deg, transparent 10%, rgba(10, 8, 6, 0.92) 100%);
+  border-color: #E9C67A;
 }
 
 .ed-showcase-sm-overlay h4 {
   font-family: var(--serif);
   font-size: 1.15rem;
-  font-weight: 600;
-  color: #4D4032;
+  font-weight: 500;
+  color: #FFFFFF;
   margin: 0 0 0.15rem;
   line-height: 1.1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .ed-showcase-sm-overlay p {
   font-family: var(--sans);
   font-size: 0.75rem;
-  color: #8C6A14;
+  color: #E9C67A;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 900px) {
@@ -12325,43 +12330,44 @@ main > .stats {
 /* SECTION 8 — MASONRY PHOTO WALL */
 .ed-masonry-section {
   padding: 6rem 0;
-  background: #FAF6F0;
-  color: #28231D;
+  background: #F8F2E8;
+  color: #4D4032;
 }
 
 .ed-masonry-section .ed-section-header h2 {
-  color: #1A1612;
+  color: #4D4032;
 }
 
 .ed-filter-tabs {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .ed-tab-btn {
-  padding: 0.6rem 1.6rem;
-  border: 1px solid #E6D9C8;
-  background: #FFFFFF;
-  color: #5A4E42;
+  padding: 0.7rem 2.2rem;
+  border: 2px solid #B98A4D;
+  background: transparent;
+  color: #B98A4D;
   font-family: var(--sans);
   font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(185, 138, 77, 0.08);
 }
 
 .ed-tab-btn.active,
 .ed-tab-btn:hover {
-  background: #8B2627;
+  background: #B98A4D;
   color: #FFFFFF;
-  border-color: #8B2627;
-  box-shadow: 0 4px 14px rgba(139, 38, 39, 0.2);
+  border-color: #B98A4D;
+  box-shadow: 0 6px 18px rgba(185, 138, 77, 0.35);
 }
 
 .ed-masonry-grid {
@@ -12372,34 +12378,34 @@ main > .stats {
 
 .ed-masonry-item {
   position: relative;
-  height: 280px;
-  border-radius: 16px;
+  height: 250px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(185, 138, 77, 0.25);
-  background: #110e0c;
+  box-shadow: 0 6px 20px rgba(77, 64, 50, 0.12);
+  border: 1px solid #E6C88C;
+  background: #F3E6CC;
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .ed-masonry-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 175, 55, 0.7);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-5px);
+  border-color: #B98A4D;
+  box-shadow: 0 14px 35px rgba(77, 64, 50, 0.25), 0 0 20px rgba(185, 138, 77, 0.3);
 }
 
 .ed-masonry-item.landscape,
 .ed-masonry-item.tall,
 .ed-masonry-item.portrait,
 .ed-masonry-item.square {
-  height: 280px;
+  height: 250px;
   grid-column: span 1;
 }
 
 .ed-view-all-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 2.8rem;
+  margin-top: 3rem;
 }
 
 .ed-view-all-btn {
@@ -12407,10 +12413,10 @@ main > .stats {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 1rem 2.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  padding: 1rem 2.6rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: 50px;
   cursor: pointer;
@@ -12441,13 +12447,68 @@ main > .stats {
 .ed-masonry-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(14, 12, 10, 0.9) 100%);
+  background: rgba(15, 12, 9, 0.82);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 1.4rem;
+  text-align: center;
   opacity: 0;
   transition: opacity 0.35s ease;
+}
+
+.ed-masonry-item:hover .ed-masonry-overlay {
+  opacity: 1;
+}
+
+.ed-zoom-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid #C8A04D;
+  background: rgba(185, 138, 77, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.ed-masonry-item:hover .ed-zoom-icon {
+  transform: scale(1.1);
+  background: #B98A4D;
+  color: #FFFFFF;
+}
+
+.ed-masonry-tag {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #E9C67A;
+  margin-bottom: 0.25rem;
+}
+
+.ed-masonry-overlay h4 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0 0 0.25rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ed-masonry-overlay p {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: #E6C88C;
+  margin: 0;
+  font-weight: 300;
 }
 
 .ed-masonry-item:hover .ed-masonry-overlay {
