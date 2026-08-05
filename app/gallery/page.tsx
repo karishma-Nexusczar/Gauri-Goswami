@@ -883,7 +883,7 @@ export default function EditorialGalleryPage() {
       <section className="ed-events-section" id="global-events">
         <div className="ed-container">
           <div className="ed-section-header">
-            <span className="ed-section-tag ed-tag-red-gold">GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</span>
+            <span className="ed-section-tag">GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</span>
             <h2>Representing Indian Culture Across International Platforms</h2>
             <p className="ed-section-subdesc">
               From prestigious cultural festivals and diplomatic events to academic institutions and international forums, Gauri Goswami has proudly represented the rich cultural heritage of Assam and India through classical and folk dance performances, cultural exchange, and community engagement.

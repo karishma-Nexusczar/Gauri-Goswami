@@ -11669,19 +11669,9 @@ footer {
   padding: 6rem 0;
   background: #0D0B09;
   color: #FAF6F0;
-  border-top: 2px solid #8B2627;
-  border-bottom: 2px solid #8B2627;
+  border-top: 1px solid rgba(200, 160, 77, 0.2);
+  border-bottom: 1px solid rgba(200, 160, 77, 0.2);
   position: relative;
-}
-
-.ed-tag-red-gold {
-  color: #E9C67A !important;
-  background: rgba(139, 38, 39, 0.4) !important;
-  border: 1px solid #8B2627 !important;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 0.5rem;
 }
 
 .ed-events-carousel-relative-wrap {
@@ -11698,9 +11688,9 @@ footer {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #8B2627;
-  border: 1.5px solid #E9C67A;
-  color: #E9C67A;
+  background: rgba(20, 16, 13, 0.92);
+  border: 1.5px solid #C8A04D;
+  color: #C8A04D;
   font-size: 1.8rem;
   line-height: 1;
   display: flex;
@@ -11721,11 +11711,11 @@ footer {
 }
 
 .ed-slider-arrow-btn.side-arrow:hover {
-  background: #A62B2C;
-  color: #FFFFFF;
-  border-color: #FFFFFF;
+  background: #C8A04D;
+  color: #0D0B09;
+  border-color: #C8A04D;
   transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 8px 25px rgba(166, 43, 44, 0.6), 0 0 15px rgba(233, 198, 122, 0.4);
+  box-shadow: 0 8px 25px rgba(200, 160, 77, 0.45);
 }
 
 .ed-slider-arrow-btn.side-arrow:active {
@@ -11754,8 +11744,7 @@ footer {
 
 .ed-event-card {
   background: #14100D;
-  border: 1px solid rgba(233, 198, 122, 0.25);
-  border-top: 3px solid #8B2627;
+  border: 1px solid rgba(200, 160, 77, 0.25);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -11783,9 +11772,8 @@ footer {
 
 .ed-event-card:hover {
   transform: translateY(-6px);
-  border-color: #E9C67A;
-  border-top-color: #A62B2C;
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 38, 39, 0.3);
+  border-color: #C8A04D;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 160, 77, 0.25);
 }
 
 .ed-event-img-wrap {
@@ -11819,7 +11807,7 @@ footer {
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 700;
-  color: #E9C67A;
+  color: #C8A04D;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   display: block;
@@ -11858,7 +11846,7 @@ footer {
   font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 700;
-  color: #A62B2C;
+  color: #C8A04D;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   display: inline-flex;
@@ -11869,7 +11857,7 @@ footer {
 }
 
 .ed-event-card:hover .ed-event-link {
-  color: #E9C67A;
+  color: #FAF6F0;
 }
 
 @media (max-width: 1024px) {
