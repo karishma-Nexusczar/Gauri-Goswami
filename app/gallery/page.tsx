@@ -580,6 +580,7 @@ const videoCards = [
 
 export default function EditorialGalleryPage() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<typeof videoCards[0] | null>(null);
 
@@ -602,6 +603,8 @@ export default function EditorialGalleryPage() {
   const filteredPhotos = activeFilter === "All" 
     ? allGalleryPhotos 
     : allGalleryPhotos.filter(p => p.category === activeFilter);
+
+  const visiblePhotos = showAllPhotos ? filteredPhotos : filteredPhotos.slice(0, 8);
 
   const currentPhoto = selectedPhotoIndex !== null ? filteredPhotos[selectedPhotoIndex] : null;
 
@@ -992,7 +995,7 @@ export default function EditorialGalleryPage() {
         <div className="ed-container">
           <div className="ed-section-header center">
             <span className="ed-section-tag">FULL VISUAL ARCHIVE</span>
-            <h2>Masonry Photo Gallery</h2>
+            <h2>Moments That Define My Journey</h2>
           </div>
 
           {/* Filter Tabs */}
@@ -1002,7 +1005,10 @@ export default function EditorialGalleryPage() {
                 key={cat}
                 type="button"
                 className={`ed-tab-btn ${activeFilter === cat ? "active" : ""}`}
-                onClick={() => setActiveFilter(cat)}
+                onClick={() => {
+                  setActiveFilter(cat);
+                  setShowAllPhotos(false);
+                }}
               >
                 {cat}
               </button>
@@ -1011,31 +1017,58 @@ export default function EditorialGalleryPage() {
 
           {/* Masonry Grid */}
           <div className="ed-masonry-grid">
-            {filteredPhotos.map((photo, index) => (
-              <div
-                key={photo.id}
-                className={`ed-masonry-item ${photo.aspect}`}
-                onClick={() => setSelectedPhotoIndex(index)}
-              >
-                <div className="ed-masonry-img-frame">
-                  <Image
-                    src={photo.image}
-                    alt={photo.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={90}
-                    className="ed-masonry-img"
-                  />
-                  <div className="ed-masonry-overlay">
-                    <span className="ed-masonry-tag">{photo.category}</span>
-                    <h4>{photo.title}</h4>
-                    <p>{photo.subtitle}</p>
-                    <span className="ed-masonry-open">Open Lightbox ↗</span>
+            {visiblePhotos.map((photo, index) => {
+              const realIndex = filteredPhotos.findIndex((p) => p.id === photo.id);
+              return (
+                <div
+                  key={photo.id}
+                  className={`ed-masonry-item ${photo.aspect}`}
+                  onClick={() => setSelectedPhotoIndex(realIndex !== -1 ? realIndex : index)}
+                >
+                  <div className="ed-masonry-img-frame">
+                    <Image
+                      src={photo.image}
+                      alt={photo.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      quality={90}
+                      className="ed-masonry-img"
+                    />
+                    <div className="ed-masonry-overlay">
+                      <span className="ed-masonry-tag">{photo.category}</span>
+                      <h4>{photo.title}</h4>
+                      <p>{photo.subtitle}</p>
+                      <span className="ed-masonry-open">Open Lightbox ↗</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
+          {/* View All Images Toggle Button */}
+          {!showAllPhotos && filteredPhotos.length > 8 && (
+            <div className="ed-view-all-wrap">
+              <button
+                type="button"
+                className="ed-btn-gold ed-view-all-btn"
+                onClick={() => setShowAllPhotos(true)}
+              >
+                View All Images ({filteredPhotos.length}) <span className="ed-btn-arrow">↓</span>
+              </button>
+            </div>
+          )}
+          {showAllPhotos && filteredPhotos.length > 8 && (
+            <div className="ed-view-all-wrap">
+              <button
+                type="button"
+                className="ed-btn-outline ed-view-all-btn"
+                onClick={() => setShowAllPhotos(false)}
+              >
+                Show Less <span className="ed-btn-arrow">↑</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
