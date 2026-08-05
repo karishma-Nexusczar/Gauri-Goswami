@@ -586,6 +586,7 @@ const videoCards = [
 export default function EditorialGalleryPage() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
+  const [showAllCategories, setShowAllCategories] = useState<boolean>(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<typeof videoCards[0] | null>(null);
   const [eventStartIndex, setEventStartIndex] = useState<number>(0);
@@ -791,32 +792,60 @@ export default function EditorialGalleryPage() {
           </div>
 
           <div className="ed-category-grid">
-            {[
-              { title: "Legal Practice", count: "8 Photos", img: "/legal-practice-riverside-cohort.jpg", cat: "Law" },
-              { title: "Academic Excellence", count: "5 Photos", img: "/academics-scholarship-celebration-stage.jpg", cat: "Academics" },
-              { title: "Kathak Performances", count: "10 Photos", img: "/kathak-lawn-classical-pose.jpg", cat: "Kathak" },
-              { title: "Cultural Diplomacy", count: "10 Photos", img: "/cultural-heritage-london-stage.jpg", cat: "Culture" },
-              { title: "Research & Conferences", count: "6 Photos", img: "/research-multilevel-law-library.jpg", cat: "Research" },
-              { title: "Behind the Journey", count: "14 Photos", img: "/gallery-8-academic-engagement.jpg", cat: "Travel" }
-            ].map((c, i) => (
-              <div 
-                key={i} 
-                className={`ed-cat-card cat-${c.cat.toLowerCase()}`}
-                onClick={() => {
-                  setActiveFilter(c.cat as any);
-                  setSelectedPhotoIndex(0);
-                }}
-              >
-                <div className="ed-cat-img-frame">
-                  <Image src={c.img} alt={c.title} fill quality={90} />
+            {(() => {
+              const allCategories = [
+                { title: "Legal Practice", count: "8 Photos", img: "/legal-practice-riverside-cohort.jpg", cat: "Law" },
+                { title: "Academic Excellence", count: "5 Photos", img: "/academics-scholarship-celebration-stage.jpg", cat: "Academics" },
+                { title: "Kathak Performances", count: "10 Photos", img: "/kathak-lawn-classical-pose.jpg", cat: "Kathak" },
+                { title: "Cultural Diplomacy", count: "10 Photos", img: "/cultural-heritage-london-stage.jpg", cat: "Culture" },
+                { title: "Research & Conferences", count: "6 Photos", img: "/research-multilevel-law-library.jpg", cat: "Research" },
+                { title: "Behind the Journey", count: "14 Photos", img: "/gallery-8-academic-engagement.jpg", cat: "Travel" }
+              ];
+              const visibleCategories = showAllCategories ? allCategories : allCategories.slice(0, 3);
+              return visibleCategories.map((c, i) => (
+                <div 
+                  key={i} 
+                  className={`ed-cat-card cat-${c.cat.toLowerCase()}`}
+                  onClick={() => {
+                    setActiveFilter(c.cat as any);
+                    setSelectedPhotoIndex(0);
+                  }}
+                >
+                  <div className="ed-cat-img-frame">
+                    <Image src={c.img} alt={c.title} fill quality={90} />
+                  </div>
+                  <div className="ed-cat-info">
+                    <h3>{c.title}</h3>
+                    <span>{c.count}</span>
+                  </div>
                 </div>
-                <div className="ed-cat-info">
-                  <h3>{c.title}</h3>
-                  <span>{c.count}</span>
-                </div>
-              </div>
-            ))}
+              ));
+            })()}
           </div>
+
+          {/* View All Collections Toggle Button */}
+          {!showAllCategories && (
+            <div className="ed-view-all-wrap">
+              <button
+                type="button"
+                className="ed-btn-gold ed-view-all-btn"
+                onClick={() => setShowAllCategories(true)}
+              >
+                View All Collections (6) <span className="ed-btn-arrow">↓</span>
+              </button>
+            </div>
+          )}
+          {showAllCategories && (
+            <div className="ed-view-all-wrap">
+              <button
+                type="button"
+                className="ed-btn-outline ed-view-all-btn"
+                onClick={() => setShowAllCategories(false)}
+              >
+                Show Less <span className="ed-btn-arrow">↑</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
