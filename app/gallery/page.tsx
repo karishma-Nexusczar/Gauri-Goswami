@@ -718,14 +718,14 @@ export default function EditorialGalleryPage() {
           </div>
 
           <div className="ed-showcase-grid-step3">
-            {/* Left 60% Large Featured Card */}
-            <div className="ed-showcase-large-card" onClick={() => setSelectedPhotoIndex(3)}>
+            {/* Card 1: Cultural Heritage */}
+            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(3)}>
               <Image
                 src="/cultural-heritage-london-stage.jpg"
                 alt="Cultural Heritage Stage Presentation London"
                 fill
                 quality={100}
-                className="ed-showcase-large-img"
+                className="ed-showcase-rect-img"
               />
               <div className="ed-showcase-card-overlay">
                 <span className="ed-showcase-tag">FEATURED</span>
@@ -735,48 +735,51 @@ export default function EditorialGalleryPage() {
               </div>
             </div>
 
-            {/* Right 40% Three Stacked Small Cards */}
-            <div className="ed-showcase-small-stack">
-              <div className="ed-showcase-sm-card" onClick={() => setSelectedPhotoIndex(1)}>
-                <Image
-                  src="/academics-postgraduate-excellence-ceremony.jpg"
-                  alt="University of Nottingham Postgraduate Excellence"
-                  fill
-                  quality={100}
-                  className="ed-showcase-sm-img-top"
-                />
-                <div className="ed-showcase-sm-overlay">
-                  <h4>University</h4>
-                  <p>LL.M. International Commercial Law</p>
-                </div>
+            {/* Card 2: University of Nottingham */}
+            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(1)}>
+              <Image
+                src="/academics-postgraduate-excellence-ceremony.jpg"
+                alt="University of Nottingham Postgraduate Excellence"
+                fill
+                quality={100}
+                className="ed-showcase-rect-img"
+              />
+              <div className="ed-showcase-card-overlay">
+                <span className="ed-showcase-tag">ACADEMIC</span>
+                <h3>University of Nottingham</h3>
+                <p>LL.M. International Commercial Law</p>
               </div>
+            </div>
 
-              <div className="ed-showcase-sm-card" onClick={() => setSelectedPhotoIndex(6)}>
-                <Image
-                  src="/delhi-high-court-red-blazer.png"
-                  alt="Delhi High Court Advocate Practice"
-                  fill
-                  quality={100}
-                  className="ed-showcase-sm-img-portrait"
-                />
-                <div className="ed-showcase-sm-overlay">
-                  <h4>Delhi High Court</h4>
-                  <p>Advocacy &amp; Commercial Disputes</p>
-                </div>
+            {/* Card 3: Delhi High Court */}
+            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(6)}>
+              <Image
+                src="/delhi-high-court-red-blazer.png"
+                alt="Delhi High Court Advocate Practice"
+                fill
+                quality={100}
+                className="ed-showcase-rect-img portrait-pos"
+              />
+              <div className="ed-showcase-card-overlay">
+                <span className="ed-showcase-tag">LEGAL</span>
+                <h3>Delhi High Court</h3>
+                <p>Advocacy &amp; Commercial Disputes</p>
               </div>
+            </div>
 
-              <div className="ed-showcase-sm-card" onClick={() => setSelectedPhotoIndex(2)}>
-                <Image
-                  src="/south-asia-excellence-award.jpg"
-                  alt="South Asia Excellence Award Ceremony"
-                  fill
-                  quality={100}
-                  className="ed-showcase-sm-img-award"
-                />
-                <div className="ed-showcase-sm-overlay">
-                  <h4>South Asia Excellence Award</h4>
-                  <p>Scholarship Ceremony • Nov 2024</p>
-                </div>
+            {/* Card 4: South Asia Excellence Award */}
+            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(2)}>
+              <Image
+                src="/south-asia-excellence-award.jpg"
+                alt="South Asia Excellence Award Ceremony"
+                fill
+                quality={100}
+                className="ed-showcase-rect-img award-pos"
+              />
+              <div className="ed-showcase-card-overlay">
+                <span className="ed-showcase-tag">AWARD</span>
+                <h3>South Asia Excellence Award</h3>
+                <p>Scholarship Ceremony • Nov 2024</p>
               </div>
             </div>
           </div>
@@ -882,66 +885,64 @@ export default function EditorialGalleryPage() {
       {/* SECTION 6 — GLOBAL EVENTS & CULTURAL ENGAGEMENT */}
       <section className="ed-events-section" id="global-events">
         <div className="ed-container">
-          <div className="ed-section-header flex-between align-center">
-            <div>
-              <span className="ed-section-tag">GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</span>
-              <h2>Representing Indian Culture Across International Platforms</h2>
-              <p className="ed-section-subdesc">
-                From prestigious cultural festivals and diplomatic events to academic institutions and international forums, Gauri Goswami has proudly represented the rich cultural heritage of Assam and India through classical and folk dance performances, cultural exchange, and community engagement.
-              </p>
-            </div>
-            <div className="ed-events-header-right">
-              <div className="ed-events-nav-controls">
-                <button
-                  type="button"
-                  className="ed-slider-arrow-btn"
-                  onClick={handlePrevEvent}
-                  aria-label="Previous event"
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  className="ed-slider-arrow-btn"
-                  onClick={handleNextEvent}
-                  aria-label="Next event"
-                >
-                  ›
-                </button>
-              </div>
-            </div>
+          <div className="ed-section-header">
+            <span className="ed-section-tag ed-tag-red-gold">GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</span>
+            <h2>Representing Indian Culture Across International Platforms</h2>
+            <p className="ed-section-subdesc">
+              From prestigious cultural festivals and diplomatic events to academic institutions and international forums, Gauri Goswami has proudly represented the rich cultural heritage of Assam and India through classical and folk dance performances, cultural exchange, and community engagement.
+            </p>
           </div>
 
-          {/* Smooth Carousel Viewport displaying 3 cards at a time */}
-          <div className="ed-events-carousel-viewport">
-            <div
-              className="ed-events-carousel-track"
-              style={{ transform: `translateX(-${eventStartIndex * (100 / 3)}%)` }}
+          {/* Side Nav Carousel Wrapper with Left & Right Arrow Buttons */}
+          <div className="ed-events-carousel-relative-wrap">
+            <button
+              type="button"
+              className="ed-slider-arrow-btn side-arrow prev-arrow"
+              onClick={handlePrevEvent}
+              aria-label="Previous event"
             >
-              {allVerifiedEvents.map((ev, idx) => (
-                <div
-                  key={idx}
-                  className="ed-event-card"
-                  onClick={() => {
-                    setActiveFilter(ev.cat as any);
-                    setSelectedPhotoIndex(0);
-                  }}
-                >
-                  <div className="ed-event-img-wrap">
-                    <Image src={ev.image} alt={ev.title} fill quality={90} />
-                  </div>
-                  <div className="ed-event-body">
-                    <div>
-                      <span className="ed-event-role">{ev.role}</span>
-                      <h3>{ev.title}</h3>
-                      <p className="ed-event-loc">{ev.location}</p>
-                      <p className="ed-event-summary">{ev.summary}</p>
+              ‹
+            </button>
+
+            <div className="ed-events-carousel-viewport">
+              <div
+                className="ed-events-carousel-track"
+                style={{ transform: `translateX(-${eventStartIndex * (100 / 3)}%)` }}
+              >
+                {allVerifiedEvents.map((ev, idx) => (
+                  <div
+                    key={idx}
+                    className="ed-event-card"
+                    onClick={() => {
+                      setActiveFilter(ev.cat as any);
+                      setSelectedPhotoIndex(0);
+                    }}
+                  >
+                    <div className="ed-event-img-wrap">
+                      <Image src={ev.image} alt={ev.title} fill quality={90} />
                     </div>
-                    <span className="ed-event-link">View Event →</span>
+                    <div className="ed-event-body">
+                      <div>
+                        <span className="ed-event-role">{ev.role}</span>
+                        <h3>{ev.title}</h3>
+                        <p className="ed-event-loc">{ev.location}</p>
+                        <p className="ed-event-summary">{ev.summary}</p>
+                      </div>
+                      <span className="ed-event-link">View Event →</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            <button
+              type="button"
+              className="ed-slider-arrow-btn side-arrow next-arrow"
+              onClick={handleNextEvent}
+              aria-label="Next event"
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
