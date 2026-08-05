@@ -11203,13 +11203,13 @@ footer {
 
 .ed-showcase-large-card {
   position: relative;
-  height: 385px;
+  height: 440px;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid #E6C88C;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(77, 64, 50, 0.12);
-  background: #F3E6CC;
+  background: #14100D;
 }
 
 .ed-showcase-large-img {
@@ -11220,13 +11220,19 @@ footer {
 
 .ed-showcase-sm-img-top {
   object-fit: cover !important;
-  object-position: center 18% !important;
+  object-position: center 35% !important;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ed-showcase-sm-img-portrait {
+  object-fit: cover !important;
+  object-position: center 10% !important;
   transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .ed-showcase-sm-img-award {
   object-fit: cover !important;
-  object-position: 30% 25% !important;
+  object-position: center 12% !important;
   transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -11318,13 +11324,13 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  height: 385px;
+  height: 440px;
 }
 
 .ed-showcase-sm-card {
   position: relative;
   flex: 1;
-  height: 118px;
+  height: 136px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid #E6C88C;
@@ -11335,11 +11341,11 @@ footer {
 .ed-showcase-sm-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 25%, rgba(10, 8, 6, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 30%, rgba(10, 8, 6, 0.85) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0.8rem 1.1rem;
+  padding: 0.65rem 1rem;
   transition: background 0.3s ease;
 }
 
