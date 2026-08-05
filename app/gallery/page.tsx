@@ -718,14 +718,14 @@ export default function EditorialGalleryPage() {
           </div>
 
           <div className="ed-showcase-grid-step3">
-            {/* Card 1: Cultural Heritage */}
-            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(3)}>
+            {/* Left Large Featured Card */}
+            <div className="ed-showcase-large-card" onClick={() => setSelectedPhotoIndex(3)}>
               <Image
                 src="/cultural-heritage-london-stage.jpg"
                 alt="Cultural Heritage Stage Presentation London"
                 fill
                 quality={100}
-                className="ed-showcase-rect-img"
+                className="ed-showcase-large-img"
               />
               <div className="ed-showcase-card-overlay">
                 <span className="ed-showcase-tag">FEATURED</span>
@@ -735,51 +735,48 @@ export default function EditorialGalleryPage() {
               </div>
             </div>
 
-            {/* Card 2: University of Nottingham */}
-            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(1)}>
-              <Image
-                src="/academics-postgraduate-excellence-ceremony.jpg"
-                alt="University of Nottingham Postgraduate Excellence"
-                fill
-                quality={100}
-                className="ed-showcase-rect-img"
-              />
-              <div className="ed-showcase-card-overlay">
-                <span className="ed-showcase-tag">ACADEMIC</span>
-                <h3>University of Nottingham</h3>
-                <p>LL.M. International Commercial Law</p>
+            {/* Right Side Square Cards Grid */}
+            <div className="ed-showcase-square-stack">
+              <div className="ed-showcase-sq-card" onClick={() => setSelectedPhotoIndex(1)}>
+                <Image
+                  src="/academics-postgraduate-excellence-ceremony.jpg"
+                  alt="University of Nottingham Postgraduate Excellence"
+                  fill
+                  quality={100}
+                  className="ed-showcase-sq-img"
+                />
+                <div className="ed-showcase-sm-overlay">
+                  <h4>University</h4>
+                  <p>LL.M. International Commercial Law</p>
+                </div>
               </div>
-            </div>
 
-            {/* Card 3: Delhi High Court */}
-            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(6)}>
-              <Image
-                src="/delhi-high-court-red-blazer.png"
-                alt="Delhi High Court Advocate Practice"
-                fill
-                quality={100}
-                className="ed-showcase-rect-img portrait-pos"
-              />
-              <div className="ed-showcase-card-overlay">
-                <span className="ed-showcase-tag">LEGAL</span>
-                <h3>Delhi High Court</h3>
-                <p>Advocacy &amp; Commercial Disputes</p>
+              <div className="ed-showcase-sq-card" onClick={() => setSelectedPhotoIndex(6)}>
+                <Image
+                  src="/delhi-high-court-red-blazer.png"
+                  alt="Delhi High Court Advocate Practice"
+                  fill
+                  quality={100}
+                  className="ed-showcase-sq-img portrait-pos"
+                />
+                <div className="ed-showcase-sm-overlay">
+                  <h4>Delhi High Court</h4>
+                  <p>Advocacy &amp; Commercial Disputes</p>
+                </div>
               </div>
-            </div>
 
-            {/* Card 4: South Asia Excellence Award */}
-            <div className="ed-showcase-rect-card" onClick={() => setSelectedPhotoIndex(2)}>
-              <Image
-                src="/south-asia-excellence-award.jpg"
-                alt="South Asia Excellence Award Ceremony"
-                fill
-                quality={100}
-                className="ed-showcase-rect-img award-pos"
-              />
-              <div className="ed-showcase-card-overlay">
-                <span className="ed-showcase-tag">AWARD</span>
-                <h3>South Asia Excellence Award</h3>
-                <p>Scholarship Ceremony • Nov 2024</p>
+              <div className="ed-showcase-sq-card wide-sq" onClick={() => setSelectedPhotoIndex(2)}>
+                <Image
+                  src="/south-asia-excellence-award.jpg"
+                  alt="South Asia Excellence Award Ceremony"
+                  fill
+                  quality={100}
+                  className="ed-showcase-sq-img award-pos"
+                />
+                <div className="ed-showcase-sm-overlay">
+                  <h4>South Asia Excellence Award</h4>
+                  <p>Scholarship Ceremony • Nov 2024</p>
+                </div>
               </div>
             </div>
           </div>
