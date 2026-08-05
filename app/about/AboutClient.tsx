@@ -603,7 +603,7 @@ export default function AboutClient() {
 
             <div className={styles.cultureImageFrame}>
               <Image
-                src="/kathak-outdoor-recital-final.png"
+                src="/about-kathak-lawn.jpg"
                 alt="Gauri Goswami — Kathak Recital"
                 fill
                 unoptimized
