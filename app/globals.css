@@ -129,9 +129,10 @@ p {
   min-height: 920px;
   position: relative;
   background:
-    radial-gradient(circle at 20% 45%, rgba(200, 169, 106, 0.18), transparent 55%),
-    radial-gradient(circle at 85% 55%, rgba(120, 85, 40, 0.14), transparent 50%),
-    linear-gradient(135deg, #050403 0%, #120e0a 45%, #050403 100%) !important;
+    radial-gradient(circle at 20% 45%, rgba(185, 55, 45, 0.22), transparent 55%),
+    radial-gradient(circle at 85% 55%, rgba(205, 65, 50, 0.22), transparent 50%),
+    radial-gradient(circle at 50% 45%, rgba(240, 220, 195, 0.12), transparent 65%),
+    linear-gradient(135deg, #181210 0%, #2a1c18 45%, #16100e 100%) !important;
   overflow: hidden;
 }
 
@@ -153,7 +154,7 @@ p {
 .hero-left-portrait {
   object-fit: cover;
   object-position: center 18%;
-  filter: contrast(1.02) brightness(0.98);
+  filter: contrast(1.02) brightness(1.05);
 }
 
 .hero-vignette-overlay {
@@ -161,9 +162,9 @@ p {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 35% 45%, rgba(200, 169, 106, 0.16), transparent 60%),
-    linear-gradient(90deg, rgba(3, 3, 3, 0.45) 0%, transparent 35%, transparent 75%, rgba(3, 3, 3, 0.45) 100%),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.3) 0%, transparent 30%, transparent 80%, rgba(5, 4, 3, 0.45) 100%);
+    radial-gradient(circle at 35% 45%, rgba(205, 65, 50, 0.16), transparent 60%),
+    linear-gradient(90deg, rgba(20, 14, 12, 0.25) 0%, transparent 35%, transparent 75%, rgba(20, 14, 12, 0.25) 100%),
+    linear-gradient(180deg, rgba(25, 18, 15, 0.15) 0%, transparent 30%, transparent 80%, rgba(25, 18, 15, 0.25) 100%);
 }
 
 .hero-right-media {
@@ -184,7 +185,7 @@ p {
 .hero-right-portrait {
   object-fit: cover;
   object-position: 58% center;
-  filter: contrast(1.02) brightness(0.98);
+  filter: contrast(1.02) brightness(1.05);
 }
 
 .hero-vignette-overlay-right {
@@ -192,9 +193,9 @@ p {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 65% 45%, rgba(200, 169, 106, 0.16), transparent 60%),
-    linear-gradient(270deg, rgba(3, 3, 3, 0.45) 0%, transparent 35%, transparent 75%, rgba(3, 3, 3, 0.45) 100%),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.3) 0%, transparent 30%, transparent 80%, rgba(5, 4, 3, 0.45) 100%);
+    radial-gradient(circle at 65% 45%, rgba(205, 65, 50, 0.16), transparent 60%),
+    linear-gradient(270deg, rgba(20, 14, 12, 0.25) 0%, transparent 35%, transparent 75%, rgba(20, 14, 12, 0.25) 100%),
+    linear-gradient(180deg, rgba(25, 18, 15, 0.15) 0%, transparent 30%, transparent 80%, rgba(25, 18, 15, 0.25) 100%);
 }
 
 @media (max-width: 1024px) {
