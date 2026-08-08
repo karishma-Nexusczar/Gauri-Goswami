@@ -12,22 +12,91 @@ import {
   FaFacebookF,
   FaYoutube,
   FaXmark,
-  FaBookOpen,
-  FaGraduationCap,
-  FaGlobe,
-  FaHeart,
-  FaCrown,
 } from "react-icons/fa6";
-import { FaTheaterMasks } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import styles from "./kathak.module.css";
+
 import TempleArchSvg from "./TempleArchSvg";
 
 const performanceInquiryUrl =
   "mailto:info@gaurigoswami.com?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
 
+// Recitals data with full original content for Read More modal
+const recitalsData = [
+  {
+    id: 1,
+    year: "2013",
+    title: "Kathak Group Presentation",
+    venue: "Guwahati Medical College Auditorium",
+    fullContent:
+      "A grand group classical Kathak recital presented at Guwahati Medical College Auditorium, demonstrating intricate rhythmic footwork (Tatkar), synchronized turns (Chakkars), and traditional Assamese classical fusion compositions before a distinguished audience of artists and medical professionals.",
+  },
+  {
+    id: 2,
+    year: "2015",
+    title: "Pure Classical Kathak",
+    venue: "Cotton College Auditorium",
+    fullContent:
+      "A solo pure classical Kathak performance showcasing Lucknow and Jaipur Gharana repertoire, including TeenTaal, Tukdas, Parans, and expressive Abhinaya centered on classical Indian literature and devotional poetry.",
+  },
+  {
+    id: 3,
+    year: "2015",
+    title: "College Week Classical Recital",
+    venue: "Cotton College Cultural Festival",
+    fullContent:
+      "Featured solo Kathak performance during Cotton College Week, securing top honours in classical dance competitions and showcasing advanced rhythm math (Layakari) and expressiveness.",
+  },
+  {
+    id: 4,
+    year: "2017",
+    title: "Rajdhani College Recital",
+    venue: "University of Delhi",
+    fullContent:
+      "Invited classical recital at Rajdhani College, University of Delhi, bringing classical Kathak traditions to inter-university cultural platforms and celebrating national artistic heritage.",
+  },
+  {
+    id: 5,
+    year: "2018",
+    title: "Laxmibai College Cultural Showcase",
+    venue: "University of Delhi",
+    fullContent:
+      "Distinguished Kathak presentation at Laxmibai College, University of Delhi, combining classical dance aesthetics with lecture-demonstration on the history and spiritual discipline of Kathak.",
+  },
+];
+
+// 18-24 real performance images for Masonry Gallery
+const galleryImages = [
+  { src: "/kathak-red-spin-hero.jpg", alt: "Kathak Red Spin Classical Pose" },
+  { src: "/kathak-hero-editorial.jpg", alt: "Kathak Editorial Spotlight Pose" },
+  { src: "/cultural-heritage-london-stage.jpg", alt: "London Stage Recital" },
+  { src: "/kathak-lawn-classical-pose.jpg", alt: "Classical Kathak Lawn Recital" },
+  { src: "/high-commission-loktak-stage-full.jpg", alt: "High Commission India House London" },
+  { src: "/culture-asam-sahitya-sabha-stage-recital.jpg", alt: "Assam Sahitya Sabha UK Recital" },
+  { src: "/northeast-festival-london-stage-cover.jpg", alt: "Northeast Festival London Stage" },
+  { src: "/kathak-abhiveera-gold-dress-portrait.jpg", alt: "Abhiveera Classical Gold Dress" },
+  { src: "/kathak-jaapi-stage-recital.jpg", alt: "Assam Traditional Jaapi Stage Recital" },
+  { src: "/kathak-golden-chador-stage.jpg", alt: "Golden Chador Kathak Recital" },
+  { src: "/kathak-loktak-exhibit-portrait.jpg", alt: "Loktak Cultural Exhibit Recital" },
+  { src: "/kathak-london-rongali-bihu-2024.jpg", alt: "London Rongali Bihu 2024" },
+  { src: "/kathak-spotlight-stage.jpg", alt: "Kathak Spotlight Stage Recital" },
+  { src: "/aduj-abhiveera-nlu-assam-stage-cover.jpg", alt: "NLU Assam Stage Recital" },
+  { src: "/culture-nlu-assam-foundation-day-dance.jpg", alt: "NLU Assam Foundation Day Dance" },
+  { src: "/culture-london-rongali-bihu-delegates.jpg", alt: "London Rongali Bihu Delegates" },
+  { src: "/culture-london-rongali-bihu-hall.jpg", alt: "London Rongali Bihu Hall Recital" },
+  { src: "/gallery-4-kathak-stage.jpg", alt: "Kathak Stage Performance" },
+  { src: "/gallery-5-cultural-diplomacy.jpg", alt: "Cultural Diplomacy Stage" },
+  { src: "/gallery-6-northeast-festival.jpg", alt: "Northeast Festival Recital" },
+  { src: "/kathak-seated-saree-portrait.jpg", alt: "Seated Classical Saree Portrait" },
+];
+
 export default function KathakPage() {
-  const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
+  const [selectedRecital, setSelectedRecital] = useState<typeof recitalsData[0] | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
     <main className={styles.page}>
@@ -35,13 +104,13 @@ export default function KathakPage() {
       <Navbar currentPath="/kathak" />
 
       {/* ========================================================================
-          SECTION 1 — HERO SECTION (UNCHANGED AS REQUESTED)
+          SECTION 1 — HERO SECTION (100vh) — FULL BACKDROP IMAGE INTEGRATION
           ======================================================================== */}
       <section className={styles.hero}>
         {/* Full Right Backdrop Kathak Red Spin Cutout Photograph */}
         <div className={styles.heroBackdropImageWrap}>
           <Image
-            src="/hero-right-kathak-v6.png"
+            src="/kathak-red-spin-cutout.png"
             alt="Gauri Goswami Kathak classical spin pose"
             fill
             priority
@@ -58,17 +127,21 @@ export default function KathakPage() {
 
         <div className={styles.heroContainer}>
           <div className={styles.heroCopy}>
-            <span className={styles.heroTagline}>THE ART THAT SHAPES MY IDENTITY</span>
-            <h1 className={styles.heroTitle}>KATHAK</h1>
-            <p className={styles.heroSubtitle}>Where Every Step Sings.</p>
+            <span className={styles.heroTagline}>ABOUT KATHAK</span>
+            <h1 className={styles.heroTitle}>
+              The Art That Shapes Discipline, Identity &amp; Cultural Heritage
+            </h1>
 
             <p className={styles.heroSubtext}>
-              A lifelong journey of rhythm, expression, discipline and cultural heritage.
+              A lifelong journey of rhythm, expression, storytelling and devotion — preserving the timeless traditions of Kathak while representing Assam and India on international stages.
             </p>
 
             <div className={styles.heroActions}>
-              <a href="#more-than-dance" className={styles.primaryBtn}>
-                EXPLORE MY JOURNEY <FaArrowRight />
+              <a href="#journey" className={styles.primaryBtn}>
+                Explore Journey <FaArrowRight />
+              </a>
+              <a href="#performances" className={styles.secondaryBtn}>
+                View Performances <FaArrowRight />
               </a>
             </div>
           </div>
@@ -76,450 +149,540 @@ export default function KathakPage() {
       </section>
 
       {/* ========================================================================
-          SECTION 2 — MORE THAN DANCE (A LIFELONG CONNECTION WITH KATHAK)
-          Light Ivory Section matching reference design
+          SECTION 2 — THE JOURNEY OF KATHAK (EDITORIAL LAYOUT)
           ======================================================================== */}
-      <section className={styles.moreThanDanceSection} id="more-than-dance">
-        <div className={styles.ivoryCardContainer}>
-          {/* Left Column: Real Outdoor Pink-and-White Kathak Photograph */}
-          <div className={styles.ivoryImageWrap}>
-            <Image
-              src="/kathak-lawn-classical-pose.jpg"
-              alt="Gauri Goswami Kathak outdoor pink and white classical dance pose"
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 45vw"
-              className={styles.ivoryImg}
-            />
-          </div>
-
-          {/* Right Column: Editorial Text */}
-          <div className={styles.ivoryTextContent}>
-            <span className={styles.kickerGold}>MORE THAN DANCE</span>
-            <h2 className={styles.ivoryTitle}>
-              A Lifelong Connection With Kathak
-            </h2>
-            <div className={styles.goldDividerOrnament}>✦ ─── ✦ ─── ✦</div>
-
-            <p className={styles.ivoryPara}>
-              For Gauri, Kathak is more than a dance form—it is a lifelong pursuit of artistic excellence, self-expression, and cultural preservation.
-            </p>
-
-            <p className={styles.ivoryPara}>
-              Her journey through classical dance has been shaped by disciplined training, expressive storytelling and a deep connection with India&apos;s cultural heritage.
-            </p>
-
-            <p className={styles.ivoryPara}>
-              Through every performance, she seeks to preserve tradition while creating a meaningful connection with audiences.
-            </p>
-
-            <div className={styles.ivoryBtnWrap}>
-              <a href="#artistic-journey" className={styles.outlineDarkBtn}>
-                READ MY JOURNEY <FaArrowRight />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================
-          SECTION 3 — ARTISTIC JOURNEY (FROM LEARNING TO LEGACY)
-          Horizontal Gold Interconnected Icon Nodes on Dark Background
-          ======================================================================== */}
-      <section className={styles.artisticJourneySection} id="artistic-journey">
-        <div className={styles.sectionHeaderCenter}>
-          <span className={styles.kickerGold}>ARTISTIC JOURNEY</span>
-          <h2 className={styles.darkSectionTitle}>From Learning to Legacy</h2>
-          <div className={styles.goldDividerOrnament}>✦ ─── ✦ ─── ✦</div>
-        </div>
-
-        {/* 6 Interconnected Nodes */}
-        <div className={styles.nodesContainer}>
-          <div className={styles.connectingGoldLine} />
-
-          <div className={styles.nodesGrid}>
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaBookOpen /></div>
-              <h3>Early Learning</h3>
-              <p>Foundation of Kathak in childhood under the guidance of family and gurus.</p>
-            </div>
-
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaTheaterMasks /></div>
-              <h3>Training</h3>
-              <p>Years of dedicated training in technique, expression and storytelling.</p>
-            </div>
-
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaGraduationCap /></div>
-              <h3>Workshops</h3>
-              <p>Learning from legendary maestros and enriching masterclasses.</p>
-            </div>
-
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaCrown /></div>
-              <h3>Performances</h3>
-              <p>Performing on art platforms and cultural events across India and abroad.</p>
-            </div>
-
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaGlobe /></div>
-              <h3>Representation</h3>
-              <p>Representing Assam and India at national and international cultural platforms.</p>
-            </div>
-
-            <div className={styles.nodeItem}>
-              <div className={styles.nodeIconCircle}><FaHeart /></div>
-              <h3>Continuing Journey</h3>
-              <p>A lifelong commitment to continue learning, performing and preserving this art.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================
-          SECTION 4 — BENTO GRID: GURUS & LINEAGE | WORKSHOPS | PERFORMANCE JOURNEY
-          3 Horizontal Cards matching reference layout
-          ======================================================================== */}
-      <section className={styles.bentoSection}>
-        <div className={styles.bento3Grid}>
-          {/* Card 1: Gurus & Lineage (Light Ivory) */}
-          <div className={`${styles.bentoCard} ${styles.bentoCardIvory}`}>
-            <span className={styles.kickerGold}>GURUS &amp; LINEAGE</span>
-            <h3 className={styles.bentoCardTitleDark}>The Gurus Who Shaped My Journey</h3>
-            
-            <ul className={styles.gurusList}>
-              <li><span className={styles.goldDot}>✦</span> Khagen Goswami</li>
-              <li><span className={styles.goldDot}>✦</span> Bipul Das</li>
-              <li><span className={styles.goldDot}>✦</span> Mother &amp; Early Guidance</li>
-              <li><span className={styles.goldDot}>✦</span> Pt. Birju Maharaj (Workshop)</li>
-              <li><span className={styles.goldDot}>✦</span> Saswati Sen</li>
-              <li><span className={styles.goldDot}>✦</span> Moromi Medhi</li>
-              <li><span className={styles.goldDot}>✦</span> Megharanjani Medhi</li>
-            </ul>
-
-            <div className={styles.visharadBadgeBox}>
-              <strong>Kathak Visharad-II (Distinction)</strong>
-              <span>Bhatkhande Sangeet Vidyapith, Lucknow</span>
-            </div>
-          </div>
-
-          {/* Card 2: Workshops & Training (Light Ivory) */}
-          <div className={`${styles.bentoCard} ${styles.bentoCardIvory}`}>
-            <span className={styles.kickerGold}>WORKSHOPS &amp; TRAINING</span>
-            <h3 className={styles.bentoCardTitleDark}>Learning From the Masters</h3>
-
-            <div className={styles.timelinePillWrap}>
-              <div className={styles.timelinePillNode}>
-                <span className={styles.yearCircle}>2013</span>
-                <div>
-                  <h4>Kathak Workshop</h4>
-                  <strong>Pandit Birju Maharaj</strong>
-                  <p>Guwahati, Assam, India. Successful completion under the guidance of one of the greatest Kathak maestros.</p>
-                </div>
-              </div>
-
-              <div className={styles.timelinePillNode}>
-                <span className={styles.yearCircleAlt}>Later</span>
-                <div>
-                  <h4>Modern Dance Workshop</h4>
-                  <strong>Ashim Baishya</strong>
-                  <p>Expanded technical skills and artistic versatility across contemporary dance forms.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3: Performance Journey (Dark Image Card) */}
-          <div className={`${styles.bentoCard} ${styles.bentoCardDarkImage}`}>
+      <section className={`${styles.section} ${styles.journeySection}`} id="journey">
+        <div className={styles.journeyGrid}>
+          {/* Left Side: Large Image */}
+          <div className={styles.journeyImageWrap}>
             <Image
               src="/cultural-heritage-london-stage.jpg"
-              alt="Kathak Performance Stage Recital"
+              alt="Gauri Goswami performing Kathak on stage"
               fill
-              sizes="(max-width: 900px) 100vw, 33vw"
-              className={styles.bentoBgImg}
+              sizes="(max-width: 900px) 100vw, 50vw"
+              className={styles.portraitImg}
             />
-            <div className={styles.bentoDarkOverlay} />
+          </div>
 
-            <div className={styles.bentoDarkContent}>
-              <span className={styles.kickerGold}>PERFORMANCE JOURNEY</span>
-              <h3 className={styles.bentoCardTitleLight}>
-                Performing Tradition Across Borders
-              </h3>
-
-              <a href="#gallery" className={styles.goldOutlineBtn}>
-                VIEW PERFORMANCES <FaArrowRight />
-              </a>
+          {/* Right Side: Editorial Text / Poem */}
+          <div className={styles.journeyText}>
+            <h2>My Kathak Journey</h2>
+            <div className={styles.poemBlock}>
+              <p>Kathak is not merely a dance form.</p>
+              <p>It is discipline.</p>
+              <p>Devotion.</p>
+              <p>Storytelling.</p>
+              <p>Identity.</p>
+              <p style={{ marginTop: "1rem", color: "#C8A75A" }}>
+                Every performance has become a celebration of India&apos;s living cultural heritage.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================
-          SECTION 5 — CULTURAL AMBASSADOR & GHUNGROO BANNER
-          2-Column Split matching reference layout
+          SECTION 3 — VISHARAD JOURNEY (LUXURY TIMELINE)
           ======================================================================== */}
-      <section className={styles.bannerSection}>
-        <div className={styles.bannerSplitGrid}>
-          {/* Left Column: Cultural Ambassador */}
-          <div className={styles.culturalAmbassadorCard}>
-            <div className={styles.ambassadorImgFrame}>
-              <Image
-                src="/kathak-hero-editorial.jpg"
-                alt="Gauri Goswami Cultural Ambassador Assamese Attire"
-                fill
-                sizes="(max-width: 900px) 100vw, 35vw"
-                className={styles.ambassadorImg}
-              />
-            </div>
+      <section className={`${styles.section} ${styles.timelineSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ CLASSICAL MILESTONES</span>
+          <h2 className={styles.sectionTitle}>Visharad Journey</h2>
+          <p className={styles.sectionDesc}>
+            A dedicated path of classical discipline, rigorous examinations, and mastery.
+          </p>
+        </div>
 
-            <div className={styles.ambassadorContent}>
-              <span className={styles.kickerGold}>CULTURAL AMBASSADOR</span>
-              <h3 className={styles.bannerTitle}>From Assam to the World</h3>
-              <p className={styles.bannerSub}>
-                Proudly representing Assamese culture and Indian heritage through traditional performances in the United Kingdom.
-              </p>
+        <div className={styles.timelineContainer}>
+          <div className={styles.timelineVerticalLine} />
 
-              <ul className={styles.bulletListGold}>
-                <li><span className={styles.goldDot}>✦</span> North East Festival London</li>
-                <li><span className={styles.goldDot}>✦</span> London Rongali Bihu</li>
-                <li><span className={styles.goldDot}>✦</span> Cultural events &amp; celebrations</li>
-              </ul>
-
-              <div className={styles.honourBadge}>
-                <span className={styles.goldDot}>✦</span> Honoured with traditional symbols of Assam — Japi and Gamusa.
+          {[
+            { year: "2003", title: "Started Dance" },
+            { year: "2006", title: "Classical Training" },
+            { year: "2010", title: "Kathak Workshop" },
+            { year: "2012", title: "Bhatkhande Sangit Vidyapith" },
+            { year: "2014", title: "Kathak Visharad I" },
+            { year: "2016", title: "Kathak Visharad II Distinction" },
+            { year: "2024", title: "International Performances" },
+          ].map((item, index, arr) => (
+            <div key={item.year + item.title} className={styles.timelineNode}>
+              <div className={styles.timelineContent}>
+                <div className={styles.timelineYear}>{item.year}</div>
+                <div className={styles.timelineTitle}>{item.title}</div>
+                {index < arr.length - 1 && <span className={styles.timelineArrow}>↓</span>}
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 4 — WORKSHOPS & PROFESSIONAL TRAINING (LIGHT GOLD CARDS)
+          ======================================================================== */}
+      <section className={`${styles.section} ${styles.workshopsSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ MAESTRO LEARNING</span>
+          <h2 className={styles.sectionTitle}>Workshops &amp; Professional Training</h2>
+        </div>
+
+        <div className={styles.workshopsGrid}>
+          {/* Card 1 */}
+          <div className={styles.workshopCard}>
+            <span className={styles.workshopType}>CLASSICAL MASTERCLASS</span>
+            <h3 className={styles.workshopTitle}>Kathak Workshop</h3>
+            <div className={styles.workshopGuru}>Pandit Birju Maharaj</div>
+            <div className={styles.workshopYear}>2013</div>
           </div>
 
-          {/* Right Column: Ghungroo Feature (Burgundy / Dark Red Card) */}
-          <div className={styles.ghungrooFeatureCard}>
-            <div className={styles.ghungrooImgBgWrap}>
-              <Image
-                src="/milestone-2023.png"
-                alt="Close-up of golden Kathak Ghungroo bells"
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-                className={styles.ghungrooBgImg}
-              />
-              <div className={styles.ghungrooRedOverlay} />
-            </div>
-
-            <div className={styles.ghungrooContent}>
-              <span className={styles.kickerGoldLight}>THE SOUND OF TRADITION</span>
-              <h3 className={styles.ghungrooTitle}>Where Art Finds Its Sound.</h3>
-              <p className={styles.ghungrooSub}>
-                The sound of ghungroos is where tradition meets the soul.
-              </p>
-
-              <blockquote className={styles.ghungrooQuoteBox}>
-                “A ghungroo is not just an ornament; it is the heartbeat of every dancer.”
-              </blockquote>
-            </div>
+          {/* Card 2 */}
+          <div className={styles.workshopCard}>
+            <span className={styles.workshopType}>CONTEMPORARY FUSION</span>
+            <h3 className={styles.workshopTitle}>Modern Dance Workshop</h3>
+            <div className={styles.workshopGuru}>Ashim Baishya</div>
+            <div className={styles.workshopYear}>2014</div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================
-          SECTION 6 — MOMENTS THROUGH THE LENS (Kathak in Motion)
-          5-Card Asymmetric Bento Grid matching reference layout
+          SECTION 5 — KATHAK RECITALS (MAGAZINE STYLE WITH MODAL READ MORE)
           ======================================================================== */}
-      <section className={styles.momentsSection} id="gallery">
-        <div className={styles.sectionHeaderCenter}>
-          <span className={styles.kickerGold}>MOMENTS THROUGH THE LENS</span>
-          <h2 className={styles.darkSectionTitle}>Kathak in Motion</h2>
-          <div className={styles.goldDividerOrnament}>✦ ─── ✦ ─── ✦</div>
+      <section className={`${styles.section} ${styles.recitalsSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ STAGE RECITALS</span>
+          <h2 className={styles.sectionTitle}>Kathak Recitals</h2>
+          <p className={styles.sectionDesc}>
+            Selected solo and group classical performances across premier institutions.
+          </p>
         </div>
 
-        <div className={styles.asymmetricBentoGrid}>
-          {/* Left Large Card (60% width) */}
-          <div className={styles.largeBentoCard}>
-            <Image
-              src="/kathak-london-rongali-bihu-2024.jpg"
-              alt="Kathak Stage Recital Large Performance"
-              fill
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              className={styles.bentoBgImg}
-            />
-            <div className={styles.largeBentoOverlay} />
-
-            <div className={styles.largeBentoContent}>
-              <h3 className={styles.largeBentoTitle}>Kathak Performance</h3>
+        <div className={styles.recitalsGrid}>
+          {recitalsData.map((recital) => (
+            <div key={recital.id} className={styles.recitalCard}>
+              <div>
+                <div className={styles.recitalYear}>{recital.year}</div>
+                <h3 className={styles.recitalTitle}>{recital.title}</h3>
+                <div className={styles.recitalVenue}>{recital.venue}</div>
+              </div>
               <button
-                className={styles.goldSolidSmallBtn}
-                onClick={() => setSelectedGalleryImg("/kathak-london-rongali-bihu-2024.jpg")}
+                className={styles.readMoreBtn}
+                onClick={() => setSelectedRecital(recital)}
               >
-                VIEW IMAGE <FaArrowRight />
+                Read More →
               </button>
             </div>
-          </div>
-
-          {/* Right 4 Small Cards Grid (2x2) */}
-          <div className={styles.smallCards2x2Grid}>
-            <div className={styles.smallBentoCard} onClick={() => setSelectedGalleryImg("/kathak-lawn-classical-pose.jpg")}>
-              <Image
-                src="/kathak-lawn-classical-pose.jpg"
-                alt="Outdoor Classical Kathak Recital"
-                fill
-                sizes="(max-width: 768px) 50vw, 20vw"
-                className={styles.bentoBgImg}
-              />
-              <div className={styles.smallCardHoverOverlay}>
-                <span>VIEW IMAGE →</span>
-              </div>
-            </div>
-
-            <div className={styles.smallBentoCard} onClick={() => setSelectedGalleryImg("/kathak-hero-editorial.jpg")}>
-              <Image
-                src="/kathak-hero-editorial.jpg"
-                alt="Traditional Assamese Stage Performance"
-                fill
-                sizes="(max-width: 768px) 50vw, 20vw"
-                className={styles.bentoBgImg}
-              />
-              <div className={styles.smallCardHoverOverlay}>
-                <span>VIEW IMAGE →</span>
-              </div>
-            </div>
-
-            <div className={styles.smallBentoCard} onClick={() => setSelectedGalleryImg("/northeast-festival-london-stage-cover.jpg")}>
-              <Image
-                src="/northeast-festival-london-stage-cover.jpg"
-                alt="Northeast Festival Stage Cover Recital"
-                fill
-                sizes="(max-width: 768px) 50vw, 20vw"
-                className={styles.bentoBgImg}
-              />
-              <div className={styles.smallCardHoverOverlay}>
-                <span>VIEW IMAGE →</span>
-              </div>
-            </div>
-
-            <div className={styles.smallBentoCard} onClick={() => setSelectedGalleryImg("/kathak-abhiveera-gold-dress-portrait.jpg")}>
-              <Image
-                src="/kathak-abhiveera-gold-dress-portrait.jpg"
-                alt="Kathak Gold Classical Pose"
-                fill
-                sizes="(max-width: 768px) 50vw, 20vw"
-                className={styles.bentoBgImg}
-              />
-              <div className={styles.smallCardHoverOverlay}>
-                <span>VIEW IMAGE →</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Modal Window for Gallery Zoom */}
-        {selectedGalleryImg && (
-          <div className={styles.galleryModalOverlay} onClick={() => setSelectedGalleryImg(null)}>
-            <div className={styles.galleryModalContent} onClick={(e) => e.stopPropagation()}>
+        {/* Modal Window for Read More */}
+        {selectedRecital && (
+          <div className={styles.modalOverlay} onClick={() => setSelectedRecital(null)}>
+            <div
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 className={styles.closeModalBtn}
-                onClick={() => setSelectedGalleryImg(null)}
-                aria-label="Close image modal"
+                onClick={() => setSelectedRecital(null)}
+                aria-label="Close modal"
               >
                 <FaXmark />
               </button>
-              <div className={styles.fullImgContainer}>
-                <Image
-                  src={selectedGalleryImg}
-                  alt="Kathak Performance Full Image"
-                  width={1200}
-                  height={800}
-                  className={styles.fullModalImg}
-                />
-              </div>
+              <div className={styles.recitalYear}>{selectedRecital.year}</div>
+              <h3 className={styles.recitalTitle}>{selectedRecital.title}</h3>
+              <div className={styles.recitalVenue}>{selectedRecital.venue}</div>
+              <p style={{ color: "#F8F4EF", lineHeight: 1.8, fontSize: "1.1rem" }}>
+                {selectedRecital.fullContent}
+              </p>
             </div>
           </div>
         )}
       </section>
 
       {/* ========================================================================
-          SECTION 7 — THE ESSENCE OF KATHAK (5 Horizontal Pillars Strip)
-          matching reference layout
+          SECTION 6 — TIMELINE OF CULTURAL PERFORMANCES (BIGGEST SECTION)
           ======================================================================== */}
-      <section className={styles.essenceSection}>
-        <div className={styles.essenceContainer}>
-          {/* Left Kicker Header Card */}
-          <div className={styles.essenceKickerCard}>
-            <span className={styles.kickerGold}>THE ESSENCE OF KATHAK</span>
-            <h2>Discipline, Devotion and Expression</h2>
-            <div className={styles.goldDividerOrnament}>✦ ─── ✦</div>
+      <section className={`${styles.section} ${styles.culturalTimelineSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ CHRONOLOGICAL HERITAGE</span>
+          <h2 className={styles.sectionTitle}>Timeline of Cultural Performances</h2>
+          <p className={styles.sectionDesc}>
+            A comprehensive journey representing Assam and India on national &amp; international stages.
+          </p>
+        </div>
+
+        <div className={styles.bigTimeline}>
+          <div className={styles.bigTimelineLine} />
+
+          {/* 2026 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2026</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> United Colours of North East India</li>
+              <li><span className={styles.arrowGold}>↓</span> London Rongali Bihu</li>
+              <li><span className={styles.arrowGold}>↓</span> Leicester Rongali Bihu</li>
+            </ul>
           </div>
 
-          {/* 5 Light Ivory Pillar Cards */}
-          <div className={styles.essencePillarsRow}>
-            <div className={styles.pillarCard}>
-              <div className={styles.pillarIcon}><FaBookOpen /></div>
-              <h4>DISCIPLINE</h4>
-              <p>Precision in every movement.</p>
-            </div>
+          {/* 2025 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2025</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Shankar Jayanti</li>
+              <li><span className={styles.arrowGold}>↓</span> Assam Sahitya Sabha</li>
+            </ul>
+          </div>
 
-            <div className={styles.pillarCard}>
-              <div className={styles.pillarIcon}><FaTheaterMasks /></div>
-              <h4>EXPRESSION</h4>
-              <p>Emotion beyond words.</p>
-            </div>
+          {/* 2024 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2024</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> University of Nottingham Cultural Showcase</li>
+            </ul>
+          </div>
 
-            <div className={styles.pillarCard}>
-              <div className={styles.pillarIcon}><FaHeart /></div>
-              <h4>DEVOTION</h4>
-              <p>Respect for a timeless tradition.</p>
-            </div>
+          {/* 2023 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2023</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> NLU Assam Abhiveera Stage</li>
+              <li><span className={styles.arrowGold}>↓</span> Miss Congeniality Cultural Recital</li>
+            </ul>
+          </div>
 
-            <div className={styles.pillarCard}>
-              <div className={styles.pillarIcon}><FaCrown /></div>
-              <h4>HERITAGE</h4>
-              <p>Preserving culture. Inspiring others.</p>
-            </div>
+          {/* 2022 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2022</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Foundation Day Cultural Celebration</li>
+              <li><span className={styles.arrowGold}>↓</span> Lachit Diwas 400th Birth Anniversary</li>
+            </ul>
+          </div>
 
-            <div className={styles.pillarCard}>
-              <div className={styles.pillarIcon}><FaGraduationCap /></div>
-              <h4>PASS ON</h4>
-              <p>A lifelong pursuit of excellence.</p>
+          {/* 2021 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2021</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Lachit Diwas Celebration</li>
+            </ul>
+          </div>
+
+          {/* 2019 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2019</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Climate Conference Cultural Prelude</li>
+            </ul>
+          </div>
+
+          {/* 2017 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2017</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Delhi University Classical Arts Fest</li>
+            </ul>
+          </div>
+
+          {/* 2015 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2015</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> Cotton College Annual Festival</li>
+            </ul>
+          </div>
+
+          {/* 2010 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2010</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> School State-level Cultural Competitions</li>
+            </ul>
+          </div>
+
+          {/* 2003 */}
+          <div className={styles.bigTimelineItem}>
+            <div className={styles.bigYear}>2003</div>
+            <div className={styles.bigTimelineDot} />
+            <ul className={styles.bigTimelineList}>
+              <li><span className={styles.arrowGold}>↓</span> First Stage Kathak Performance</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 7 — INTERNATIONAL CULTURAL REPRESENTATION (LUXURY GRID)
+          ======================================================================== */}
+      <section className={`${styles.section} ${styles.intlSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ GLOBAL AMBASSADOR</span>
+          <h2 className={styles.sectionTitle}>International Cultural Representation</h2>
+        </div>
+
+        <div className={styles.intlGrid}>
+          {[
+            {
+              title: "London Rongali Bihu",
+              loc: "United Kingdom",
+              desc: "Representing Assamese folk and classical Kathak fusion before international audiences in London.",
+              img: "/culture-london-rongali-bihu-poster-banner.jpg",
+            },
+            {
+              title: "North East Festival",
+              loc: "London, United Kingdom",
+              desc: "Solo Kathak performance promoting Northeast Indian art and cultural heritage.",
+              img: "/culture-northeast-festival-official-poster.jpg",
+            },
+            {
+              title: "United Colours",
+              loc: "United Kingdom",
+              desc: "Multicultural classical dance recital fostering cross-border artistic dialogue.",
+              img: "/cultural-heritage-london-stage.jpg",
+            },
+            {
+              title: "Assam Sahitya Sabha",
+              loc: "United Kingdom",
+              desc: "Preserving literary and classical dance traditions across the UK diaspora.",
+              img: "/culture-asam-sahitya-sabha-stage-recital.jpg",
+            },
+            {
+              title: "University of Nottingham",
+              loc: "Nottingham, UK",
+              desc: "Academic and cultural integration through classical dance workshops and performances.",
+              img: "/academics-hero-sofa.png",
+            },
+            {
+              title: "Leicester Cultural Meet",
+              loc: "Leicester, UK",
+              desc: "Classical recital representing Indian heritage for diverse international communities.",
+              img: "/kathak-london-rongali-bihu-2024.jpg",
+            },
+            {
+              title: "High Commission Events",
+              loc: "India House, London",
+              desc: "Official diplomatic performances representing India's performing arts.",
+              img: "/culture-high-commission-loktak-presentation.jpg",
+            },
+          ].map((item) => (
+            <div key={item.title} className={styles.intlCard}>
+              <div className={styles.intlImgWrap}>
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 700px) 100vw, 380px"
+                  className={styles.portraitImg}
+                />
+              </div>
+              <div className={styles.intlContent}>
+                <h3 className={styles.intlTitle}>{item.title}</h3>
+                <span className={styles.intlLocation}>{item.loc}</span>
+                <p className={styles.intlDesc}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 8 — COMMUNITY SERVICE (SPLIT LAYOUT)
+          ======================================================================== */}
+      <section className={`${styles.section} ${styles.communitySection}`}>
+        <div className={styles.splitGrid}>
+          <div className={styles.splitImageWrap}>
+            <Image
+              src="/academics-high-pavement-college-outreach.jpg"
+              alt="Community Service and Volunteer Work"
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              className={styles.portraitImg}
+            />
+          </div>
+
+          <div className={styles.splitContent}>
+            <span className={styles.sectionKicker}>✦ SOCIAL IMPACT</span>
+            <h2>Community Service &amp; Outreach</h2>
+            <div className={styles.serviceList}>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> Pro Bono Outreach</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> National Service Scheme</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> University of Delhi</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> NLU Assam</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> Ministry Projects</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> Inclusive Education</div>
+              <div className={styles.serviceItem}><span className={styles.goldDot}>✦</span> Volunteer Work</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================
-          SECTION 8 — FINAL CTA (LET THE RHYTHM CONTINUE)
+          SECTION 9 — TEACHING CHILDREN
           ======================================================================== */}
-      <section className={styles.finalCtaSection}>
-        <div className={styles.finalCtaBgWrap}>
-          <Image
-            src="/milestone-2023.png"
-            alt="Ghungroo bells background texture"
-            fill
-            sizes="100vw"
-            className={styles.ctaBgImg}
-          />
-          <div className={styles.finalCtaOverlay} />
+      <section className={`${styles.section} ${styles.teachingSection}`}>
+        <div className={styles.teachingCard}>
+          <div className={styles.teachingImgWrap}>
+            <Image
+              src="/about-gauri-bookshelf.jpg"
+              alt="Teaching and Mentoring Children"
+              fill
+              sizes="(max-width: 900px) 100vw, 400px"
+              className={styles.portraitImg}
+            />
+          </div>
+          <div className={styles.teachingContent}>
+            <span className={styles.sectionKicker}>✦ INCLUSIVE ART &amp; EDUCATION</span>
+            <h2>Teaching &amp; Empowerment</h2>
+            <ul className={styles.teachingList}>
+              <li><span className={styles.goldDot}>✦</span> Ashalaya Educational Initiatives</li>
+              <li><span className={styles.goldDot}>✦</span> Teaching Visually Impaired (Blind) Children</li>
+              <li><span className={styles.goldDot}>✦</span> Teaching Hearing Impaired (Deaf) Children</li>
+              <li><span className={styles.goldDot}>✦</span> Inclusive Arts Education &amp; Dance Movement</li>
+              <li><span className={styles.goldDot}>✦</span> Social Responsibility &amp; Youth Mentorship</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 10 — GALLERY (MASONRY GRID - 18-24 REAL IMAGES)
+          ======================================================================== */}
+      <section className={`${styles.section} ${styles.gallerySection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ VISUAL ARCHIVE</span>
+          <h2 className={styles.sectionTitle}>Performance Gallery</h2>
         </div>
 
-        <div className={styles.finalCtaContent}>
-          <h2 className={styles.finalCtaTitle}>Let the Rhythm Continue</h2>
-          <p className={styles.finalCtaSub}>
-            For cultural collaborations, performances, workshops and artistic engagements.
-          </p>
+        <div className={styles.masonryGrid}>
+          {galleryImages.map((img, idx) => (
+            <div key={img.src + idx} className={styles.masonryItem}>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={400}
+                height={500}
+                className={styles.masonryImg}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className={styles.finalCtaActions}>
-            <a
-              href={performanceInquiryUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.goldFillBtn}
-            >
-              BOOK A PERFORMANCE <FaArrowRight />
-            </a>
-            <a
-              href="mailto:info@gaurigoswami.com"
-              className={styles.goldOutlineLargeBtn}
-            >
-              GET IN TOUCH <FaArrowRight />
-            </a>
+      {/* ========================================================================
+          SECTION 11 — AWARDS & MILESTONES (LUXURY COUNTER)
+          ======================================================================== */}
+      <section className={styles.awardsSection}>
+        <div className={styles.statsGrid}>
+          <div>
+            <div className={styles.statNumber}>Visharad II</div>
+            <div className={styles.statLabel}>Distinction Certification</div>
           </div>
+          <div>
+            <div className={styles.statNumber}>20+</div>
+            <div className={styles.statLabel}>Years of Learning</div>
+          </div>
+          <div>
+            <div className={styles.statNumber}>30+</div>
+            <div className={styles.statLabel}>Major Performances</div>
+          </div>
+          <div>
+            <div className={styles.statNumber}>UK &amp; India</div>
+            <div className={styles.statLabel}>International Stages</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 12 — PHILOSOPHY (LUXURY QUOTE)
+          ======================================================================== */}
+      <section className={styles.quoteSection}>
+        <div className={styles.quoteBox}>
+          <p className={styles.quoteText}>
+            &ldquo;Kathak is not merely movement. It is storytelling, discipline, identity, and devotion.&rdquo;
+          </p>
+          <div className={styles.quoteAuthor}>— Gauri Goswami</div>
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 13 — FREQUENTLY ASKED QUESTIONS (ACCORDION)
+          ======================================================================== */}
+      <section className={`${styles.section} ${styles.faqSection}`}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>✦ INQUIRIES &amp; DETAILS</span>
+          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+        </div>
+
+        <div className={styles.faqContainer}>
+          {[
+            {
+              q: "What style of Kathak does Gauri perform?",
+              a: "Gauri holds a Kathak Visharad-II distinction with classical training blending the graceful elegance of the Lucknow Gharana and the rhythmic precision of the Jaipur Gharana.",
+            },
+            {
+              q: "Does she perform internationally?",
+              a: "Yes. Gauri has represented India on international platforms including the High Commission of India (London), London Rongali Bihu, Northeast Festival London, and university forums across the UK.",
+            },
+            {
+              q: "Can she conduct workshops and lecture-demonstrations?",
+              a: "Yes. Gauri conducts classical Kathak workshops, rhythm math (Taal/Layakari) sessions, abhinaya masterclasses, and inclusive arts workshops for students of all backgrounds.",
+            },
+            {
+              q: "Is she available for performances?",
+              a: "Yes. She is available for solo classical recitals, diplomatic showcases, cultural festivals, and university performances.",
+            },
+            {
+              q: "Can organizations invite her for collaboration?",
+              a: "Organizations, cultural committees, educational institutions, and international festivals can invite Gauri through direct email inquiry.",
+            },
+          ].map((faq, index) => (
+            <div
+              key={faq.q}
+              className={`${styles.faqItem} ${openFaq === index ? styles.faqItemOpen : ""}`}
+            >
+              <button
+                className={styles.faqQuestion}
+                onClick={() => toggleFaq(index)}
+              >
+                <span>{faq.q}</span>
+                <span className={styles.faqIcon}>
+                  {openFaq === index ? <FaChevronUp /> : <FaChevronDown />}
+                </span>
+              </button>
+              {openFaq === index && <div className={styles.faqAnswer}>{faq.a}</div>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================
+          SECTION 14 — BOOK PERFORMANCE (LARGE CTA)
+          ======================================================================== */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaBox}>
+          <h2 className={styles.ctaTitle}>Let&apos;s Celebrate Indian Heritage Together</h2>
+          <div className={styles.ctaBadges}>
+            <span className={styles.ctaBadgeItem}>✦ Book Cultural Performance</span>
+            <span className={styles.ctaBadgeItem}>✦ Invite for Workshops</span>
+            <span className={styles.ctaBadgeItem}>✦ Cultural Collaboration</span>
+          </div>
+          <a
+            href={performanceInquiryUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.primaryBtn}
+          >
+            Book Performance <FaArrowRight />
+          </a>
         </div>
       </section>
 
@@ -556,9 +719,9 @@ export default function KathakPage() {
 
         <div>
           <h3>Kathak Repertoire</h3>
-          <a href="#more-than-dance">Artistic Journey</a>
-          <a href="#gallery">Moments &amp; Gallery</a>
-          <a href="#more-than-dance">Gurus &amp; Lineage</a>
+          <Link href="/kathak#journey">Artistic Journey</Link>
+          <Link href="/kathak#recitals">Stage Recitals</Link>
+          <Link href="/kathak#timeline">Performance Timeline</Link>
           <a href={performanceInquiryUrl} target="_blank" rel="noreferrer">Book Performance</a>
         </div>
 

@@ -1,13 +1,13 @@
 /* ==========================================================================
-   PREMIUM KATHAK PAGE STYLESHEET (LUXURY EDITORIAL DESIGN MOCKUP)
-   Theme: Deep Charcoal Black (#080705) | Primary Gold (#C8A75A)
-   Light Ivory (#F8F5F0) | Soft Tan (#9B8B75) | Accent Red (#5A141B)
+   PREMIUM KATHAK PAGE STYLESHEET (LUXURY EDITORIAL THEME)
+   Theme: Deep Charcoal Black (#0D0A08) | Primary Gold (#C8A75A)
+   Secondary Gold (#9B8B75) | Text (#F8F4EF)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 .page {
-  background-color: #080705;
+  background-color: #0d0a08;
   color: #f8f4ef;
   min-height: 100vh;
   position: relative;
@@ -16,7 +16,7 @@
 }
 
 /* ==========================================================================
-   SECTION 1 — HERO SECTION (UNCHANGED)
+   SECTION 1 — HERO SECTION (100vh)
    ========================================================================== */
 .hero {
   position: relative;
@@ -25,33 +25,54 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #080705;
-  background-image: radial-gradient(circle at 20% 35%, rgba(200, 167, 90, 0.08) 0%, transparent 65%);
+  background-color: #0d0a08;
+  background-image: radial-gradient(circle at 20% 35%, rgba(200, 167, 90, 0.06) 0%, transparent 60%);
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .heroBackdropImageWrap {
   position: absolute;
-  top: 1.5%;
-  bottom: 0%;
-  right: 0;
-  width: 30%;
-  max-width: 420px;
+  top: 0;
+  right: 2vw;
+  width: 48vw;
+  height: 100%;
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  -webkit-mask-image: linear-gradient(270deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(270deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
 }
 
 .heroBackdropImg {
-  object-fit: cover !important;
-  object-position: 58% center !important;
-  filter: contrast(1.04) brightness(0.88) !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  opacity: 1 !important;
+  filter: brightness(1.02) contrast(1.06) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.75)) !important;
+}
+
+.heroBackdropOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    #0b0807 0%,
+    rgba(11, 8, 7, 0.75) 20%,
+    rgba(11, 8, 7, 0.3) 50%,
+    rgba(11, 8, 7, 0.05) 100%
+  ),
+  linear-gradient(
+    180deg,
+    rgba(11, 8, 7, 0.3) 0%,
+    transparent 35%,
+    rgba(11, 8, 7, 0.4) 100%
+  );
 }
 
 .heroBackground {
@@ -65,21 +86,13 @@
   z-index: 1;
 }
 
-.templeArchOverlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.12;
-}
-
 .heroContainer {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 1380px;
   margin: 0 auto;
-  padding: 6rem 2.5rem 4rem;
+  padding: 6rem 2rem 4rem;
   flex: 1;
   display: flex;
   align-items: center;
@@ -91,8 +104,8 @@
 
 .heroTagline {
   font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.3em;
+  font-size: 0.88rem;
+  letter-spacing: 0.35em;
   color: #c8a75a;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
@@ -105,754 +118,463 @@
 
 .heroTitle {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 1.02;
-  font-weight: 500;
+  font-size: clamp(2.8rem, 4.8vw, 4.4rem);
+  line-height: 1.08;
+  font-weight: 300;
   color: #f8f4ef;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
 }
 
-.heroSubtitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.8rem;
+.heroBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.heroBadge {
+  background: rgba(200, 167, 90, 0.08);
+  border: 1px solid rgba(200, 167, 90, 0.3);
   color: #c8a75a;
-  font-style: italic;
-  margin-bottom: 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  padding: 0.45rem 1.1rem;
+  border-radius: 2px;
+  text-transform: uppercase;
 }
 
 .heroSubtext {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   line-height: 1.6;
   color: #9b8b75;
   margin-bottom: 2.5rem;
-  max-width: 520px;
+  font-style: italic;
+  max-width: 540px;
 }
 
 .heroActions {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .primaryBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  background: transparent;
-  color: #f8f4ef;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #c8a75a 0%, #9b8b75 100%);
+  color: #0d0a08;
+  font-weight: 700;
   font-size: 0.82rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.95rem 2rem;
+  padding: 0.8rem 1.75rem;
   border-radius: 2px;
   text-decoration: none;
-  border: 1px solid rgba(200, 167, 90, 0.6);
   transition: all 0.35s ease;
+  box-shadow: 0 4px 20px rgba(200, 167, 90, 0.25);
+  border: 1px solid rgba(248, 244, 239, 0.3);
 }
 
 .primaryBtn:hover {
-  background: #c8a75a;
-  color: #080705;
-  border-color: #c8a75a;
-  box-shadow: 0 6px 25px rgba(200, 167, 90, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(200, 167, 90, 0.45);
+  background: linear-gradient(135deg, #dfbc6d 0%, #b3a18a 100%);
 }
 
-/* Common Typography & Reusable Dividers */
-.kickerGold {
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.3em;
-  color: #c8a75a;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.kickerGoldLight {
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.3em;
-  color: #dfbc6d;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.goldDividerOrnament {
-  color: #c8a75a;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  margin: 1rem 0 2rem;
-  opacity: 0.7;
-}
-
-.sectionHeaderCenter {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 3.5rem;
-}
-
-.darkSectionTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.4rem, 4vw, 3.5rem);
-  color: #f8f4ef;
-  font-weight: 500;
-  margin: 0;
-}
-
-.goldDot {
-  color: #c8a75a;
-}
-
-/* ==========================================================================
-   SECTION 2 — MORE THAN DANCE (LIGHT IVORY CONTAINER)
-   Matches the 2nd row in reference design
-   ========================================================================== */
-.moreThanDanceSection {
-  background-color: #080705;
-  padding: 5rem 2.5rem;
-}
-
-.ivoryCardContainer {
-  max-width: 1380px;
-  margin: 0 auto;
-  background-color: #f8f5f0;
-  color: #1a1714;
-  border-radius: 4px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-.ivoryImageWrap {
-  position: relative;
-  width: 100%;
-  min-height: 520px;
-  background-color: #eee9e0;
-}
-
-.ivoryImg {
-  object-fit: cover !important;
-  object-position: center top !important;
-}
-
-.ivoryTextContent {
-  padding: 4.5rem 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #f8f5f0;
-  position: relative;
-}
-
-.ivoryTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.2rem, 3.5vw, 3rem);
-  color: #1a1714;
-  font-weight: 600;
-  line-height: 1.15;
-  margin: 0;
-}
-
-.ivoryPara {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #4a443d;
-  margin-bottom: 1.25rem;
-}
-
-.ivoryBtnWrap {
-  margin-top: 1.5rem;
-}
-
-.outlineDarkBtn {
+.secondaryBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  background: transparent;
-  color: #1a1714;
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 0.85rem 1.8rem;
-  border: 1px solid #1a1714;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.outlineDarkBtn:hover {
-  background: #1a1714;
-  color: #f8f5f0;
-}
-
-/* ==========================================================================
-   SECTION 3 — ARTISTIC JOURNEY (FROM LEARNING TO LEGACY)
-   Horizontal Gold Interconnected Icon Nodes
-   Matches 3rd row in reference design
-   ========================================================================== */
-.artisticJourneySection {
-  background-color: #080705;
-  padding: 6rem 2.5rem;
-  border-top: 1px solid rgba(200, 167, 90, 0.12);
-}
-
-.nodesContainer {
-  position: relative;
-  max-width: 1380px;
-  margin: 2rem auto 0;
-}
-
-.connectingGoldLine {
-  position: absolute;
-  top: 36px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #c8a75a 15%, #c8a75a 85%, transparent 100%);
-  z-index: 1;
-}
-
-.nodesGrid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.nodeItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.nodeIconCircle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background-color: #080705;
-  border: 2px solid #c8a75a;
+  gap: 0.5rem;
+  background: rgba(200, 167, 90, 0.06);
   color: #c8a75a;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 20px rgba(200, 167, 90, 0.2);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.75rem;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid rgba(200, 167, 90, 0.4);
   transition: all 0.35s ease;
+  backdrop-filter: blur(8px);
 }
 
-.nodeItem:hover .nodeIconCircle {
-  background-color: #c8a75a;
-  color: #080705;
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(200, 167, 90, 0.5);
+.secondaryBtn:hover {
+  transform: translateY(-2px);
+  background: rgba(200, 167, 90, 0.15);
+  border-color: #c8a75a;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(200, 167, 90, 0.2);
 }
 
-.nodeItem h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.45rem;
-  color: #f8f4ef;
-  margin-bottom: 0.65rem;
-  font-weight: 600;
-}
-
-.nodeItem p {
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: #9b8b75;
-  max-width: 200px;
-}
-
-/* ==========================================================================
-   SECTION 4 — BENTO GRID: GURUS & LINEAGE | WORKSHOPS | PERFORMANCE
-   Matches 4th row in reference design
-   ========================================================================== */
-.bentoSection {
-  background-color: #080705;
-  padding: 2rem 2.5rem 5rem;
-}
-
-.bento3Grid {
-  max-width: 1380px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.75rem;
-}
-
-.bentoCard {
-  border-radius: 4px;
-  padding: 3rem 2.5rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-.bentoCardIvory {
-  background-color: #f8f5f0;
-  color: #1a1714;
-}
-
-.bentoCardTitleDark {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.9rem;
-  color: #1a1714;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1.75rem;
-}
-
-.gurusList {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.gurusList li {
-  font-size: 0.98rem;
-  color: #332d27;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-weight: 500;
-}
-
-.visharadBadgeBox {
-  background-color: #ede7dc;
-  border-left: 3px solid #c8a75a;
-  padding: 1rem 1.25rem;
-  border-radius: 2px;
-}
-
-.visharadBadgeBox strong {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  color: #1a1714;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-}
-
-.visharadBadgeBox span {
-  font-size: 0.85rem;
-  color: #665b50;
-}
-
-/* Timeline Nodes inside Workshops Box */
-.timelinePillWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.timelinePillNode {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-}
-
-.yearCircle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: #ede7dc;
-  border: 1px solid #c8a75a;
-  color: #1a1714;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.yearCircleAlt {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: #e4dcd0;
-  border: 1px solid #9b8b75;
-  color: #665b50;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 0.78rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.timelinePillNode h4 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.35rem;
-  color: #1a1714;
-  margin: 0 0 0.2rem;
-}
-
-.timelinePillNode strong {
-  font-size: 0.95rem;
-  color: #c8a75a;
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.timelinePillNode p {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: #554d44;
-  margin: 0;
-}
-
-/* Performance Journey Dark Card */
-.bentoCardDarkImage {
-  background-color: #120e0a;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 480px;
-}
-
-.bentoBgImg {
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 0.6s ease;
-}
-
-.bentoCardDarkImage:hover .bentoBgImg {
-  transform: scale(1.05);
-}
-
-.bentoDarkOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 7, 5, 0.2) 0%, rgba(8, 7, 5, 0.92) 80%);
-  z-index: 2;
-}
-
-.bentoDarkContent {
-  position: relative;
-  z-index: 3;
-}
-
-.bentoCardTitleLight {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.2rem;
-  color: #f8f4ef;
-  line-height: 1.15;
-  margin-bottom: 2rem;
-}
-
-.goldOutlineBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: #c8a75a;
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #c8a75a;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.goldOutlineBtn:hover {
-  background: #c8a75a;
-  color: #080705;
-}
-
-/* ==========================================================================
-   SECTION 5 — CULTURAL AMBASSADOR & GHUNGROO BANNER
-   Matches 5th row in reference design
-   ========================================================================== */
-.bannerSection {
-  background-color: #080705;
-  padding: 2rem 2.5rem 5rem;
-}
-
-.bannerSplitGrid {
-  max-width: 1380px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-}
-
-/* Left Cultural Ambassador Card */
-.culturalAmbassadorCard {
-  background-color: #120e0a;
-  border: 1px solid rgba(200, 167, 90, 0.2);
-  border-radius: 4px;
-  padding: 2.5rem;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 2rem;
-  align-items: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-.ambassadorImgFrame {
+.heroPortraitFrame {
   position: relative;
   width: 100%;
-  height: 280px;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(200, 167, 90, 0.3);
-}
-
-.ambassadorImg {
-  object-fit: cover !important;
-  object-position: center top !important;
-}
-
-.bannerTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.1rem;
-  color: #f8f4ef;
-  line-height: 1.15;
-  margin-bottom: 0.75rem;
-}
-
-.bannerSub {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #9b8b75;
-  margin-bottom: 1.25rem;
-}
-
-.bulletListGold {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.25rem;
+  max-width: 480px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.bulletListGold li {
-  font-size: 0.92rem;
-  color: #f8f4ef;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.honourBadge {
-  background: rgba(200, 167, 90, 0.08);
-  border: 1px solid rgba(200, 167, 90, 0.3);
-  padding: 0.75rem 1rem;
-  border-radius: 2px;
-  font-size: 0.85rem;
-  color: #dfbc6d;
-}
-
-/* Right Ghungroo Feature Card (Dark Red / Burgundy) */
-.ghungrooFeatureCard {
-  background: linear-gradient(135deg, #4a1017 0%, #200609 100%);
-  border: 1px solid rgba(200, 167, 90, 0.3);
-  border-radius: 4px;
-  padding: 3.5rem 3rem;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  align-items: center;
 }
 
-.ghungrooImgBgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.ghungrooBgImg {
-  object-fit: cover !important;
-  object-position: right center !important;
-  opacity: 0.35 !important;
-}
-
-.ghungrooRedOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #4a1017 0%, rgba(74, 16, 23, 0.85) 60%, rgba(74, 16, 23, 0.4) 100%);
-}
-
-.ghungrooContent {
+.heroPortraitInner {
   position: relative;
   z-index: 2;
-  max-width: 500px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  background-color: #080605;
 }
 
-.ghungrooTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.4rem, 3.5vw, 3.2rem);
-  color: #f8f4ef;
-  line-height: 1.1;
-  margin-bottom: 0.75rem;
+.portraitImgOriginal {
+  object-fit: cover !important;
+  object-position: center top !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ghungrooSub {
-  font-size: 1.05rem;
-  color: #e2c992;
-  margin-bottom: 1.75rem;
-  font-style: italic;
+.heroImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 10, 8, 0.25) 0%,
+    rgba(200, 167, 90, 0.04) 40%,
+    rgba(13, 10, 8, 0.55) 100%
+  );
+  transition: opacity 0.4s ease;
 }
 
-.ghungrooQuoteBox {
-  border-left: 2px solid #c8a75a;
-  padding-left: 1.25rem;
-  margin: 0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.25rem;
-  color: #f8f4ef;
-  font-style: italic;
-  line-height: 1.5;
+.heroPortraitFrame:hover .heroImageOverlay {
+  opacity: 0.75;
+}
+
+.heroPortraitFrame:hover .portraitImgOriginal {
+  transform: scale(1.03);
 }
 
 /* ==========================================================================
-   SECTION 6 — MOMENTS THROUGH THE LENS (KATHAK IN MOTION - ASYMMETRIC BENTO)
-   Matches 6th row in reference design
+   GENERIC SECTION WRAPPERS
    ========================================================================== */
-.momentsSection {
-  background-color: #080705;
-  padding: 4rem 2.5rem 6rem;
-  border-top: 1px solid rgba(200, 167, 90, 0.12);
-}
-
-.asymmetricBentoGrid {
-  max-width: 1380px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  height: 520px;
-}
-
-.largeBentoCard {
+.section {
+  padding: 7rem 2rem;
   position: relative;
-  height: 100%;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 4.5rem;
+}
+
+.sectionKicker {
+  color: #c8a75a;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.sectionTitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  color: #f8f4ef;
+  line-height: 1.18;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.sectionDesc {
+  color: #9b8b75;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   SECTION 2 — THE JOURNEY OF KATHAK (EDITORIAL LAYOUT)
+   ========================================================================== */
+.journeySection {
+  background: #0d0a08;
+  border-top: 1px solid rgba(200, 167, 90, 0.15);
+}
+
+.journeyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.journeyImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid rgba(200, 167, 90, 0.25);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-.largeBentoOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(8, 7, 5, 0.95) 100%);
-  z-index: 2;
+.journeyText {
+  padding-left: 1rem;
 }
 
-.largeBentoContent {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+.journeyText h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: #c8a75a;
+  margin-bottom: 2rem;
 }
 
-.largeBentoTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.2rem;
+.poemBlock {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  line-height: 2.1;
   color: #f8f4ef;
-  margin: 0;
+  font-style: italic;
+  border-left: 2px solid #c8a75a;
+  padding-left: 2rem;
 }
 
-.goldSolidSmallBtn {
-  background: #c8a75a;
-  color: #080705;
-  border: none;
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  padding: 0.65rem 1.25rem;
-  border-radius: 2px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: all 0.3s ease;
+.poemBlock p {
+  margin-bottom: 0.5rem;
 }
 
-.goldSolidSmallBtn:hover {
-  background: #dfbc6d;
-  transform: translateY(-2px);
+/* ==========================================================================
+   SECTION 3 — VISHARAD JOURNEY (LUXURY TIMELINE)
+   ========================================================================== */
+.timelineSection {
+  background: linear-gradient(180deg, #0d0a08 0%, #120e0a 100%);
+  border-top: 1px solid rgba(200, 167, 90, 0.12);
 }
 
-.smallCards2x2Grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1.5rem;
-  height: 100%;
-}
-
-.smallBentoCard {
+.timelineContainer {
   position: relative;
-  height: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(200, 167, 90, 0.2);
-  cursor: pointer;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
-.smallCardHoverOverlay {
+.timelineVerticalLine {
   position: absolute;
-  inset: 0;
-  background: rgba(8, 7, 5, 0.65);
-  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, #c8a75a 15%, #c8a75a 85%, transparent 100%);
+}
+
+.timelineNode {
+  position: relative;
+  margin-bottom: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
 }
 
-.smallCardHoverOverlay span {
+.timelineContent {
+  background: rgba(20, 16, 12, 0.9);
+  border: 1px solid rgba(200, 167, 90, 0.3);
+  padding: 1.5rem 2.5rem;
+  border-radius: 4px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  min-width: 280px;
+  transition: all 0.3s ease;
+}
+
+.timelineContent:hover {
+  border-color: #c8a75a;
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(200, 167, 90, 0.2);
+}
+
+.timelineYear {
   font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
+  font-size: 1.6rem;
   color: #c8a75a;
   font-weight: 700;
+  margin-bottom: 0.35rem;
 }
 
-.smallBentoCard:hover .smallCardHoverOverlay {
-  opacity: 1;
+.timelineTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: #f8f4ef;
 }
 
-.smallBentoCard:hover .bentoBgImg {
-  transform: scale(1.06);
+.timelineArrow {
+  color: #c8a75a;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  display: block;
 }
 
-/* Modal Window for Gallery Zoom */
-.galleryModalOverlay {
+/* ==========================================================================
+   SECTION 4 — WORKSHOPS & TRAINING (LIGHT GOLD LUXURY CARDS)
+   ========================================================================== */
+.workshopsSection {
+  background: rgba(200, 167, 90, 0.04);
+  border-top: 1px solid rgba(200, 167, 90, 0.2);
+  border-bottom: 1px solid rgba(200, 167, 90, 0.2);
+}
+
+.workshopsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.workshopCard {
+  background: linear-gradient(145deg, rgba(200, 167, 90, 0.12) 0%, rgba(20, 16, 12, 0.95) 100%);
+  border: 1px solid rgba(200, 167, 90, 0.4);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  transition: all 0.35s ease;
+}
+
+.workshopCard:hover {
+  border-color: #c8a75a;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(200, 167, 90, 0.2);
+}
+
+.workshopType {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: #9b8b75;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.workshopTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  color: #c8a75a;
+  margin-bottom: 0.5rem;
+}
+
+.workshopGuru {
+  font-size: 1.15rem;
+  color: #f8f4ef;
+  margin-bottom: 1rem;
+}
+
+.workshopYear {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #9b8b75;
+}
+
+/* ==========================================================================
+   SECTION 5 — KATHAK RECITALS (MAGAZINE CARDS + MODAL)
+   ========================================================================== */
+.recitalsSection {
+  background: #0d0a08;
+}
+
+.recitalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.recitalCard {
+  background: rgba(20, 16, 12, 0.8);
+  border: 1px solid rgba(200, 167, 90, 0.2);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recitalCard:hover {
+  border-color: #c8a75a;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 167, 90, 0.15);
+}
+
+.recitalYear {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #c8a75a;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.recitalTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: #f8f4ef;
+  margin-bottom: 0.75rem;
+}
+
+.recitalVenue {
+  color: #9b8b75;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.readMoreBtn {
+  background: transparent;
+  border: none;
+  color: #c8a75a;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.25s ease;
+  align-self: flex-start;
+}
+
+.readMoreBtn:hover {
+  color: #ffffff;
+}
+
+/* Modal Overlay for "Read More" */
+.modalOverlay {
   position: fixed;
-  inset: 0;
-  background: rgba(5, 4, 3, 0.9);
-  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(8, 6, 5, 0.85);
+  backdrop-filter: blur(8px);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -860,225 +582,478 @@
   padding: 2rem;
 }
 
-.galleryModalContent {
-  position: relative;
-  max-width: 1000px;
+.modalContent {
+  background: #14100c;
+  border: 1px solid #c8a75a;
+  border-radius: 6px;
+  max-width: 650px;
   width: 100%;
+  padding: 3rem;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
 }
 
 .closeModalBtn {
   position: absolute;
-  top: -3rem;
-  right: 0;
+  top: 1.25rem;
+  right: 1.25rem;
   background: transparent;
   border: none;
   color: #c8a75a;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-.fullImgContainer {
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid #c8a75a;
+/* ==========================================================================
+   SECTION 6 — TIMELINE OF CULTURAL PERFORMANCES (BIGGEST SECTION)
+   ========================================================================== */
+.culturalTimelineSection {
+  background: linear-gradient(180deg, #120e0a 0%, #0d0a08 100%);
+  border-top: 1px solid rgba(200, 167, 90, 0.15);
 }
 
-.fullModalImg {
+.bigTimeline {
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.bigTimelineLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  width: 2px;
+  background: linear-gradient(180deg, #c8a75a 0%, rgba(200, 167, 90, 0.3) 90%, transparent 100%);
+}
+
+.bigTimelineItem {
+  position: relative;
+  margin-bottom: 3.5rem;
+  padding-left: 110px;
+}
+
+.bigYear {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #c8a75a;
+}
+
+.bigTimelineDot {
+  position: absolute;
+  left: 55px;
+  top: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c8a75a;
+  box-shadow: 0 0 15px #c8a75a;
+}
+
+.bigTimelineList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bigTimelineList li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: #f8f4ef;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.arrowGold {
+  color: #9b8b75;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   SECTION 7 — INTERNATIONAL CULTURAL REPRESENTATION (LUXURY GRID)
+   ========================================================================== */
+.intlSection {
+  background: #0d0a08;
+}
+
+.intlGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.intlCard {
+  background: rgba(20, 16, 12, 0.85);
+  border: 1px solid rgba(200, 167, 90, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.intlCard:hover {
+  border-color: #c8a75a;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+.intlImgWrap {
+  position: relative;
   width: 100%;
-  height: auto;
+  height: 210px;
+  background-color: #080605;
+}
+
+.intlContent {
+  padding: 1.75rem;
+}
+
+.intlTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #f8f4ef;
+  margin-bottom: 0.4rem;
+}
+
+.intlLocation {
+  color: #c8a75a;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
   display: block;
 }
 
+.intlDesc {
+  color: #9b8b75;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 /* ==========================================================================
-   SECTION 7 — THE ESSENCE OF KATHAK (5 Horizontal Pillars Strip)
-   Matches 7th row in reference design
+   SECTION 8 — COMMUNITY SERVICE (SPLIT LAYOUT)
    ========================================================================== */
-.essenceSection {
-  background-color: #080705;
-  padding: 4rem 2.5rem;
+.communitySection {
+  background: linear-gradient(180deg, #0d0a08 0%, #120e0a 100%);
+  border-top: 1px solid rgba(200, 167, 90, 0.15);
 }
 
-.essenceContainer {
-  max-width: 1380px;
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1320px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 1.5rem;
-  align-items: stretch;
 }
 
-.essenceKickerCard {
-  background-color: #120e0a;
-  border: 1px solid rgba(200, 167, 90, 0.3);
+.splitImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: 4px;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(200, 167, 90, 0.3);
 }
 
-.essenceKickerCard h2 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.1rem;
-  color: #f8f4ef;
-  line-height: 1.15;
+.splitContent h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: #c8a75a;
+  margin-bottom: 1.5rem;
+}
+
+.serviceList {
+  list-style: none;
+  padding: 0;
   margin: 0;
-}
-
-.essencePillarsRow {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
 }
 
-.pillarCard {
-  background-color: #f8f5f0;
-  color: #1a1714;
+.serviceItem {
+  background: rgba(200, 167, 90, 0.06);
+  border: 1px solid rgba(200, 167, 90, 0.2);
+  padding: 1.25rem;
   border-radius: 4px;
-  padding: 2.5rem 1.25rem;
-  text-align: center;
+  color: #f8f4ef;
+  font-size: 1.05rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  gap: 0.75rem;
 }
 
-.pillarCard:hover {
-  transform: translateY(-4px);
-}
-
-.pillarIcon {
-  font-size: 2rem;
+.goldDot {
   color: #c8a75a;
-  margin-bottom: 1.25rem;
-}
-
-.pillarCard h4 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  color: #1a1714;
-  margin: 0 0 0.5rem;
-}
-
-.pillarCard p {
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: #665b50;
-  margin: 0;
 }
 
 /* ==========================================================================
-   SECTION 8 — FINAL CTA (LET THE RHYTHM CONTINUE)
-   Matches bottom CTA row in reference design
+   SECTION 9 — TEACHING CHILDREN
    ========================================================================== */
-.finalCtaSection {
-  position: relative;
-  background-color: #080705;
-  padding: 8rem 2.5rem;
-  text-align: center;
-  overflow: hidden;
-  border-top: 1px solid rgba(200, 167, 90, 0.2);
+.teachingSection {
+  background: #0d0a08;
 }
 
-.finalCtaBgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.ctaBgImg {
-  object-fit: cover !important;
-  opacity: 0.18 !important;
-}
-
-.finalCtaOverlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(8, 7, 5, 0.7) 0%, #080705 90%);
-}
-
-.finalCtaContent {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
+.teachingCard {
+  max-width: 1000px;
   margin: 0 auto;
+  background: linear-gradient(145deg, rgba(200, 167, 90, 0.1) 0%, rgba(20, 16, 12, 0.95) 100%);
+  border: 1px solid rgba(200, 167, 90, 0.3);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
 }
 
-.finalCtaTitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  color: #f8f4ef;
-  font-weight: 500;
+.teachingImgWrap {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+}
+
+.teachingContent {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.teachingContent h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  color: #c8a75a;
   margin-bottom: 1rem;
 }
 
-.finalCtaSub {
-  font-size: 1.15rem;
-  color: #9b8b75;
-  margin-bottom: 3rem;
+.teachingList {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.finalCtaActions {
+.teachingList li {
+  font-size: 1.1rem;
+  color: #f8f4ef;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   SECTION 10 — GALLERY (MASONRY GRID)
+   ========================================================================== */
+.gallerySection {
+  background: #0d0a08;
+}
+
+.masonryGrid {
+  column-count: 4;
+  column-gap: 1.5rem;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 167, 90, 0.2);
+  transition: all 0.35s ease;
+}
+
+.masonryItem:hover {
+  border-color: #c8a75a;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.masonryImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   SECTION 11 — AWARDS & MILESTONES (LUXURY COUNTER)
+   ========================================================================== */
+.awardsSection {
+  background: rgba(200, 167, 90, 0.05);
+  border-top: 1px solid rgba(200, 167, 90, 0.2);
+  border-bottom: 1px solid rgba(200, 167, 90, 0.2);
+  padding: 5rem 2rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.statNumber {
+  font-family: 'Cinzel', serif;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #c8a75a;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: #f8f4ef;
+}
+
+/* ==========================================================================
+   SECTION 12 — PHILOSOPHY (LUXURY QUOTE)
+   ========================================================================== */
+.quoteSection {
+  background: #0d0a08;
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+.quoteBox {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quoteText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.35;
+  color: #f8f4ef;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.quoteAuthor {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.25em;
+  color: #c8a75a;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SECTION 13 — FREQUENTLY ASKED QUESTIONS (ACCORDION)
+   ========================================================================== */
+.faqSection {
+  background: linear-gradient(180deg, #0d0a08 0%, #120e0a 100%);
+}
+
+.faqContainer {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.faqItem {
+  background: rgba(20, 16, 12, 0.85);
+  border: 1px solid rgba(200, 167, 90, 0.25);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faqItemOpen {
+  border-color: #c8a75a;
+}
+
+.faqQuestion {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.5rem 2rem;
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: #f8f4ef;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faqIcon {
+  color: #c8a75a;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faqAnswer {
+  padding: 0 2rem 1.75rem;
+  color: #9b8b75;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   SECTION 14 — BOOK PERFORMANCE (LARGE CTA)
+   ========================================================================== */
+.ctaSection {
+  background: radial-gradient(circle at 50% 50%, rgba(200, 167, 90, 0.18) 0%, rgba(13, 10, 8, 0.95) 75%), #0d0a08;
+  border-top: 1px solid rgba(200, 167, 90, 0.25);
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+.ctaBox {
+  max-width: 850px;
+  margin: 0 auto;
+  background: rgba(20, 16, 12, 0.95);
+  border: 1px solid #c8a75a;
+  border-radius: 8px;
+  padding: 4rem 3rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(200, 167, 90, 0.2);
+}
+
+.ctaTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: #f8f4ef;
+  margin-bottom: 1.25rem;
+}
+
+.ctaBadges {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 }
 
-.goldFillBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: #c8a75a;
-  color: #080705;
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  padding: 1rem 2.25rem;
-  border-radius: 2px;
-  box-shadow: 0 6px 25px rgba(200, 167, 90, 0.35);
-  transition: all 0.35s ease;
-}
-
-.goldFillBtn:hover {
-  background: #dfbc6d;
-  transform: translateY(-2px);
-}
-
-.goldOutlineLargeBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: transparent;
+.ctaBadgeItem {
   color: #c8a75a;
   font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  padding: 1rem 2.25rem;
-  border: 1px solid #c8a75a;
-  border-radius: 2px;
-  transition: all 0.35s ease;
-}
-
-.goldOutlineLargeBtn:hover {
-  background: rgba(200, 167, 90, 0.15);
-  color: #ffffff;
-  transform: translateY(-2px);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
 }
 
 /* FOOTER */
 .footer {
-  background: #050403;
+  background: #080605;
   border-top: 1px solid rgba(200, 167, 90, 0.15);
-  padding: 4.5rem 2.5rem 2rem;
+  padding: 4rem 2rem 2rem;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
   gap: 3rem;
@@ -1113,7 +1088,7 @@
 
 .socials a:hover {
   background: #c8a75a;
-  color: #080705;
+  color: #0d0a08;
 }
 
 .footer h3 {
@@ -1147,38 +1122,16 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 1200px) {
-  .nodesGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+@media (max-width: 1024px) {
+  .heroGrid, .journeyGrid, .splitGrid, .teachingCard {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  .connectingGoldLine {
-    display: none;
-  }
-  .essenceContainer {
+  .workshopsGrid {
     grid-template-columns: 1fr;
   }
-  .essencePillarsRow {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .ivoryCardContainer,
-  .bento3Grid,
-  .bannerSplitGrid,
-  .culturalAmbassadorCard {
-    grid-template-columns: 1fr;
-  }
-  .asymmetricBentoGrid {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
-  .largeBentoCard {
-    height: 380px;
-  }
-  .smallCards2x2Grid {
-    height: 380px;
+  .masonryGrid {
+    column-count: 2;
   }
   .footer {
     grid-template-columns: 1fr 1fr;
@@ -1186,15 +1139,20 @@
 }
 
 @media (max-width: 640px) {
-  .nodesGrid {
-    grid-template-columns: 1fr 1fr;
+  .masonryGrid {
+    column-count: 1;
   }
-  .essencePillarsRow {
-    grid-template-columns: 1fr;
+  .bigTimelineItem {
+    padding-left: 70px;
   }
-  .smallCards2x2Grid {
-    grid-template-columns: 1fr;
-    height: auto;
+  .bigYear {
+    font-size: 1.5rem;
+  }
+  .bigTimelineLine {
+    left: 45px;
+  }
+  .bigTimelineDot {
+    left: 40px;
   }
   .footer {
     grid-template-columns: 1fr;
