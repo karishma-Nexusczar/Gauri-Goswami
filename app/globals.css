@@ -168,11 +168,11 @@ p {
 
 .hero-right-media {
   position: absolute;
-  top: 3.5%;
+  top: 0%;
   bottom: 0%;
-  right: 3.5%;
-  width: 29%;
-  max-width: 400px;
+  right: 2%;
+  width: 33%;
+  max-width: 450px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
