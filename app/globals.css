@@ -185,7 +185,6 @@ p {
   object-fit: cover;
   object-position: 58% center;
   filter: none !important;
-  image-rendering: -webkit-optimize-contrast;
 }
 
 .hero-vignette-overlay-right {
