@@ -16,15 +16,15 @@ export default function TempleArchSvg() {
         maxWidth: "1400px",
         height: "100%",
         pointerEvents: "none",
-        opacity: 0.22,
+        opacity: 0.12,
         zIndex: 1,
       }}
     >
       <defs>
         <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#C69A4A" stopOpacity="0.75" />
-          <stop offset="50%" stopColor="#A9792E" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#C69A4A" stopOpacity="0.12" />
+          <stop offset="0%" stopColor="#C8A75A" stopOpacity="0.8" />
+          <stop offset="50%" stopColor="#9B8B75" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#C8A75A" stopOpacity="0.08" />
         </linearGradient>
       </defs>
 
