@@ -129,10 +129,10 @@ p {
   min-height: 920px;
   position: relative;
   background:
-    radial-gradient(circle at 50% 45%, rgba(217, 179, 106, 0.22), transparent 60%),
-    radial-gradient(circle at 18% 50%, rgba(184, 147, 67, 0.16), transparent 55%),
-    radial-gradient(circle at 82% 50%, rgba(156, 42, 42, 0.12), transparent 55%),
-    linear-gradient(135deg, #19120c 0%, #241910 45%, #140d08 100%) !important;
+    radial-gradient(circle at 50% 45%, rgba(217, 179, 106, 0.25), transparent 60%),
+    radial-gradient(circle at 20% 50%, rgba(184, 147, 67, 0.20), transparent 55%),
+    radial-gradient(circle at 80% 50%, rgba(200, 160, 90, 0.18), transparent 55%),
+    linear-gradient(135deg, #1f1710 0%, #291e14 45%, #1b120a 100%) !important;
   overflow: hidden;
 }
 
