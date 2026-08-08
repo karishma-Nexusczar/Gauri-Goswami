@@ -82,7 +82,7 @@ export default function Home() {
 
         <div className="hero-right-media" aria-hidden="true">
           <Image
-            src="/kathak-lawn-portrait.jpg"
+            src="/hero-right-kathak-v6.png"
             alt="Gauri Goswami Kathak Artist"
             fill
             priority

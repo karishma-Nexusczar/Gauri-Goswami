@@ -89,14 +89,17 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
         {/* 4. KATHAK DROPDOWN (Includes Culture) */}
         <div className="nav-dropdown">
-          <Link className="dropdown-toggle" href={getHref("#kathak")}>
+          <Link
+            className={`dropdown-toggle ${currentPath === "/kathak" ? "active" : ""}`}
+            href="/kathak"
+          >
             Kathak <FiChevronDown className="caret" />
           </Link>
           <div className="dropdown-menu">
-            <Link href={getHref("#kathak")}>Artistic Journey</Link>
-            <Link href={getHref("#kathak")}>Gurus &amp; Lineage</Link>
-            <Link href={getHref("#kathak")}>Performances</Link>
-            <Link href={getHref("#kathak")}>Workshops</Link>
+            <Link href="/kathak">Overview</Link>
+            <Link href="/kathak#journey">Artistic Journey</Link>
+            <Link href="/kathak#recitals">Stage Recitals</Link>
+            <Link href="/kathak#timeline">Performance Timeline</Link>
             <Link href={getHref("#culture")}>Culture</Link>
           </div>
         </div>
@@ -166,10 +169,10 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               Kathak <FiChevronDown className="mobile-caret" />
             </summary>
             <div className="mobile-sub-links">
-              <Link href={getHref("#kathak")}>Artistic Journey</Link>
-              <Link href={getHref("#kathak")}>Gurus &amp; Lineage</Link>
-              <Link href={getHref("#kathak")}>Performances</Link>
-              <Link href={getHref("#kathak")}>Workshops</Link>
+              <Link href="/kathak">Overview</Link>
+              <Link href="/kathak#journey">Artistic Journey</Link>
+              <Link href="/kathak#recitals">Stage Recitals</Link>
+              <Link href="/kathak#timeline">Performance Timeline</Link>
               <Link href={getHref("#culture")}>Culture</Link>
             </div>
           </details>
