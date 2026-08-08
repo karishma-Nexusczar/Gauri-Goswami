@@ -247,7 +247,7 @@ p {
   height: 52px;
   object-fit: contain;
   background: transparent !important;
-  mix-blend-mode: screen
+  mix-blend-mode: normal !important;
 }
 
 .brand-mark {

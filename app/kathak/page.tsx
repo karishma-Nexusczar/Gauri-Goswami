@@ -100,13 +100,12 @@ export default function KathakPage() {
 
   return (
     <main className={styles.page}>
-      {/* HEADER (Full site Navbar) */}
-      <Navbar currentPath="/kathak" />
-
       {/* ========================================================================
           SECTION 1 — HERO SECTION (100vh) — FULL BACKDROP IMAGE INTEGRATION
           ======================================================================== */}
       <section className={styles.hero}>
+        {/* HEADER (Full site Navbar) */}
+        <Navbar currentPath="/kathak" />
         {/* Full Right Backdrop Kathak Red Spin Cutout Photograph */}
         <div className={styles.heroBackdropImageWrap}>
           <Image
