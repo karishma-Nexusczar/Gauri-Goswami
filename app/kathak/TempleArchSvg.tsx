@@ -22,9 +22,9 @@ export default function TempleArchSvg() {
     >
       <defs>
         <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#C8A75A" stopOpacity="0.8" />
-          <stop offset="50%" stopColor="#9B8B75" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#C8A75A" stopOpacity="0.08" />
+          <stop offset="0%" stopColor="#D4AD62" stopOpacity="0.8" />
+          <stop offset="50%" stopColor="#C9A45B" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#D4AD62" stopOpacity="0.08" />
         </linearGradient>
       </defs>
 
@@ -50,24 +50,24 @@ export default function TempleArchSvg() {
         <path
           d="M 0,-40 L 15,-15 C 20,0 20,10 0,25 C -20,10 -20,0 -15,-15 Z"
           fill="none"
-          stroke="#C8A75A"
+          stroke="#D4AD62"
           strokeWidth="2.5"
         />
-        <circle cx="0" cy="-48" r="5" fill="#C8A75A" />
-        <path d="M -25,25 Q 0,15 25,25" fill="none" stroke="#C8A75A" strokeWidth="2" />
+        <circle cx="0" cy="-48" r="5" fill="#D4AD62" />
+        <path d="M -25,25 Q 0,15 25,25" fill="none" stroke="#D4AD62" strokeWidth="2" />
       </g>
 
       {/* Pillars */}
       <g transform="translate(100, 420)">
-        <line x1="-30" y1="0" x2="30" y2="0" stroke="#C8A75A" strokeWidth="3" />
-        <line x1="-25" y1="20" x2="25" y2="20" stroke="#C8A75A" strokeWidth="2" />
-        <line x1="-30" y1="120" x2="30" y2="120" stroke="#C8A75A" strokeWidth="3" />
+        <line x1="-30" y1="0" x2="30" y2="0" stroke="#D4AD62" strokeWidth="3" />
+        <line x1="-25" y1="20" x2="25" y2="20" stroke="#D4AD62" strokeWidth="2" />
+        <line x1="-30" y1="120" x2="30" y2="120" stroke="#D4AD62" strokeWidth="3" />
       </g>
 
       <g transform="translate(900, 420)">
-        <line x1="-30" y1="0" x2="30" y2="0" stroke="#C8A75A" strokeWidth="3" />
-        <line x1="-25" y1="20" x2="25" y2="20" stroke="#C8A75A" strokeWidth="2" />
-        <line x1="-30" y1="120" x2="30" y2="120" stroke="#C8A75A" strokeWidth="3" />
+        <line x1="-30" y1="0" x2="30" y2="0" stroke="#D4AD62" strokeWidth="3" />
+        <line x1="-25" y1="20" x2="25" y2="20" stroke="#D4AD62" strokeWidth="2" />
+        <line x1="-30" y1="120" x2="30" y2="120" stroke="#D4AD62" strokeWidth="3" />
       </g>
     </svg>
   );

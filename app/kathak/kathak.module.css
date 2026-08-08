@@ -25,8 +25,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #0d0a08;
-  background-image: radial-gradient(circle at 20% 35%, rgba(200, 167, 90, 0.06) 0%, transparent 60%);
+  background-color: #17120f;
+  background-image: 
+    radial-gradient(circle at 75% 45%, rgba(212, 173, 98, 0.18) 0%, rgba(33, 23, 19, 0.6) 45%, transparent 75%),
+    radial-gradient(circle at 25% 40%, rgba(33, 23, 19, 0.8) 0%, transparent 60%);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -49,7 +51,7 @@
   object-fit: contain !important;
   object-position: right center !important;
   opacity: 1 !important;
-  filter: brightness(1.02) contrast(1.06) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.75)) !important;
+  filter: brightness(1.02) contrast(1.05) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.75)) !important;
 }
 
 .heroBackdropOverlay {
@@ -62,16 +64,16 @@
   z-index: 3;
   background: linear-gradient(
     90deg,
-    #0b0807 0%,
-    rgba(11, 8, 7, 0.75) 20%,
-    rgba(11, 8, 7, 0.3) 50%,
-    rgba(11, 8, 7, 0.05) 100%
+    #17120f 0%,
+    rgba(23, 18, 15, 0.8) 22%,
+    rgba(23, 18, 15, 0.35) 50%,
+    rgba(23, 18, 15, 0.05) 100%
   ),
   linear-gradient(
     180deg,
-    rgba(11, 8, 7, 0.3) 0%,
+    rgba(23, 18, 15, 0.3) 0%,
     transparent 35%,
-    rgba(11, 8, 7, 0.4) 100%
+    rgba(23, 18, 15, 0.4) 100%
   );
 }
 
@@ -106,12 +108,12 @@
   font-family: 'Cinzel', serif;
   font-size: 0.78rem;
   letter-spacing: 0.25em;
-  color: #c8a75a;
+  color: #c9a45b;
   text-transform: uppercase;
   margin-bottom: 1rem;
   display: inline-block;
-  background: rgba(200, 167, 90, 0.08);
-  border: 1px solid rgba(200, 167, 90, 0.35);
+  background: rgba(212, 173, 98, 0.08);
+  border: 1px solid rgba(212, 173, 98, 0.35);
   padding: 0.35rem 0.9rem;
   border-radius: 2px;
 }
@@ -121,7 +123,7 @@
   font-size: clamp(2.2rem, 3.6vw, 3.2rem);
   line-height: 1.2;
   font-weight: 400;
-  color: #f8f4ef;
+  color: #f5ebdd;
   margin-bottom: 1.25rem;
   letter-spacing: 0;
 }
@@ -134,9 +136,9 @@
 }
 
 .heroBadge {
-  background: rgba(200, 167, 90, 0.08);
-  border: 1px solid rgba(200, 167, 90, 0.3);
-  color: #c8a75a;
+  background: rgba(212, 173, 98, 0.08);
+  border: 1px solid rgba(212, 173, 98, 0.3);
+  color: #c9a45b;
   font-family: 'Cinzel', serif;
   font-size: 0.78rem;
   letter-spacing: 0.12em;
@@ -150,7 +152,7 @@
   font-size: 1.05rem;
   line-height: 1.65;
   font-weight: 300;
-  color: #c4b6a3;
+  color: #d9ccba;
   margin-bottom: 1.75rem;
   max-width: 520px;
 }
@@ -166,8 +168,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #c8a75a 0%, #9b8b75 100%);
-  color: #0d0a08;
+  background: #c49a52;
+  color: #17120f;
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.1em;
@@ -176,22 +178,22 @@
   border-radius: 2px;
   text-decoration: none;
   transition: all 0.35s ease;
-  box-shadow: 0 4px 20px rgba(200, 167, 90, 0.25);
-  border: 1px solid rgba(248, 244, 239, 0.3);
+  box-shadow: 0 4px 20px rgba(196, 154, 82, 0.3);
+  border: 1px solid rgba(245, 235, 221, 0.3);
 }
 
 .primaryBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(200, 167, 90, 0.45);
-  background: linear-gradient(135deg, #dfbc6d 0%, #b3a18a 100%);
+  box-shadow: 0 6px 28px rgba(212, 173, 98, 0.45);
+  background: #d4ad62;
 }
 
 .secondaryBtn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(200, 167, 90, 0.06);
-  color: #c8a75a;
+  background: rgba(23, 18, 15, 0.6);
+  color: #f5ebdd;
   font-weight: 600;
   font-size: 0.82rem;
   letter-spacing: 0.1em;
@@ -199,15 +201,18 @@
   padding: 0.8rem 1.75rem;
   border-radius: 2px;
   text-decoration: none;
-  border: 1px solid rgba(200, 167, 90, 0.4);
+  border: 1px solid rgba(212, 173, 98, 0.45);
   transition: all 0.35s ease;
   backdrop-filter: blur(8px);
 }
 
 .secondaryBtn:hover {
   transform: translateY(-2px);
-  background: rgba(200, 167, 90, 0.15);
-  border-color: #c8a75a;
+  background: rgba(212, 173, 98, 0.12);
+  border-color: #d4ad62;
+  color: #f5ebdd;
+  box-shadow: 0 0 25px rgba(212, 173, 98, 0.35);
+}
   color: #ffffff;
   box-shadow: 0 4px 18px rgba(200, 167, 90, 0.2);
 }
