@@ -16,7 +16,7 @@ export default function TempleArchSvg() {
         maxWidth: "1400px",
         height: "100%",
         pointerEvents: "none",
-        opacity: 0.12,
+        opacity: 0.22,
         zIndex: 1,
       }}
     >
