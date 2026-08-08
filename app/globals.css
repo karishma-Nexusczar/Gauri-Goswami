@@ -183,7 +183,7 @@ p {
 
 .hero-right-portrait {
   object-fit: cover;
-  object-position: center 2%;
+  object-position: 58% center;
   filter: none !important;
 }
 
