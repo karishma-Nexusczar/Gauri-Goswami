@@ -137,23 +137,23 @@ p {
 
 .hero-left-media {
   position: absolute;
-  top: 14%;
-  bottom: 6%;
+  top: 0;
+  bottom: 0;
   left: 0;
-  width: 29%;
-  max-width: 400px;
+  width: 36%;
+  max-width: 540px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
   box-shadow: none !important;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 55%, transparent 100%);
 }
 
 .hero-left-portrait {
   object-fit: cover;
-  object-position: center 18%;
-  filter: contrast(1.05) brightness(0.85);
+  object-position: center 10%;
+  filter: contrast(1.05) brightness(0.92);
 }
 
 .hero-vignette-overlay {
@@ -162,29 +162,29 @@ p {
   pointer-events: none;
   background:
     radial-gradient(circle at 35% 45%, rgba(200, 169, 106, 0.14), transparent 60%),
-    linear-gradient(90deg, rgba(3, 3, 3, 0.95) 0%, transparent 28%, transparent 70%, rgba(3, 3, 3, 0.95) 100%),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.6) 0%, transparent 22%, transparent 75%, rgba(5, 4, 3, 0.9) 100%);
+    linear-gradient(90deg, rgba(3, 3, 3, 0.95) 0%, transparent 20%, transparent 75%, rgba(5, 4, 3, 0.85) 100%),
+    linear-gradient(180deg, rgba(5, 4, 3, 0.4) 0%, transparent 15%, transparent 80%, rgba(5, 4, 3, 0.85) 100%);
 }
 
 .hero-right-media {
   position: absolute;
-  top: 14%;
-  bottom: 6%;
+  top: 0;
+  bottom: 0;
   right: 0;
-  width: 29%;
-  max-width: 400px;
+  width: 36%;
+  max-width: 540px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
   box-shadow: none !important;
-  -webkit-mask-image: linear-gradient(270deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(270deg, transparent 0%, #000 18%, #000 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(270deg, transparent 0%, #000 12%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(270deg, transparent 0%, #000 12%, #000 55%, transparent 100%);
 }
 
 .hero-right-portrait {
   object-fit: cover;
-  object-position: center 10%;
-  filter: contrast(1.05) brightness(0.85);
+  object-position: center 2%;
+  filter: contrast(1.05) brightness(0.92);
 }
 
 .hero-vignette-overlay-right {
@@ -193,8 +193,8 @@ p {
   pointer-events: none;
   background:
     radial-gradient(circle at 65% 45%, rgba(200, 169, 106, 0.14), transparent 60%),
-    linear-gradient(270deg, rgba(3, 3, 3, 0.95) 0%, transparent 28%, transparent 70%, rgba(3, 3, 3, 0.95) 100%),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.6) 0%, transparent 22%, transparent 75%, rgba(5, 4, 3, 0.9) 100%);
+    linear-gradient(270deg, rgba(3, 3, 3, 0.95) 0%, transparent 20%, transparent 75%, rgba(5, 4, 3, 0.85) 100%),
+    linear-gradient(180deg, rgba(5, 4, 3, 0.4) 0%, transparent 15%, transparent 80%, rgba(5, 4, 3, 0.85) 100%);
 }
 
 @media (max-width: 1024px) {
