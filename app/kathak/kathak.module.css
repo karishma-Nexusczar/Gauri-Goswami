@@ -35,11 +35,11 @@
 
 .heroBackdropImageWrap {
   position: absolute;
-  top: 10%;
-  bottom: 4%;
-  right: 2vw;
-  width: 42vw;
-  height: 86%;
+  top: 5%;
+  bottom: 3%;
+  right: 5vw;
+  width: 47vw;
+  height: 92%;
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
@@ -123,7 +123,7 @@
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(2.2rem, 3.6vw, 3.2rem);
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 300;
   color: #f5ebdd;
   margin-bottom: 1.25rem;
   letter-spacing: 0;
