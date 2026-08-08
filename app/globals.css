@@ -141,7 +141,7 @@ p {
   bottom: 0;
   left: 0;
   width: 32%;
-  max-width: 510px;
+  max-width: 450px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
@@ -172,7 +172,7 @@ p {
   bottom: 0;
   right: 0;
   width: 32%;
-  max-width: 510px;
+  max-width: 450px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
