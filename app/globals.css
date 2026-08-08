@@ -184,17 +184,11 @@ p {
 .hero-right-portrait {
   object-fit: cover;
   object-position: center 2%;
-  filter: contrast(1.05) brightness(0.85);
+  filter: none !important;
 }
 
 .hero-vignette-overlay-right {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 65% 45%, rgba(200, 169, 106, 0.14), transparent 60%),
-    linear-gradient(270deg, rgba(3, 3, 3, 0.95) 0%, transparent 28%, transparent 70%, rgba(3, 3, 3, 0.95) 100%),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.6) 0%, transparent 22%, transparent 75%, rgba(5, 4, 3, 0.9) 100%);
+  display: none !important;
 }
 
 @media (max-width: 1024px) {
