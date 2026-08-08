@@ -137,11 +137,11 @@ p {
 
 .hero-left-media {
   position: absolute;
-  top: 14%;
-  bottom: 6%;
+  top: 6%;
+  bottom: 2%;
   left: 0;
-  width: 29%;
-  max-width: 400px;
+  width: 30%;
+  max-width: 420px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
@@ -153,7 +153,7 @@ p {
 .hero-left-portrait {
   object-fit: cover;
   object-position: center 18%;
-  filter: contrast(1.05) brightness(0.85);
+  filter: contrast(1.04) brightness(0.88);
 }
 
 .hero-vignette-overlay {
@@ -168,11 +168,11 @@ p {
 
 .hero-right-media {
   position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: 2%;
-  width: 33%;
-  max-width: 450px;
+  top: 6%;
+  bottom: 2%;
+  right: 0;
+  width: 30%;
+  max-width: 420px;
   z-index: 1;
   overflow: hidden;
   border: none !important;
@@ -184,11 +184,17 @@ p {
 .hero-right-portrait {
   object-fit: cover;
   object-position: 58% center;
-  filter: none !important;
+  filter: contrast(1.04) brightness(0.88);
 }
 
 .hero-vignette-overlay-right {
-  display: none !important;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 65% 45%, rgba(200, 169, 106, 0.14), transparent 60%),
+    linear-gradient(270deg, rgba(3, 3, 3, 0.95) 0%, transparent 28%, transparent 70%, rgba(3, 3, 3, 0.95) 100%),
+    linear-gradient(180deg, rgba(5, 4, 3, 0.6) 0%, transparent 22%, transparent 75%, rgba(5, 4, 3, 0.9) 100%);
 }
 
 @media (max-width: 1024px) {
