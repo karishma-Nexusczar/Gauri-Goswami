@@ -9,6 +9,8 @@ import AwardsRecognition from "./components/AwardsRecognition";
 import TestimonialsSlider from "./components/TestimonialsSlider";
 import GallerySlider from "./components/GallerySlider";
 import Navbar from "./components/Navbar";
+import ClassInquiryModal from "./components/ClassInquiryModal";
+import GetInTouchModal from "./components/GetInTouchModal";
 import {
   FaBalanceScale,
   FaBookOpen,
@@ -93,19 +95,60 @@ export default function Home() {
           <div className="hero-vignette-overlay-right" />
         </div>
 
+        <div className="hero-social-sidebar" aria-label="Social media links">
+          <a
+            href="https://www.instagram.com/goswamigauri1999/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+          >
+            <FaInstagram aria-hidden="true" />
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            title="Facebook"
+          >
+            <FaFacebookF aria-hidden="true" />
+          </a>
+          <a
+            href="https://www.youtube.com/@gaurigoswami-j1q"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            title="YouTube"
+          >
+            <FaYoutube aria-hidden="true" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <FaLinkedinIn aria-hidden="true" />
+          </a>
+        </div>
+
         <div className="hero-content">
           <p className="eyebrow">LAW • COMMERCIAL PRACTICE • RESEARCH • KATHAK</p>
           <h1>Gauri<br />Goswami</h1>
           <p className="roles">Advocate <i /> LL.M. (University of Nottingham)<br />Kathak Visharad-II <i /> Researcher <i /> Cultural Ambassador</p>
           <p className="tagline">Building a career in Commercial Law while representing India&apos;s classical heritage through legal scholarship, Kathak, and cultural diplomacy.</p>
           <div className="hero-actions">
-            <a className="gold-button explore-journey" href="/about">Explore Journey</a>
+            <a className="gold-button explore-journey" href="#professional-overview">
+              Explore Journey
+            </a>
             <a className="outline-button" href={performanceInquiryUrl} target="_blank" rel="noreferrer">Book Performance</a>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — ABOUT GAURI GOSWAMI (EDITORIAL MOCKUP DESIGN UI FROM ANANNYAMAHANTA.COM) */}
+      {/* SECTION 2 — ABOUT GAURI GOSWAMI */}
       <section className="about-editorial-section" id="professional-overview" aria-label="About Gauri Goswami">
         <div className="about-editorial-container">
           <figure className="about-editorial-photo">
@@ -119,8 +162,8 @@ export default function Home() {
           </figure>
 
           <div className="about-editorial-content">
-            <p className="about-editorial-kicker">BUILDING BRIDGES ACROSS LAW &amp; CULTURE</p>
-            <h2 className="about-editorial-title">ABOUT GAURI GOSWAMI</h2>
+            <p className="about-editorial-kicker">WHO IS GAURI</p>
+            <h2 className="about-editorial-title">Every Journey Begins with Purpose</h2>
             <p className="about-editorial-subtitle">Advocate • Academic • Kathak Artist • Researcher</p>
 
             <p className="about-editorial-para">
@@ -401,7 +444,7 @@ export default function Home() {
               </div>
 
               <div className="anannya-card-btn-wrap">
-                <a href="#contact" className="anannya-outline-btn">VIEW ALL EVENTS</a>
+                <Link href="/research#publications" className="anannya-outline-btn">VIEW ALL EVENTS</Link>
               </div>
             </div>
           </div>
@@ -426,7 +469,7 @@ export default function Home() {
               </div>
 
               <div className="anannya-card-btn-wrap">
-                <a href="#contact" className="anannya-solid-btn">ENQUIRE ABOUT CLASSES</a>
+                <ClassInquiryModal />
               </div>
             </div>
 
@@ -456,12 +499,7 @@ export default function Home() {
           <p className="section-kicker">Let&apos;s Connect</p>
           <h2>Let&apos;s Build Meaningful Connections</h2>
           <p>Whether you&apos;re seeking legal collaboration, academic engagement, research partnerships, Kathak performances, cultural events, workshops, or speaking sessions, I welcome opportunities to connect, collaborate, and create meaningful experiences.</p>
-          <a 
-            className="gold-button" 
-            href="mailto:info@gaurigoswami.com?subject=Inquiry%20%26%20Collaboration%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20a%20collaboration%20%2F%20inquiry.%0A%0AName%3A%0AOrganization%20%2F%20Institution%3A%0AMessage%20%2F%20Inquiry%20Details%3A%0APhone%20%2F%20Contact%3A%0A%0ABest%20regards%2C"
-          >
-            Get in Touch
-          </a>
+          <GetInTouchModal />
         </div>
       </section>
 
@@ -470,10 +508,10 @@ export default function Home() {
           <a className="brand" href="#home"><Image className="brand-logo" src="/brand-logo.png" alt="Gauri Goswami" width={96} height={96} unoptimized suppressHydrationWarning /></a>
           <p className="footer-about">Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.</p>
           <div className="footer-social" aria-label="Social media links">
-            <a href="#" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-            <a href="#" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="#" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="#" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
+            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
+            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
           </div>
         </div>
         <div className="footer-quick-links-col">
@@ -492,7 +530,7 @@ export default function Home() {
               <a href="#contact">Media</a>
               <a href="/gallery">Gallery</a>
               <a href="#testimonials">Testimonials</a>
-              <a href="#blog">Blog</a>
+              <a href="/research#publications">Blog</a>
               <a href="#contact">Contact</a>
             </div>
           </div>
@@ -509,10 +547,14 @@ export default function Home() {
         <div id="footer-contact">
           <h4>Get in Touch</h4>
           <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <a href="tel:+447587338945">+44 7587 338945</a>
-          <p style={{ margin: '0.25rem 0 0.5rem', color: '#a49c91' }}>United Kingdom</p>
-          <a href="https://wa.me/447587338945" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <p style={{ margin: '0.25rem 0 0', color: '#a49c91' }}>New Delhi, India</p>
+          <div style={{ marginTop: '0.4rem' }}>
+            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇬🇧 London, UK (Phone &amp; WhatsApp)</span>
+            <a href="tel:+447587338945" style={{ fontSize: '0.88rem' }}>+44 7587 338945</a>
+          </div>
+          <div style={{ marginTop: '0.4rem' }}>
+            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇮🇳 India (Phone &amp; WhatsApp)</span>
+            <a href="tel:+919864012345" style={{ fontSize: '0.88rem' }}>+91 98640 12345</a>
+          </div>
         </div>
         <div className="copyright">
           © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.

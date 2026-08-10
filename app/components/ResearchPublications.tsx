@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
 
 const allPublications = [
   "International Commercial Law",
@@ -13,10 +14,6 @@ const allPublications = [
 ];
 
 export default function ResearchPublications() {
-  const [showAll, setShowAll] = useState(false);
-
-  const displayedPubs = showAll ? allPublications : allPublications.slice(0, 4);
-
   return (
     <section className="research dark-section" id="research" aria-label="Research and Publications">
       <div className="book" aria-hidden="true">
@@ -46,24 +43,23 @@ export default function ResearchPublications() {
         <p>
           Exploring International Commercial Law, corporate governance, sustainability, and public policy through academic research while preserving India&apos;s cultural heritage through Kathak and international cultural engagement.
         </p>
-        <a className="gold-button" href="#contact">Explore Research →</a>
+        <Link className="gold-button" href="/research#publications">Explore Research →</Link>
       </div>
 
       <div className="paper-list">
-        {displayedPubs.map((pub) => (
-          <a href="#contact" key={pub}>
+        {allPublications.slice(0, 4).map((pub) => (
+          <Link href="/research#publications" key={pub}>
             <b>{pub}</b>
             <small>VIEW PUBLICATION →</small>
-          </a>
+          </Link>
         ))}
-        <button
-          type="button"
+        <Link
+          href="/research#publications"
           className="view-all"
-          onClick={() => setShowAll(!showAll)}
-          style={{ width: '100%', cursor: 'pointer' }}
+          style={{ width: '100%', cursor: 'pointer', textAlign: 'center', display: 'block' }}
         >
-          {showAll ? "SHOW FEWER PUBLICATIONS" : "VIEW ALL PUBLICATIONS →"}
-        </button>
+          VIEW ALL PUBLICATIONS →
+        </Link>
       </div>
     </section>
   );

@@ -183,7 +183,7 @@ export default function GallerySlider() {
 
       {/* Outlined Gold CTA Button */}
       <div className="moments-cta-wrap">
-        <Link className="moments-explore-btn" href="/gallery">
+        <Link className="moments-explore-btn" href="/gallery#featured">
           Explore Complete Gallery →
         </Link>
       </div>

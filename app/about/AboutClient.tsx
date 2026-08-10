@@ -181,7 +181,28 @@ const testimonialsData = [
   }
 ];
 
+import React, { useEffect } from "react";
+import GetInTouchModal from "../components/GetInTouchModal";
+
 export default function AboutClient() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const headerOffset = 90;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <main className={styles.page}>
       <Navbar currentPath="/about" />
@@ -239,9 +260,10 @@ export default function AboutClient() {
           <div className={styles.whoGrid}>
             <div className={styles.whoImageFrame}>
               <Image
-                src="/about-gauri-bookshelf.jpg"
-                alt="Gauri Goswami — Academic & Researcher"
+                src="/gauri-academic-knowledge-meets-purpose.png"
+                alt="Gauri Goswami — Advocate, Commercial Law Researcher & Kathak Visharad-II"
                 fill
+                style={{ objectFit: "cover", objectPosition: "center 20%", imageRendering: "-webkit-optimize-contrast" }}
                 unoptimized
               />
             </div>
@@ -249,10 +271,10 @@ export default function AboutClient() {
             <div className={styles.whoText}>
               <div className={styles.kickerLight}>
                 <span className={styles.kickerLineLight} />
-                <span>WHO IS GAURI</span>
+                <span>BIOGRAPHY &amp; FOUNDATIONS</span>
               </div>
               <h2 className={styles.titleLight}>
-                Every Journey Begins with <em>Purpose</em>
+                A Multidisciplinary Journey Built on <em>Excellence &amp; Purpose</em>
               </h2>
               <p className={styles.whoParagraph}>
                 Gauri Goswami is an Advocate, Commercial Law Researcher, and Kathak Visharad-II with an international academic background in commercial law.
@@ -691,82 +713,7 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ==========================================
-          SECTION 13 — GALLERY PREVIEW
-          ========================================== */}
-      <section className={styles.gallerySection}>
-        <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <div className={styles.kicker}>
-              <span className={styles.kickerLine} />
-              <span>✦ VISUAL LOG</span>
-              <span className={styles.kickerLine} />
-            </div>
-            <h2 className={styles.title}>
-              Moments &amp; <em>Milestones</em>
-            </h2>
-          </div>
 
-          <div className={styles.galleryGrid}>
-            {galleryData.map((item, index) => (
-              <div className={styles.galleryCard} key={index}>
-                <Image src={item.image} alt={item.title} fill unoptimized />
-                <div className={styles.galleryCardOverlay}>
-                  <span className={styles.galleryTag}>{item.tag}</span>
-                  <h4 className={styles.galleryTitle}>{item.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centerBtn}>
-            <Link className={styles.btnGold} href="/gallery">
-              View Complete Gallery <FaArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          SECTION 14 — TESTIMONIAL PREVIEW (WARM IVORY LIGHT THEME)
-          ========================================== */}
-      <section className={styles.testimonialsSection}>
-        <div className={styles.container}>
-          <div className={styles.sectionHeaderLight}>
-            <div className={styles.kickerLight}>
-              <span className={styles.kickerLineLight} />
-              <span>✦ ENDORSEMENTS</span>
-              <span className={styles.kickerLineLight} />
-            </div>
-            <h2 className={styles.titleLight}>
-              Professional &amp; Academic <em>Acclaim</em>
-            </h2>
-          </div>
-
-          <div className={styles.testimonialsGrid}>
-            {testimonialsData.map((item, index) => (
-              <div className={styles.testimonialCard} key={index}>
-                <p className={styles.testimonialQuote}>&ldquo;{item.quote}&rdquo;</p>
-                <div className={styles.testimonialAuthorRow}>
-                  <div className={styles.testimonialAvatar}>
-                    <Image src={item.avatar} alt={item.author} fill unoptimized />
-                  </div>
-                  <div className={styles.testimonialMeta}>
-                    <h4>{item.author}</h4>
-                    <p>{item.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centerBtn}>
-            <Link className={styles.btnDarkIvory} href="/#testimonials">
-              Read All Testimonials <FaArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ==========================================
           SECTION 15 — CALL TO ACTION & FOOTER
@@ -786,14 +733,9 @@ export default function AboutClient() {
               Whether for legal consultation, academic collaboration, speaking engagements, research projects or cultural performances, Gauri welcomes opportunities to create meaningful impact through law, scholarship and culture.
             </p>
             <div className={styles.ctaActions}>
-              <a className={styles.btnGold} href="mailto:info@gaurigoswami.com?subject=Legal%20Consultation">
-                Book Consultation
-              </a>
+              <GetInTouchModal />
               <a className={styles.btnOutline} href="/Gauri-Goswami-CV.pdf" download>
                 <FaDownload /> Download CV
-              </a>
-              <a className={styles.btnOutline} href="mailto:info@gaurigoswami.com">
-                Contact Now <FaArrowRight />
               </a>
             </div>
           </div>
@@ -816,11 +758,11 @@ export default function AboutClient() {
           <p className="footer-about">
             Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
           </p>
-          <div className="footer-social">
-            <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="#" aria-label="YouTube"><FaYoutube /></a>
+          <div className="footer-social" aria-label="Social media links">
+            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
+            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
           </div>
         </div>
 
@@ -837,7 +779,7 @@ export default function AboutClient() {
             <div>
               <Link href="/gallery">Gallery</Link>
               <Link href="/#testimonials">Testimonials</Link>
-              <Link href="/#blog">Blog</Link>
+              <Link href="/research#publications">Blog</Link>
               <a href="#contact">Contact</a>
             </div>
           </div>
@@ -854,10 +796,14 @@ export default function AboutClient() {
         <div id="footer-contact">
           <h4>Get in Touch</h4>
           <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <a href="tel:+447587338945">+44 7587 338945</a>
-          <p>United Kingdom</p>
-          <a href="https://wa.me/447587338945">WhatsApp</a>
-          <p>New Delhi, India</p>
+          <div style={{ marginTop: '0.4rem' }}>
+            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇬🇧 London, UK (Phone &amp; WhatsApp)</span>
+            <a href="tel:+447587338945" style={{ fontSize: '0.88rem' }}>+44 7587 338945</a>
+          </div>
+          <div style={{ marginTop: '0.4rem' }}>
+            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇮🇳 India (Phone &amp; WhatsApp)</span>
+            <a href="tel:+919864012345" style={{ fontSize: '0.88rem' }}>+91 98640 12345</a>
+          </div>
         </div>
 
         <div className="copyright">

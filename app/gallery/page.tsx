@@ -166,115 +166,293 @@ const allGalleryPhotos: GalleryPhoto[] = [
     aspect: "tall"
   },
   {
-    id: "k3",
-    category: "Kathak",
-    title: "Classical Kathak Lawn Recital",
-    subtitle: "Traditional Nritta & Mudras",
-    location: "United Kingdom",
-    date: "2024",
-    description: "Seated classical Kathak posture demonstrating intricate mudras and traditional dance attire.",
-    image: "/kathak-lawn-classical-pose.jpg",
+    id: "a6",
+    category: "Academics",
+    title: "School of Law Trent Building",
+    subtitle: "University of Nottingham Widescreen Campus",
+    location: "Nottingham, United Kingdom",
+    date: "2024–2025",
+    description: "The grand Trent Building at the University of Nottingham campus housing the Faculty of Social Sciences and School of Law.",
+    image: "/nottingham-school-of-law-trent-building.jpg",
     aspect: "landscape"
   },
   {
-    id: "k16",
-    category: "Kathak",
-    title: "London Rongali Bihu Celebration",
-    subtitle: "Assam Heritage & Cultural Recital",
-    location: "London, UK",
-    date: "2024",
-    description: "Gauri Goswami in traditional red and cream Assamese Mekhela Chador at London Rongali Bihu 2024.",
-    image: "/kathak-london-rongali-bihu-2024.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "k1",
-    category: "Kathak",
-    title: "Asam Sahitya Sabha UK Recital",
-    subtitle: "London Annual Cultural Convention",
-    location: "London, UK",
-    date: "2024",
-    description: "Live classical performance by Gauri Goswami at the Asam Sahitya Sabha UK Chapter annual convention in London.",
-    image: "/kathak-asam-sahitya-sabha-uk.png",
-    aspect: "tall"
-  },
-  {
-    id: "k2",
-    category: "Kathak",
-    title: "Traditional Jaapi Stage Recital",
-    subtitle: "Assamese Heritage & Classical Arts",
-    location: "London, UK",
-    date: "2024",
-    description: "Gauri Goswami featuring traditional Assamese Jaapi rhythm dance on stage in London.",
-    image: "/kathak-jaapi-stage-recital.jpg",
+    id: "a7",
+    category: "Academics",
+    title: "LL.M. Masters Reflections & Experience",
+    subtitle: "University of Nottingham Postgraduate Studies",
+    location: "Nottingham, United Kingdom",
+    date: "2024–2025",
+    description: "Academic research reflections by Gauri Goswami on LL.M. International Commercial Law studies at Nottingham.",
+    image: "/nottingham-masters-experience-reflections.jpg",
     aspect: "landscape"
   },
   {
-    id: "k4",
-    category: "Kathak",
-    title: "Golden Mekhela Chador Stage Recital",
-    subtitle: "Traditional Assamese Silk Presentation",
-    location: "London, UK",
-    date: "2024",
-    description: "Full stage portrait of Gauri Goswami in golden Assamese Mekhela Chador during a cultural performance.",
-    image: "/kathak-golden-chador-stage.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "k5",
-    category: "Kathak",
-    title: "Loktak Lake Exhibition Recital",
-    subtitle: "High Commission of India Showcase",
-    location: "High Commission of India, London",
-    date: "2024",
-    description: "Cultural presentation portrait in traditional attire at the High Commission of India Loktak Lake exhibition.",
-    image: "/kathak-loktak-exhibit-portrait.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "k17",
-    category: "Kathak",
-    title: "Abhiveera Festival Stage Walk",
-    subtitle: "NLUJA Cultural & Arts Festival",
+    id: "a8",
+    category: "Academics",
+    title: "NLUJA Assam Gate & Campus Entrance",
+    subtitle: "National Law University & Judicial Academy",
     location: "Guwahati, Assam, India",
-    date: "April 2023",
-    description: "Gauri Goswami performing on stage at Abhiveera '23 Literary & Sports Festival of NLUJA Assam.",
-    image: "/kathak-abhiveera-gold-stage-walk.jpg",
-    aspect: "tall"
+    date: "2018–2023",
+    description: "Main entrance gate and green campus courtyard of National Law University and Judicial Academy, Assam.",
+    image: "/nlu-assam-gate-entrance.jpg",
+    aspect: "landscape"
   },
   {
-    id: "k18",
-    category: "Kathak",
-    title: "Traditional Crown Stage Presentation",
-    subtitle: "Abhiveera '23 Cultural Pageant",
+    id: "a9",
+    category: "Academics",
+    title: "B.A., LL.B. (Hons.) Degree Certificate",
+    subtitle: "National Law University Graduation",
     location: "Guwahati, Assam, India",
-    date: "April 2023",
-    description: "Full length portrait of Gauri Goswami in golden Assamese silk attire with traditional crown and jewelry.",
-    image: "/kathak-abhiveera-traditional-crown.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "k19",
-    category: "Kathak",
-    title: "Abhiveera Gold Dress Portrait",
-    subtitle: "NLUJA Stage Showcase",
-    location: "Guwahati, Assam, India",
-    date: "April 2023",
-    description: "Stage portrait of Gauri Goswami during the Abhiveera '23 cultural evening event.",
-    image: "/kathak-abhiveera-gold-dress-portrait.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "k20",
-    category: "Kathak",
-    title: "Seated Classical Saree Portrait",
-    subtitle: "Cultural Event Backstage",
-    location: "India",
     date: "2023",
-    description: "Close-up portrait of Gauri Goswami in traditional silk saree with classical bindi and jewelry.",
-    image: "/kathak-seated-saree-portrait.jpg",
+    description: "Official Degree Certificate for B.A., LL.B. (Hons.) awarded by National Law University & Judicial Academy, Assam.",
+    image: "/nlu-assam-ballb-honours-degree-certificate.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "a10",
+    category: "Academics",
+    title: "B.A., LL.B. Consolidated Marksheet",
+    subtitle: "NLUJA Academic Distinction",
+    location: "Guwahati, Assam, India",
+    date: "2023",
+    description: "Official 5-Year Consolidated Marksheet reflecting Academic First Class Honours at NLUJA Assam.",
+    image: "/nlu-assam-ballb-consolidated-marksheet.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "a11",
+    category: "Academics",
+    title: "Legal Awareness Campaign Stage",
+    subtitle: "Saraighat College Outreach",
+    location: "Changsari, Kamrup, Assam",
+    date: "2022",
+    description: "Gauri Goswami presenting on legal rights and women empowerment at Saraighat College Legal Awareness Drive.",
+    image: "/nlu-assam-saraighat-college-legal-awareness-stage.jpg",
     aspect: "landscape"
   },
+  {
+    id: "a12",
+    category: "Academics",
+    title: "Legal Aid & Lok Adalat Delegation",
+    subtitle: "NLUJA Legal Aid Committee",
+    location: "Rangia, Assam, India",
+    date: "2022",
+    description: "NLUJA Assam student legal aid delegation arriving for field survey and conciliation assistance.",
+    image: "/nlu-assam-lok-adalat-rangia-bus-group.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "a13",
+    category: "Academics",
+    title: "University UK Hall & Faculty Suite",
+    subtitle: "International Postgraduate Studies",
+    location: "United Kingdom",
+    date: "2024–2025",
+    description: "Gauri Goswami at the university academic hall during a postgraduate faculty gathering.",
+    image: "/gauri-uk-hall.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "a14",
+    category: "Academics",
+    title: "Nottingham Law Hall Lounge",
+    subtitle: "School of Law Commons",
+    location: "University of Nottingham, UK",
+    date: "2024–2025",
+    description: "Gauri Goswami seated in the Nottingham Law Hall lounge during a break between commercial law seminars.",
+    image: "/gauri-nottingham-law-hall-red-sofa.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "a15",
+    category: "Academics",
+    title: "South Asia Excellence Award Certificate Presentation",
+    subtitle: "University of Nottingham International Scholars",
+    location: "Nottingham, United Kingdom",
+    date: "November 2024",
+    description: "Gauri Goswami in traditional Assamese silk holding the South Asia Postgraduate Excellence Award certificate alongside fellow international award scholars at Nottingham Great Hall.",
+    image: "/nottingham-south-asia-excellence-award-scholars-stage.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "a16",
+    category: "Academics",
+    title: "Nottingham Advantage Award Certificate",
+    subtitle: "Professional Leadership & Excellence",
+    location: "Nottingham, United Kingdom",
+    date: "2025",
+    description: "Official Nottingham Advantage Award certificate recognizing leadership, skills, and postgraduate academic excellence.",
+    image: "/nottingham-advantage-award-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "a17",
+    category: "Academics",
+    title: "NLUJA Provisional Degree Certificate",
+    subtitle: "National Law University & Judicial Academy",
+    location: "Guwahati, Assam, India",
+    date: "2023",
+    description: "Official Provisional Degree Certificate for B.A., LL.B. (Hons.) graduation from NLUJA Assam.",
+    image: "/nlu-assam-provisional-certificate.png",
+    aspect: "tall"
+  },
+  {
+    id: "a18",
+    category: "Academics",
+    title: "University Trent Campus Widescreen View",
+    subtitle: "University of Nottingham Library & Lake",
+    location: "Nottingham, United Kingdom",
+    date: "2024–2025",
+    description: "Widescreen view of the historic Trent Building lake and grounds at the University of Nottingham.",
+    image: "/academics-trent-wide-bg.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "a19",
+    category: "Academics",
+    title: "School of Law Lecture Theatre",
+    subtitle: "International Commercial Law Forum",
+    location: "University of Nottingham, UK",
+    date: "2024–2025",
+    description: "Interactive lecture theatre and academic discussion suite at the University of Nottingham School of Law.",
+    image: "/academics-law-hall.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "a20",
+    category: "Academics",
+    title: "University Insignia Presentation & Honour",
+    subtitle: "Postgraduate Scholar Recognition",
+    location: "Nottingham, United Kingdom",
+    date: "2024–2025",
+    description: "Official presentation of the University of Nottingham insignia tote bag to Gauri Goswami.",
+    image: "/nottingham-university-gift-presentation.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure1",
+    category: "Kathak",
+    title: "Kathak Red Spin Cutout Pose",
+    subtitle: "Hero Backdrop Classical Pose",
+    location: "Section 1 — Hero",
+    date: "Kathak Repertoire",
+    description: "Full length uncropped backdrop pose of Gauri Goswami demonstrating Kathak classical spin in traditional red silk.",
+    image: "/kathak-red-spin-transparent.png",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure2",
+    category: "Kathak",
+    title: "Kathak Classical Mudra Studio Portrait",
+    subtitle: "More Than Dance — Introduction",
+    location: "Section 2 — Introduction",
+    date: "Kathak Sadhana",
+    description: "Classical Kathak mudra studio photograph depicting poise, discipline, and artistic devotion.",
+    image: "/kathak-intro-cream-pose.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure3",
+    category: "Kathak",
+    title: "Kathak Red Spin Motion Pose",
+    subtitle: "Classical Artwork & Motion",
+    location: "Section 2 — Introduction",
+    date: "Kathak Art",
+    description: "Dynamic classical spin artwork capturing the rhythm and fluidity of Kathak movement.",
+    image: "/kathak-spin-watermark-processed.png",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure4",
+    category: "Kathak",
+    title: "Artistic Journey Solo Recital",
+    subtitle: "A Journey in Rhythm & Grace",
+    location: "Section 3 — Artistic Journey",
+    date: "Kathak Recital",
+    description: "Solo stage performance of Gauri Goswami in traditional red and gold silk attire capturing graceful mudra poses.",
+    image: "/artistic-journey-stage-left.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure5",
+    category: "Kathak",
+    title: "Childhood First Ghungroos",
+    subtitle: "Age 5 Beginning of Kathak Sadhana",
+    location: "Section 3 — The Artist's Journey",
+    date: "2004",
+    description: "Memories of beginning Kathak training at age 5 with first Ghungroos and learning initial bols — 'Ta Thei Thei Tat'.",
+    image: "/card-childhood.jpg",
+    aspect: "square"
+  },
+
+  {
+    id: "k_pure7",
+    category: "Kathak",
+    title: "Pure Classical Kathak Recitals Repertoire",
+    subtitle: "TeenTaal, Tukdas, Parans & Abhinaya",
+    location: "Section 3 — The Artist's Journey",
+    date: "2015–2018",
+    description: "Stage performance repertoire showcasing Lucknow & Jaipur Gharana compositions with live Tabla and Harmonium.",
+    image: "/card-recitals.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "k_pure8",
+    category: "Kathak",
+    title: "Performance Journey — Red Spin Recital",
+    subtitle: "Performing Tradition Across Borders",
+    location: "Section 7 — Performance Journey",
+    date: "Stage Recital",
+    description: "Stage recital capturing footwork speed and chakkars in traditional red attire.",
+    image: "/pj-1.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure9",
+    category: "Kathak",
+    title: "Performance Journey — Cream & Red Pose",
+    subtitle: "Abhinaya & Expressive Storytelling",
+    location: "Section 7 — Performance Journey",
+    date: "Stage Recital",
+    description: "Stage portrait showcasing classical hand mudras and expressive facial bhav.",
+    image: "/pj-2.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure10",
+    category: "Kathak",
+    title: "Performance Journey — Teal Recital Pose",
+    subtitle: "Grace & Precision in Motion",
+    location: "Section 7 — Performance Journey",
+    date: "Stage Recital",
+    description: "Full stage presentation demonstrating rhythmic poise in vibrant teal attire.",
+    image: "/pj-3.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_pure11",
+    category: "Kathak",
+    title: "Authentic Kathak Ghungroo Close-Up",
+    subtitle: "The Sound of Kathak — Ankle Bells & Alta",
+    location: "Section 10 — Ghungroo Feature",
+    date: "The Sound of Kathak",
+    description: "Close-up of traditional brass ghungroos tied around dancer's ankles with red Alta marks.",
+    image: "/ghungroo-close-up.jpg",
+    aspect: "square"
+  },
+  {
+    id: "k_pure12",
+    category: "Kathak",
+    title: "Kathak Red Spin Classical Pose",
+    subtitle: "Lucknow & Jaipur Gharana Aesthetics",
+    location: "Kathak Showcase",
+    date: "Classical Recital",
+    description: "Pure classical Kathak spin (Chakkar) in traditional red silk attire demonstrating speed and precision.",
+    image: "/kathak-red-spin-hero.jpg",
+    aspect: "tall"
+  },
+
   {
     id: "r0",
     category: "Research",
@@ -350,6 +528,127 @@ const allGalleryPhotos: GalleryPhoto[] = [
     date: "Nov 2024",
     description: "Official University of Nottingham South Asia Postgraduate Excellence Award celebration event on stage.",
     image: "/south-asia-excellence-award.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "aw1",
+    category: "Awards",
+    title: "Miss Congeniality Award Ceremony",
+    subtitle: "Abhiveera '23 Cultural & Sports Festival",
+    location: "NLUJA, Guwahati, Assam",
+    date: "April 2023",
+    description: "Felicitation and crowning of Gauri Goswami as Miss Congeniality at the Abhiveera '23 Annual Festival of National Law University Assam.",
+    image: "/nlu-assam-miss-congeniality-beauty-pageant.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "aw2",
+    category: "Awards",
+    title: "South Asia Excellence Award Celebration",
+    subtitle: "University of Nottingham Great Hall",
+    location: "Nottingham, United Kingdom",
+    date: "November 2024",
+    description: "Official University of Nottingham South Asia Postgraduate Excellence Award celebration group photograph on stage.",
+    image: "/nottingham-south-asia-excellence-award-celebration.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "aw3",
+    category: "Awards",
+    title: "South Asia Excellence Award Certificate",
+    subtitle: "University of Nottingham Official Honour",
+    location: "Nottingham, United Kingdom",
+    date: "November 2024",
+    description: "Official Postgraduate Excellence Award certificate awarded by the University of Nottingham.",
+    image: "/nottingham-south-asia-excellence-award-certificate.png",
+    aspect: "tall"
+  },
+  {
+    id: "aw4",
+    category: "Awards",
+    title: "Nottingham Advantage Award Certificate",
+    subtitle: "Professional Leadership Recognition",
+    location: "Nottingham, United Kingdom",
+    date: "2025",
+    description: "Official Nottingham Advantage Award certificate recognizing leadership, skills, and postgraduate academic excellence.",
+    image: "/nottingham-advantage-award-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "aw5",
+    category: "Awards",
+    title: "Bhatkhande Kathak Visharad Degree",
+    subtitle: "6-Year Classical Dance Graduation",
+    location: "Bhatkhande Sangit Vidyapith, Lucknow",
+    date: "2020",
+    description: "Official Visharad Degree Certificate in Classical Kathak Dance from Bhatkhande Sangit Vidyapith with Distinction.",
+    image: "/bhatkhande-visharad-kathak-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "aw6",
+    category: "Awards",
+    title: "B.A., LL.B. (Hons.) Degree Certificate",
+    subtitle: "National Law University & Judicial Academy",
+    location: "Guwahati, Assam, India",
+    date: "2023",
+    description: "Official Law Degree Certificate awarded by NLUJA Assam for B.A., LL.B. (Hons.) graduation with First Class honours.",
+    image: "/nlu-assam-ballb-honours-degree-certificate.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "aw7",
+    category: "Awards",
+    title: "Pandit Birju Maharaj Masterclass Certificate",
+    subtitle: "Legendary Kathak Guru Workshop",
+    location: "India",
+    date: "2018",
+    description: "Masterclass Kathak Workshop certificate under Legendary Guru Padma Vibhushan Pandit Birju Maharaj and Vidushi Saswati Sen.",
+    image: "/birju-maharaj-saswati-sen-kathak-workshop-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "aw8",
+    category: "Awards",
+    title: "UK Assamese Cultural Felicitation Honor",
+    subtitle: "Asam Sahitya Sabha UK Recognition",
+    location: "London, United Kingdom",
+    date: "2024",
+    description: "Felicitation honor awarded to Gauri Goswami for promoting Assamese cultural heritage and classical Kathak in the UK.",
+    image: "/nottingham-felicitation-folk-dance-performance.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "aw9",
+    category: "Awards",
+    title: "Lok Adalat Certificate of Merit",
+    subtitle: "State Legal Services Authority",
+    location: "Kamrup Metro, Assam",
+    date: "2022",
+    description: "Certificate of Appreciation for conciliation work and public legal assistance at National Lok Adalat.",
+    image: "/nlu-assam-lok-adalat-declaration-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "aw10",
+    category: "Awards",
+    title: "University of Nottingham Insignia Presentation",
+    subtitle: "University Scholars Recognition & Honour",
+    location: "Nottingham, United Kingdom",
+    date: "2024–2025",
+    description: "Official presentation of the University of Nottingham official insignia tote bag and academic recognition to Gauri Goswami.",
+    image: "/nottingham-university-gift-presentation.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "aw11",
+    category: "Awards",
+    title: "Postgraduate Excellence Award Certificate Presentation",
+    subtitle: "University of Nottingham International Scholars",
+    location: "Nottingham, United Kingdom",
+    date: "November 2024",
+    description: "Gauri Goswami in traditional Assamese silk holding the South Asia Postgraduate Excellence Award certificate alongside fellow international award scholars at Nottingham Great Hall.",
+    image: "/nottingham-south-asia-excellence-award-scholars-stage.jpg",
     aspect: "tall"
   },
   {
@@ -683,6 +982,7 @@ export default function EditorialGalleryPage() {
 
       {/* SECTION 2 — GALLERY INTRODUCTION (STEP 2) */}
       <section className="ed-gallery-intro-step2" id="featured">
+        <div id="moments" />
         <div className="ed-container">
           <div className="ed-intro-step2-grid">
             <div className="ed-intro-step2-left">
@@ -795,8 +1095,8 @@ export default function EditorialGalleryPage() {
             {(() => {
               const allCategories = [
                 { title: "Legal Practice", count: "8 Photos", img: "/legal-practice-riverside-cohort.jpg", cat: "Law" },
-                { title: "Academic Excellence", count: "5 Photos", img: "/academics-scholarship-celebration-stage.jpg", cat: "Academics" },
-                { title: "Kathak Performances", count: "10 Photos", img: "/kathak-lawn-classical-pose.jpg", cat: "Kathak" },
+                { title: "Academic Excellence", count: "20 Photos", img: "/academics-scholarship-celebration-stage.jpg", cat: "Academics" },
+                { title: "Kathak Performances", count: "11 Photos", img: "/kathak-lawn-classical-pose.jpg", cat: "Kathak" },
                 { title: "Cultural Diplomacy", count: "10 Photos", img: "/cultural-heritage-london-stage.jpg", cat: "Culture" },
                 { title: "Research & Conferences", count: "6 Photos", img: "/research-multilevel-law-library.jpg", cat: "Research" },
                 { title: "Behind the Journey", count: "14 Photos", img: "/gallery-8-academic-engagement.jpg", cat: "Travel" }
@@ -1205,10 +1505,10 @@ export default function EditorialGalleryPage() {
             Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
           </p>
           <div className="footer-social" aria-label="Social media links">
-            <a href="#" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-            <a href="#" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="#" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="#" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
+            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
+            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
           </div>
         </div>
         <div className="footer-quick-links-col">
@@ -1227,7 +1527,7 @@ export default function EditorialGalleryPage() {
               <Link href="/#contact">Media</Link>
               <Link href="/gallery">Gallery</Link>
               <Link href="/#testimonials">Testimonials</Link>
-              <Link href="/#blog">Blog</Link>
+              <Link href="/research#publications">Blog</Link>
               <Link href="/#contact">Contact</Link>
             </div>
           </div>

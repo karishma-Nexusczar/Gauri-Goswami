@@ -123,9 +123,9 @@ export default function AwardsRecognition() {
               </p>
 
               <div className="featured-story-action" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/academics" className="gold-button">
+                <a href="#awards" className="gold-button">
                   Read Scholarship Journey →
-                </Link>
+                </a>
                 <Link href="/academics" className="outline-button">
                   View Academic Profile
                 </Link>
@@ -263,53 +263,106 @@ export default function AwardsRecognition() {
         <div className="awards-timeline-block">
           <h3 className="awards-timeline-heading">JOURNEY OF EXCELLENCE &amp; ACHIEVEMENT</h3>
           
-          <div className="awards-timeline-track">
-            <div className="timeline-node">
-              <span className="node-year">2018</span>
-              <strong>NLU Assam</strong>
-              <small>Law Journey Begins</small>
-            </div>
-            <div className="timeline-arrow">→</div>
+          <div className="awards-timeline-marquee-wrap">
+            <div className="awards-timeline-marquee-inner">
+              {/* Set 1 */}
+              <div className="timeline-node">
+                <span className="node-year">2018</span>
+                <strong>NLU Assam</strong>
+                <small>Law Journey Begins</small>
+              </div>
+              <div className="timeline-arrow">→</div>
 
-            <div className="timeline-node">
-              <span className="node-year">2019</span>
-              <strong>Debates &amp; MUN</strong>
-              <small>Competitions</small>
-            </div>
-            <div className="timeline-arrow">→</div>
+              <div className="timeline-node">
+                <span className="node-year">2019</span>
+                <strong>Debates &amp; MUN</strong>
+                <small>Competitions</small>
+              </div>
+              <div className="timeline-arrow">→</div>
 
-            <div className="timeline-node">
-              <span className="node-year">2020–2023</span>
-              <strong>Academic Excellence</strong>
-              <small>Highest Scores &amp; Research</small>
-            </div>
-            <div className="timeline-arrow">→</div>
-            
-            <div className="timeline-node">
-              <span className="node-tag">PRACTICE</span>
-              <strong>Legal Practice</strong>
-              <small>Delhi Litigation &amp; Corporate Law</small>
-            </div>
-            <div className="timeline-arrow">→</div>
+              <div className="timeline-node">
+                <span className="node-year">2020–2023</span>
+                <strong>Academic Excellence</strong>
+                <small>Highest Scores &amp; Research</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+              
+              <div className="timeline-node">
+                <span className="node-tag">PRACTICE</span>
+                <strong>Legal Practice</strong>
+                <small>Delhi Litigation &amp; Corporate Law</small>
+              </div>
+              <div className="timeline-arrow">→</div>
 
-            <div className="timeline-node status-offers">
-              <span className="node-year">2024</span>
-              <strong>10+ UK Offers</strong>
-              <small>International Scholarships</small>
-            </div>
-            <div className="timeline-arrow">→</div>
+              <div className="timeline-node status-offers">
+                <span className="node-year">2024</span>
+                <strong>10+ UK Offers</strong>
+                <small>International Scholarships</small>
+              </div>
+              <div className="timeline-arrow">→</div>
 
-            <div className="timeline-node status-award">
-              <span className="node-tag gold">AWARDED</span>
-              <strong>South Asia Award</strong>
-              <small>University of Nottingham</small>
-            </div>
-            <div className="timeline-arrow">→</div>
+              <div className="timeline-node status-award">
+                <span className="node-tag gold">AWARDED</span>
+                <strong>South Asia Award</strong>
+                <small>University of Nottingham</small>
+              </div>
+              <div className="timeline-arrow">→</div>
 
-            <div className="timeline-node status-final">
-              <span className="node-year">2025–2026</span>
-              <strong>LL.M. &amp; Research</strong>
-              <small>Professional Awards &amp; Recognition</small>
+              <div className="timeline-node status-final">
+                <span className="node-year">2025–2026</span>
+                <strong>LL.M. &amp; Research</strong>
+                <small>Professional Awards &amp; Recognition</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              {/* Set 2 (for seamless loop) */}
+              <div className="timeline-node">
+                <span className="node-year">2018</span>
+                <strong>NLU Assam</strong>
+                <small>Law Journey Begins</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              <div className="timeline-node">
+                <span className="node-year">2019</span>
+                <strong>Debates &amp; MUN</strong>
+                <small>Competitions</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              <div className="timeline-node">
+                <span className="node-year">2020–2023</span>
+                <strong>Academic Excellence</strong>
+                <small>Highest Scores &amp; Research</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+              
+              <div className="timeline-node">
+                <span className="node-tag">PRACTICE</span>
+                <strong>Legal Practice</strong>
+                <small>Delhi Litigation &amp; Corporate Law</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              <div className="timeline-node status-offers">
+                <span className="node-year">2024</span>
+                <strong>10+ UK Offers</strong>
+                <small>International Scholarships</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              <div className="timeline-node status-award">
+                <span className="node-tag gold">AWARDED</span>
+                <strong>South Asia Award</strong>
+                <small>University of Nottingham</small>
+              </div>
+              <div className="timeline-arrow">→</div>
+
+              <div className="timeline-node status-final">
+                <span className="node-year">2025–2026</span>
+                <strong>LL.M. &amp; Research</strong>
+                <small>Professional Awards &amp; Recognition</small>
+              </div>
             </div>
           </div>
         </div>
@@ -469,9 +522,9 @@ export default function AwardsRecognition() {
 
         {/* Final CTA Buttons */}
         <div className="awards-final-cta-wrap">
-          <Link href="/academics" className="gold-button">
+          <a href="#awards" className="gold-button">
             Read Scholarship Journey →
-          </Link>
+          </a>
           <Link href="/academics" className="outline-button">
             View Academic Profile
           </Link>

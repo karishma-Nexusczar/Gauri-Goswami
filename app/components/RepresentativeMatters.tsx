@@ -218,7 +218,7 @@ export default function RepresentativeMatters({ matters }: RepresentativeMatters
         </div>
 
         {/* Bottom Contribution Section (Premium Legal Skills Panel) */}
-        <div className="editorial-contributions-panel">
+        <div className="editorial-contributions-panel" id="legal-skills">
           <h4 className="editorial-contributions-title">KEY AREAS OF CONTRIBUTION</h4>
           <div className="editorial-contributions-tags">
             {keyAreasOfContribution.map((tag) => (
