@@ -151,14 +151,15 @@ export default function RepresentativeMatters({ matters }: RepresentativeMatters
               type="button"
               onClick={() => setShowAll(!showAll)}
               className="editorial-header-btn"
+              aria-expanded={showAll}
             >
-              <span>{showAll ? "View Featured Matters" : "View All Matters"}</span>
-              <span className="editorial-header-arrow">→</span>
+              <span>{showAll ? "Show Less" : "View All Matters"}</span>
+              <span className="editorial-header-arrow">{showAll ? "↑" : "→"}</span>
             </button>
           </div>
         </header>
 
-        {/* Featured Matter (Large Full Width Banner Card) */}
+        {/* Featured Matter (Large Full Width Banner Card — Box 1) */}
         <article className="featured-matter-card">
           <div className="featured-card-top-bar">
             <span className="featured-card-badge">✦ FEATURED MATTER</span>
@@ -187,7 +188,7 @@ export default function RepresentativeMatters({ matters }: RepresentativeMatters
           </div>
         </article>
 
-        {/* Two Column Grid */}
+        {/* Grid Cards (Boxes 2, 3, 4 by default) */}
         <div className="editorial-two-col-grid">
           {displayedTwoColGrid.map((matter, idx) => (
             <article className="editorial-grid-card" key={`${matter.title || matter.brand || idx}-${idx}`}>
@@ -217,6 +218,20 @@ export default function RepresentativeMatters({ matters }: RepresentativeMatters
           ))}
         </div>
 
+        {/* View All Toggle Button below grid for mobile & desktop */}
+        <div style={{ textAlign: "center", margin: "16px 0 28px" }}>
+          <button
+            type="button"
+            onClick={() => setShowAll(!showAll)}
+            className="editorial-header-btn"
+            style={{ display: "inline-flex", alignItems: "center", padding: "10px 24px", cursor: "pointer" }}
+            aria-expanded={showAll}
+          >
+            <span>{showAll ? "Show Less Matters" : `View All Matters (${listToUse.length + 1})`}</span>
+            <span className="editorial-header-arrow" style={{ marginLeft: "8px" }}>{showAll ? "↑" : "→"}</span>
+          </button>
+        </div>
+
         {/* Bottom Contribution Section (Premium Legal Skills Panel) */}
         <div className="editorial-contributions-panel" id="legal-skills">
           <h4 className="editorial-contributions-title">KEY AREAS OF CONTRIBUTION</h4>
@@ -227,16 +242,18 @@ export default function RepresentativeMatters({ matters }: RepresentativeMatters
           </div>
         </div>
 
-        {/* Bottom Toggle CTA */}
+        {/* Bottom CTA — Book Consultation via WhatsApp */}
         <div className="editorial-matters-footer">
-          <button
-            type="button"
-            onClick={() => setShowAll(!showAll)}
+          <a
+            href="https://wa.me/447587338945?text=Hello%20Gauri%20Goswami%2C%20I%20would%20like%20to%20book%20a%20legal%20consultation."
+            target="_blank"
+            rel="noopener noreferrer"
             className="editorial-matters-toggle-btn"
+            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
           >
-            <span>{showAll ? "SHOW FEWER MATTERS" : "EXPLORE ALL 8 REPRESENTATIVE MATTERS"}</span>
-            <span className={`editorial-toggle-arrow ${showAll ? "expanded" : ""}`}>→</span>
-          </button>
+            <span>BOOK CONSULTATION</span>
+            <span className="editorial-toggle-arrow">→</span>
+          </a>
         </div>
 
       </div>

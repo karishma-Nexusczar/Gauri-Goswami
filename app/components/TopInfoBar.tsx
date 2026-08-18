@@ -7,11 +7,11 @@ export default function TopInfoBar() {
       <div className="top-bar-inner shell">
         <div className="top-bar-left">
           <span className="top-bar-item">
-            <FaMapMarkerAlt className="top-icon gold-icon" /> United Kingdom &amp; India
+            <FaMapMarkerAlt className="top-icon gold-icon" /> Nottingham, United Kingdom &amp; India
           </span>
           <span className="top-bar-divider" aria-hidden="true">•</span>
-          <a href="mailto:info@gaurigoswami.com" className="top-bar-item top-bar-link">
-            <FaEnvelope className="top-icon gold-icon" /> info@gaurigoswami.com
+          <a href="mailto:info@gaurigoswami.in" className="top-bar-item top-bar-link">
+            <FaEnvelope className="top-icon gold-icon" /> info@gaurigoswami.in
           </a>
         </div>
         <div className="top-bar-right">

@@ -50,7 +50,6 @@ export default function ResearchPublications() {
         {allPublications.slice(0, 4).map((pub) => (
           <Link href="/research#publications" key={pub}>
             <b>{pub}</b>
-            <small>VIEW PUBLICATION →</small>
           </Link>
         ))}
         <Link

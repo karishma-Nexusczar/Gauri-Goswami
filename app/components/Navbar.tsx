@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const performanceInquiryUrl =
-  "mailto:info@gaurigoswami.com?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
+  "mailto:info@gaurigoswami.in?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
 
 interface NavbarProps {
   currentPath?: string;
@@ -127,14 +127,15 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
   };
 
   return (
-    <header className="nav shell" ref={headerRef} suppressHydrationWarning>
+    <header className="nav" ref={headerRef} suppressHydrationWarning>
       <Link className="brand" href={isHome ? "#home" : "/"} aria-label="Gauri Goswami home">
         <Image
           className="brand-logo"
           src="/brand-logo.png"
           alt="Gauri Goswami Logo"
-          width={96}
-          height={96}
+          width={80}
+          height={80}
+          style={{ maxHeight: "76px", width: "auto" }}
           priority
           unoptimized
           suppressHydrationWarning
@@ -165,8 +166,8 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           </button>
           <div className="dropdown-menu">
             <Link
-              href={getHref("#experience")}
-              onClick={(e) => handleSectionClick(e, "/", "experience")}
+              href={getHref("#professional-overview")}
+              onClick={(e) => handleSectionClick(e, "/", "professional-overview")}
             >
               Professional Experience
             </Link>
@@ -189,10 +190,9 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               Representative Matters
             </Link>
             <Link
-              href={getHref("#legal-skills")}
-              onClick={(e) => handleSectionClick(e, "/", "legal-skills")}
+              href="/legal-career/credentials"
             >
-              Legal Skills
+              Legal / Professional Credentials
             </Link>
           </div>
         </div>
@@ -229,12 +229,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
               onClick={(e) => handleSectionClick(e, "/academics", "achievements")}
             >
               Academic Achievements
-            </Link>
-            <Link
-              href="/academics#modelling"
-              onClick={(e) => handleSectionClick(e, "/academics", "modelling")}
-            >
-              Photoshoots &bull; Fashion &bull; Modelling
             </Link>
             <Link
               href="/academics#credentials"
@@ -299,14 +293,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             onClick={(e) => toggleDropdown("kathak", e)}
             aria-expanded={openDropdown === "kathak"}
           >
-            Dance (Kathak)<span className="nav-caret">▾</span>
+            Dance<span className="nav-caret">▾</span>
           </button>
           <div className="dropdown-menu">
             <Link
               href="/kathak#about-kathak"
               onClick={(e) => handleSectionClick(e, "/kathak", "about-kathak")}
             >
-              About Dance (Kathak)
+              About Kathak
             </Link>
             <Link
               href="/kathak#artist-journey"
@@ -344,12 +338,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
         <Link className={currentPath === "/gallery" ? "active" : ""} href="/gallery">
           Gallery
         </Link>
-        <Link
-          href="/research#publications"
-          onClick={(e) => handleSectionClick(e, "/research", "publications")}
-        >
-          Blog
-        </Link>
         <Link className={currentPath === "/contact" ? "active" : ""} href="/contact">Contact</Link>
       </nav>
 
@@ -375,8 +363,8 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
             </summary>
             <div className="mobile-sub-links">
               <Link
-                href={getHref("#experience")}
-                onClick={(e) => handleSectionClick(e, "/", "experience")}
+                href={getHref("#professional-overview")}
+                onClick={(e) => handleSectionClick(e, "/", "professional-overview")}
               >
                 Professional Experience
               </Link>
@@ -399,10 +387,10 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 Representative Matters
               </Link>
               <Link
-                href={getHref("#legal-skills")}
-                onClick={(e) => handleSectionClick(e, "/", "legal-skills")}
+                href="/legal-career/credentials"
+                className="dropdown-item"
               >
-                Legal Skills
+                Legal Credentials
               </Link>
             </div>
           </details>
@@ -429,12 +417,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
                 onClick={(e) => handleSectionClick(e, "/academics", "achievements")}
               >
                 Academic Achievements
-              </Link>
-              <Link
-                href="/academics#modelling"
-                onClick={(e) => handleSectionClick(e, "/academics", "modelling")}
-              >
-                Photoshoots &bull; Fashion &bull; Modelling
               </Link>
               <Link
                 href="/academics#credentials"
@@ -479,14 +461,14 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
 
           <details className="mobile-sub-menu">
             <summary className="mobile-sub-summary">
-              Dance (Kathak)<span className="nav-caret">▾</span>
+              Dance<span className="nav-caret">▾</span>
             </summary>
             <div className="mobile-sub-links">
               <Link
                 href="/kathak#about-kathak"
                 onClick={(e) => handleSectionClick(e, "/kathak", "about-kathak")}
               >
-                About Dance (Kathak)
+                About Kathak
               </Link>
               <Link
                 href="/kathak#artist-journey"
@@ -522,7 +504,6 @@ export default function Navbar({ currentPath = "/" }: NavbarProps) {
           </details>
 
           <Link href="/gallery" className={currentPath === "/gallery" ? "active" : ""} onClick={closeMobileMenu}>Gallery</Link>
-          <Link href="/research#publications" onClick={(e) => handleSectionClick(e, "/research", "publications")}>Blog</Link>
           <Link href="/contact" className={currentPath === "/contact" ? "active" : ""} onClick={closeMobileMenu}>Contact</Link>
           <a
             className="mobile-booking-btn"

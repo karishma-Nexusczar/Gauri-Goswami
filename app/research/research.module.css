@@ -32,7 +32,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, rgba(14, 12, 10, 0.98) 0%, rgba(14, 12, 10, 0.88) 38%, rgba(14, 12, 10, 0.35) 55%, transparent 72%);
+  background: linear-gradient(90deg, rgba(14, 12, 10, 0.90) 0%, rgba(14, 12, 10, 0.80) 38%, rgba(14, 12, 10, 0.25) 55%, transparent 72%);
   z-index: 2;
   pointer-events: none;
 }
@@ -82,6 +82,27 @@
   border: 1px solid rgba(184, 154, 90, 0.4);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
   background: transparent;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: right center;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.heroAuthorBadge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.sectionHeading {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.3rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0;
 }
 
 /* STEP 2 — RESEARCH PHILOSOPHY (#F6F1E8) */
@@ -197,11 +218,10 @@
 }
 
 .featuredContainer {
-  max-width: 1280px;
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 480px;
-  gap: 3.5rem;
+  grid-template-columns: 1fr;
   align-items: center;
 }
 
@@ -262,11 +282,15 @@
   border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 140px;
-  gap: 1.2rem;
-  align-items: center;
+  display: block;
   box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+.featuredMediaCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 2rem;
+  align-items: center;
 }
 
 .timelineItem {
@@ -431,21 +455,37 @@
 }
 
 .archiveGrid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0.2rem 1.2rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.archiveGrid::-webkit-scrollbar {
+  display: none;
 }
 
 .archiveCard {
+  flex: 0 0 340px;
+  min-width: 340px;
+  max-width: 340px;
   background: rgba(25, 22, 19, 0.95);
   border: 1px solid rgba(184, 154, 90, 0.3);
-  border-radius: 8px;
-  padding: 1.2rem;
-  text-align: center;
+  border-radius: 12px;
+  padding: 1.35rem 1.4rem;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
+.archiveCard:hover {
+  transform: translateY(-4px);
+  border-color: #B89A5A;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* STEP 12 — CONTINUING INQUIRY (#FAF6F0) */
@@ -591,6 +631,9 @@
   .heroContainer, .featuredContainer, .clinicalGrid {
     grid-template-columns: 1fr;
   }
+  .featuredContainer {
+    gap: 2.5rem !important;
+  }
   .philosophyGrid, .pubSplitGrid {
     grid-template-columns: 1fr;
   }
@@ -606,10 +649,73 @@
 }
 
 @media (max-width: 640px) {
+  .featuredMediaCard {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
   .areasGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   .inquiryGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 768px) {
+  .heroBgOverlay {
+    background: linear-gradient(180deg, rgba(14, 12, 10, 0.65) 0%, rgba(14, 12, 10, 0.70) 100%) !important;
+  }
+  .heroBgImg {
+    object-position: 70% center !important;
+  }
+  .heroSection {
+    padding-top: 8rem !important;
+    padding-bottom: 6rem !important;
+    min-height: 80vh !important;
+  }
+  .heroContainer {
+    text-align: center !important;
+    padding: 0 1.5rem !important;
+  }
+  .heroContainer > div {
+    margin: 0 auto !important;
+  }
+  .heroTitle {
+    font-size: 2rem !important;
+  }
+  .heroAuthorBadge {
+    justify-content: center !important;
+  }
+  .featuredMetaGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+  .ctaHeading {
+    font-size: 1.8rem !important;
+  }
+  .philosophyTitle {
+    font-size: 1.7rem !important;
+  }
+  .sectionHeading {
+    font-size: 1.65rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuredMetaGrid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+.archiveSwiperContainer {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.archiveSwiperContainer :global(.swiper-slide) .archiveCard {
+  flex: 1 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 auto;
 }

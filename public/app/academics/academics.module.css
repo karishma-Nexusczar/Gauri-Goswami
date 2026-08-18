@@ -1,0 +1,1607 @@
+/* ==========================================================================
+   APPROVED FULL ACADEMICS PAGE STYLES (MATCHING REFERENCE MOCKUP 100%)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01 — HERO SECTION (DEEP CHARCOAL #171717)
+   -------------------------------------------------------------------------- */
+.heroSection {
+  position: relative;
+  background: #171717;
+  color: #FCFBF8;
+  padding: 4.5rem 1.5rem 4rem 1.5rem;
+  overflow: hidden;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrowWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.eyebrowText {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #B89A5A !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase !important;
+}
+
+.eyebrowLine {
+  width: 42px;
+  height: 1px;
+  background: #B89A5A;
+}
+
+.heroHeading {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2.2rem, 3.4vw, 3.1rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  color: #FCFBF8 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+.goldText {
+  color: #B89A5A !important;
+  display: block;
+}
+
+.heroDivider {
+  width: 140px;
+  height: 1px;
+  background: rgba(184, 154, 90, 0.45);
+  margin-bottom: 1rem;
+}
+
+.heroDesc {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif) !important;
+  font-size: 0.92rem !important;
+  font-weight: 400 !important;
+  color: #F6F1E8 !important;
+  line-height: 1.68 !important;
+  margin: 0 0 1.5rem 0 !important;
+  max-width: 520px;
+}
+
+.heroRight {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageFrameOuter {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.imageCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  background: #0E0C0A;
+}
+
+.heroPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center !important;
+  image-rendering: -webkit-optimize-contrast;
+  display: block;
+}
+
+.signatureBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.signatureMonogram {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #B89A5A;
+  line-height: 1;
+}
+
+.signatureDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.signatureName {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #FCFBF8;
+}
+
+.signatureTagline {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #B89A5A;
+  margin-top: 2px;
+}
+
+
+/* --------------------------------------------------------------------------
+   02 & 03 — EDUCATION TIMELINE & INSTITUTION CARDS (#F8F4EE / #FAF6F0)
+   -------------------------------------------------------------------------- */
+.timelineSection {
+  background: #F8F4EE;
+  color: #252525;
+  padding: 3.5rem 1.5rem;
+}
+
+.timelineContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.timelineSplitLayout {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #FAF6F0;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.timelineLeftNav {
+  background: #F6F1E8;
+  padding: 2.2rem 1.6rem;
+  border-right: 1px solid rgba(184, 154, 90, 0.3);
+}
+
+.timelineLeftNavTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: #252525;
+  margin: 0 0 0.3rem 0;
+}
+
+.timelineLeftNavSub {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.76rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.35;
+}
+
+.timelineNavList {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.timelineNavList::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(184, 154, 90, 0.4);
+}
+
+.timelineNavItem {
+  position: relative;
+  margin-bottom: 1.2rem;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.timelineNavItem:hover {
+  background: rgba(184, 154, 90, 0.08);
+}
+
+.timelineNavItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineNavDot {
+  position: absolute;
+  left: -1.4rem;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #B89A5A;
+  border: 2px solid #F6F1E8;
+  box-shadow: 0 0 0 1px rgba(184, 154, 90, 0.4);
+}
+
+.timelineNavYear {
+  display: inline-block;
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #8C6D2D;
+  background: rgba(184, 154, 90, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 3px;
+}
+
+.timelineNavInst {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.35;
+}
+
+.timelineNavDegree {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #4A4A4A;
+  margin-top: 2px;
+}
+
+.timelineRightContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.nluTopBlock {
+  background: #FDFBF7;
+  padding: 2.2rem;
+  color: #252525;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.35);
+}
+
+.eyebrowInstitution {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #B89A5A;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.nluTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #252525;
+  margin: 0 0 0.15rem 0;
+}
+
+.nluSubtitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #B89A5A;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.nluGridSplit {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.nluBodyText {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.nluStatsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nluStatBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #252525;
+}
+
+.badgeIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #B89A5A;
+  color: #B89A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.nluPhotoWrap {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nluPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+}
+
+.nluDocGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+.docCardReference {
+  background: #FFFDF9;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  border-radius: 10px;
+  padding: 0.9rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.docThumbWrapRef {
+  position: relative;
+  width: 100%;
+  height: 135px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #F2EFE9;
+  margin-bottom: 0.6rem;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.docThumbRef {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+}
+
+.docTitleRef {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #252525;
+  margin-bottom: 0.6rem;
+}
+
+.docGoldBtn {
+  background: #7A602B;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 16px;
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.docGoldBtn:hover {
+  background: #B89A5A;
+}
+
+.nottinghamBottomBlock {
+  background: #121212;
+  padding: 2.2rem;
+  color: #FCFBF8;
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nottinghamLeftText {
+  display: flex;
+  flex-direction: column;
+}
+
+.nottinghamTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #FCFBF8;
+  margin: 0 0 0.8rem 0;
+}
+
+.nottinghamBodyText {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: rgba(252, 251, 248, 0.85);
+  margin-bottom: 1.4rem;
+}
+
+.academicInterestsTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 0.95rem;
+  color: #B89A5A;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.interestsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.interestChipDark {
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.68rem;
+  color: #FCFBF8;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  line-height: 1.2;
+}
+
+.nottinghamCertWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.certCardFrame {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  margin-bottom: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.certImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   06 — RESEARCH & ACADEMIC INQUIRY (WARM SOFT IVORY #FAF6F0)
+   -------------------------------------------------------------------------- */
+.researchSection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 3.5rem 1.5rem;
+  border-top: 1px solid rgba(184, 154, 90, 0.3);
+  border-bottom: 1px solid rgba(184, 154, 90, 0.3);
+}
+
+.researchContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.researchMainGrid {
+  display: grid;
+  grid-template-columns: 1fr 280px 320px;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.researchLeftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.researchTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #252525;
+  margin: 0 0 0.3rem 0;
+}
+
+.researchSub {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #B89A5A;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.researchDescText {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.68;
+  color: #333;
+}
+
+.dissertationCard {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dissertationCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(184, 154, 90, 0.2);
+}
+
+.dissertationDocImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  padding: 6px;
+}
+
+.researchInfoCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.infoCardBox {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #B89A5A;
+  color: #B89A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  background: #FAF6F0;
+}
+
+.infoCardTitle {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.76rem;
+  color: #666;
+}
+
+.infoCardVal {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #252525;
+}
+
+
+/* --------------------------------------------------------------------------
+   07 — AREAS OF ACADEMIC INTEREST & BEYOND THE CURRICULUM (#FAF6F0)
+   -------------------------------------------------------------------------- */
+.interestsBeyondSection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 3.5rem 1.5rem;
+}
+
+.interestsBeyondContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.interestBlockTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #252525;
+  margin: 0 0 1.2rem 0;
+}
+
+.academicGridCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.iconInterestCard {
+  background: #FAF6F0;
+  border-radius: 8px;
+  padding: 0.75rem 0.6rem;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.interestIconGold {
+  font-size: 1.3rem;
+  color: #B89A5A;
+  flex-shrink: 0;
+}
+
+.interestCardLabel {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #252525;
+  line-height: 1.2;
+}
+
+.beyondContentBox {
+  background: transparent;
+  border-left: 1px solid rgba(184, 154, 90, 0.4);
+  padding-left: 1.8rem;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.beyondBadgeWrap {
+  position: relative;
+  width: 100%;
+  max-width: 165px;
+  height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.beyondBadgeWrap:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 8px 20px rgba(184, 154, 90, 0.25));
+}
+
+.badgeImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+   08 — LEARNING BEYOND THE CLASSROOM (LUXURY DARK PANORAMA MATCHING MOCKUP)
+   -------------------------------------------------------------------------- */
+.classroomSection {
+  background: #0E0C0A;
+  color: #FCFBF8;
+  padding: 1rem 1rem;
+  border-top: 1px solid rgba(184, 154, 90, 0.25);
+  border-bottom: 1px solid rgba(184, 154, 90, 0.25);
+}
+
+.classroomContainer {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.learningBeyondWrapper {
+  display: grid;
+  grid-template-columns: 520px 1px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  background: rgba(20, 18, 16, 0.95);
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.learningLeftSpotlight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.learningLeftTextCol {
+  flex: 1;
+}
+
+.learningHeaderTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.01em;
+}
+
+.learningActiveSub {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.15rem;
+  color: #D4AD62;
+  margin: 0 0 0.4rem 0;
+  font-weight: 500;
+}
+
+.learningActiveDesc {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 0.88rem;
+  line-height: 1.48;
+  color: rgba(232, 226, 217, 0.85);
+  margin: 0;
+}
+
+.learningLeftImgBox {
+  position: relative;
+  width: 220px;
+  height: 210px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 173, 98, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  background: rgba(18, 14, 10, 0.95);
+  padding: 4px;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.learningLeftImgBox:hover {
+  transform: scale(1.03);
+  border-color: rgba(212, 173, 98, 0.8);
+}
+
+.learningDivider {
+  width: 1px;
+  height: 100%;
+  min-height: 210px;
+  background: linear-gradient(180deg, rgba(212, 173, 98, 0.05), rgba(212, 173, 98, 0.4), rgba(212, 173, 98, 0.05));
+}
+
+.learningRightGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
+}
+
+.learningCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.learningCard:hover {
+  transform: translateY(-3px);
+}
+
+.learningCardImgBox {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 173, 98, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  background: rgba(18, 14, 10, 0.95);
+  padding: 4px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.learningCard:hover .learningCardImgBox,
+.activeCard .learningCardImgBox {
+  border-color: rgba(212, 173, 98, 0.85);
+  box-shadow: 0 6px 20px rgba(212, 173, 98, 0.3);
+}
+
+.learningCardLabel {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 0.88rem;
+  color: #E8E2D9;
+  margin-top: 0.5rem;
+  text-align: center;
+  line-height: 1.25;
+}
+
+@media (max-width: 1100px) {
+  .learningBeyondWrapper {
+    grid-template-columns: 1fr;
+  }
+  .learningDivider {
+    width: 100%;
+    height: 1px;
+    min-height: 1px;
+    margin: 0.75rem 0;
+  }
+  .learningRightGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   09 — CONFERENCES & LEARNING THROUGH SERVICE (#FCFBF8)
+   -------------------------------------------------------------------------- */
+.confServiceSection {
+  background: #FCFBF8;
+  color: #252525;
+  padding: 3.5rem 1.5rem;
+}
+
+.confServiceContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.confServiceSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.confCardSmall {
+  background: #F8F4EE;
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid rgba(184, 154, 90, 0.25);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.confThumb {
+  position: relative;
+  width: 80px;
+  height: 70px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.serviceColumns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.serviceBox {
+  background: #F8F4EE;
+  border-radius: 10px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  border: 1px solid rgba(184, 154, 90, 0.25);
+}
+
+
+/* --------------------------------------------------------------------------
+   10 — FOUNDATIONS, AWARDS & ACADEMIC ACHIEVEMENTS (#F6F1E8)
+   -------------------------------------------------------------------------- */
+.foundationsAwardsSection {
+  background: #F6F1E8;
+  color: #252525;
+  padding: 3.5rem 1.5rem;
+}
+
+.foundationsAwardsContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr 280px;
+  gap: 2rem;
+}
+
+.schoolBadgeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.schoolLogoCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #B89A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  color: #B89A5A;
+  background: #FFF;
+}
+
+.awardsCertTriple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.awardMiniCard {
+  background: #FFF;
+  border-radius: 8px;
+  padding: 0.8rem;
+  border: 1px solid rgba(184, 154, 90, 0.25);
+  text-align: center;
+}
+
+.achievementsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.achievementItemRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #FFF;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(184, 154, 90, 0.2);
+}
+
+
+/* --------------------------------------------------------------------------
+   14 — FINAL PROFILE & CTA (DEEP CHARCOAL #171717)
+   -------------------------------------------------------------------------- */
+.finalProfileSection {
+  background: #171717;
+  color: #FCFBF8;
+  padding: 4rem 1.5rem;
+}
+
+.finalProfileContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.finalPortraitWrap {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: #0E0C0A;
+}
+
+.finalPortrait {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.statementTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #FCFBF8;
+  margin: 0 0 0.8rem 0;
+}
+
+.statementBody {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(252, 251, 248, 0.85);
+  margin-bottom: 2rem;
+}
+
+.ctaGrid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.ctaCardLink {
+  background: #222;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  border-radius: 10px;
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  color: #FCFBF8;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ctaCardLink:hover {
+  transform: translateY(-3px);
+  border-color: #B89A5A;
+}
+
+.ctaIcon {
+  font-size: 1.4rem;
+  color: #B89A5A;
+  margin-bottom: 0.5rem;
+}
+
+.ctaLabel {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+/* LIGHTBOX MODAL — CLEAR BACKDROP WITHOUT BLUR */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7); /* CLEAR UNBLURRED BACKGROUND */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  position: relative;
+  width: 90vw;
+  max-width: 780px;
+  max-height: 78vh;
+  background: #171717;
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid #B89A5A;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #FCFBF8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  color: #B89A5A;
+}
+
+.modalImageWrap {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  height: 52vh;
+  max-height: 460px;
+  margin-top: 0.5rem;
+  background: #FFFFFF;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ========================================================================
+   LIGHTBOX MODAL OVERLAY & CONTENT DIALOG
+   ======================================================================== */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 8, 6, 0.78);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  position: relative;
+  background: #1C1714;
+  border: 1px solid #B89A5A;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(184, 154, 90, 0.3);
+  width: 100%;
+  max-width: 950px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  z-index: 1000000;
+  overflow: hidden;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(25, 22, 19, 0.9);
+  color: #B89A5A;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+}
+
+.modalCloseBtn:hover {
+  background: #B89A5A;
+  color: #171717;
+  transform: scale(1.1);
+}
+
+.modalImageWrap {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  max-height: 550px;
+}
+
+/* ========================================================================
+   CERTIFICATES & RECOGNITION SECTION (#credentials)
+   ======================================================================== */
+.certSection {
+  background: linear-gradient(180deg, #FFFDF9 0%, #F7EEDD 100%);
+  padding: 3rem 1.5rem;
+  color: #171717;
+  border-top: 1px solid rgba(184, 154, 90, 0.35);
+  border-bottom: 1px solid rgba(184, 154, 90, 0.35);
+}
+
+.certContainer {
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem auto 0;
+  max-width: 1200px;
+  justify-content: center;
+}
+
+.certCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 154, 90, 0.45);
+  border-radius: 12px;
+  padding: 1.1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 6px 20px rgba(184, 154, 90, 0.15);
+}
+
+.certCard:hover {
+  transform: translateY(-5px);
+  border-color: #B89A5A;
+  box-shadow: 0 14px 30px rgba(184, 154, 90, 0.3);
+}
+
+.certThumbWrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0B0806;
+  border: 1px solid rgba(184, 154, 90, 0.2);
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.certThumbImg {
+  object-fit: contain !important;
+  object-position: center center !important;
+  transition: transform 0.5s ease;
+}
+
+.certCard:hover .certThumbImg {
+  transform: scale(1.04);
+}
+
+.certTag {
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8C6A28;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-align: center;
+}
+
+.certTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #171717;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.certInstitution {
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.72rem;
+  color: #8C6A28;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.certDesc {
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.74rem;
+  color: #554D42;
+  line-height: 1.45;
+  margin: 0 0 1rem 0;
+  flex: 1;
+  text-align: center;
+}
+
+.certBtnRow {
+  margin-top: auto;
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.certViewBtn {
+  flex: 1;
+  padding: 0.5rem 0.4rem;
+  background: linear-gradient(135deg, #B89A5A 0%, #D4AD62 100%);
+  color: #171717;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(184, 154, 90, 0.25);
+}
+
+.certViewBtn:hover {
+  background: linear-gradient(135deg, #D4AD62 0%, #171717 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 16px rgba(184, 154, 90, 0.4);
+  transform: translateY(-1px);
+}
+
+.certDownloadBtn {
+  padding: 0.5rem 0.5rem;
+  background: #FAF5EA;
+  color: #8C6A28;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  border-radius: 6px;
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.63rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.certDownloadBtn:hover {
+  background: #B89A5A;
+  color: #171717;
+  border-color: #B89A5A;
+}
+
+/* ========================================================================
+   UNIVERSITY OFFERS & ADMISSIONS SUBSECTION
+   ======================================================================== */
+.offersSubsection {
+  margin-top: 2.2rem;
+  padding: 2rem 1.8rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 16px;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  box-shadow: 0 10px 30px rgba(184, 154, 90, 0.12);
+}
+
+.offersHeader {
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+
+.offersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.offerDocCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  border-radius: 10px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(184, 154, 90, 0.12);
+}
+
+.offerDocCard:hover {
+  transform: translateY(-3px);
+  border-color: #B89A5A;
+  box-shadow: 0 10px 28px rgba(184, 154, 90, 0.25);
+}
+
+.offerDocHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.offerThumbBox {
+  position: relative;
+  width: 58px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.offerThumbImg {
+  object-fit: cover !important;
+  object-position: top center !important;
+}
+
+.offerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.offerUniName {
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8C6A28;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.offerTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #171717;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.25;
+}
+
+.offerDetail {
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.72rem;
+  color: #554D42;
+  margin: 0;
+}
+
+.offerViewBtn {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  background: linear-gradient(135deg, #B89A5A 0%, #D4AD62 100%);
+  color: #171717;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-sans, "Montserrat", sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  box-shadow: 0 3px 10px rgba(184, 154, 90, 0.25);
+}
+
+.offerViewBtn:hover {
+  background: linear-gradient(135deg, #D4AD62 0%, #171717 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(184, 154, 90, 0.4);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+  .offersGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .offersGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  .timelineSplitLayout {
+    grid-template-columns: 1fr;
+  }
+  .researchMainGrid {
+    grid-template-columns: 1fr;
+  }
+  .interestsBeyondContainer {
+    grid-template-columns: 1fr;
+  }
+  .classroomPhotoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .confServiceSplit {
+    grid-template-columns: 1fr;
+  }
+  .foundationsAwardsContainer {
+    grid-template-columns: 1fr;
+  }
+  .finalProfileContainer {
+    grid-template-columns: 1fr;
+  }
+  .ctaGrid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .heroGrid,
+  .heroLeft,
+  .heroRight,
+  .imageFrameOuter {
+    min-width: 0;
+  }
+
+  .imageFrameOuter {
+    max-width: 100%;
+  }
+
+  .heroPhoto {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+  .nluGridSplit {
+    grid-template-columns: 1fr;
+  }
+  .nluDocGrid {
+    grid-template-columns: 1fr;
+  }
+  .interestsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .academicGridCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .classroomPhotoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ctaGrid4 {
+    grid-template-columns: 1fr;
+  }
+}

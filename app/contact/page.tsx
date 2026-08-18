@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import styles from "./contact.module.css";
 import {
   FaBalanceScale,
@@ -42,23 +43,31 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email || !formData.message) return;
 
     setSubmitting(true);
-    try {
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setSubmitting(false);
-      setSubmitted(true);
-    }
+
+    const enquiryMessage = `Hello Gauri,
+
+NEW WEBSITE ENQUIRY
+
+Full Name: ${formData.fullName}
+Email: ${formData.email}
+Organisation: ${formData.organisation || "N/A"}
+Nature of Inquiry: ${formData.enquiryType || "General Inquiry"}
+
+Message:
+${formData.message}`.trim();
+
+    const whatsappNumber = "447587338945";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(enquiryMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+
+    setSubmitted(true);
+    setSubmitting(false);
   };
 
   const scrollToForm = () => {
@@ -74,10 +83,21 @@ export default function ContactPage() {
 
   return (
     <div className={styles.contactPage}>
+      <Navbar currentPath="/contact" />
       {/* 1. HERO SECTION */}
       <section className={styles.hero}>
-        <Navbar currentPath="/contact" />
-
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+          <Image
+            src="/contact-hero-bg.png"
+            alt="Gauri Goswami Advocate Law Chambers"
+            fill
+            sizes="100vw"
+            className={styles.heroBgImage}
+            priority
+            unoptimized
+          />
+        </div>
+        <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>LET’S CONNECT</h1>
           <div className={styles.heroDivider}>
@@ -159,8 +179,8 @@ export default function ContactPage() {
                   </div>
                   <div className={styles.infoContent}>
                     <span className={styles.infoLabel}>Email</span>
-                    <a href="mailto:connect@gaurigoswami.com" className={styles.infoValue}>
-                      connect@gaurigoswami.com
+                    <a href="mailto:info@gaurigoswami.in" className={styles.infoValue}>
+                      info@gaurigoswami.in
                     </a>
                   </div>
                 </div>
@@ -171,7 +191,7 @@ export default function ContactPage() {
                   </div>
                   <div className={styles.infoContent}>
                     <span className={styles.infoLabel}>Location</span>
-                    <span className={styles.infoValue}>United Kingdom</span>
+                    <span className={styles.infoValue}>Nottingham, United Kingdom</span>
                   </div>
                 </div>
 
@@ -231,7 +251,7 @@ export default function ContactPage() {
                     Thank you for your enquiry!
                   </strong>
                   <p style={{ margin: "0 0 1.2rem", fontSize: "0.88rem", color: "#4A443E", lineHeight: "1.6" }}>
-                    Your message has been sent directly to <strong>info@gaurigoswami.com</strong>. Gauri will review your enquiry and get back to you shortly.
+                    Your message has been sent directly to <strong>info@gaurigoswami.in</strong>. Gauri will review your enquiry and get back to you shortly.
                   </p>
                   <button
                     type="button"
@@ -543,7 +563,7 @@ export default function ContactPage() {
               </div>
             </a>
 
-            <a href="mailto:connect@gaurigoswami.com" className={styles.connectCard}>
+            <a href="mailto:info@gaurigoswami.in" className={styles.connectCard}>
               <div className={styles.connectIconBadge}>
                 <FaEnvelope aria-hidden="true" />
               </div>
@@ -556,67 +576,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 8. GLOBAL FOOTER (Matching Home & All Pages) */}
-      <footer>
-        <div className="footer-brand">
-          <a className="brand" href="#home">
-            <Image className="brand-logo" src="/brand-logo.png" alt="Gauri Goswami" width={96} height={96} unoptimized suppressHydrationWarning />
-          </a>
-          <p className="footer-about">Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.</p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-          </div>
-        </div>
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <a href="/about">About</a>
-              <a href="/#career">Legal Career</a>
-              <a href="/academics">Academics</a>
-              <a href="/research">Research</a>
-              <a href="/kathak">Kathak</a>
-              <a href="/kathak#cultural-heritage">Culture</a>
-            </div>
-            <div>
-              <a href="/about#travel">Travel</a>
-              <a href="/contact">Media</a>
-              <a href="/gallery">Gallery</a>
-              <a href="/#testimonials">Testimonials</a>
-              <a href="/research#publications">Blog</a>
-              <a href="/contact">Contact</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <a href="/research">Research Publications</a>
-          <a href="/#matters">Representative Matters</a>
-          <a href="/about#awards">Awards</a>
-          <a href="/contact">Media</a>
-          <a href="/kathak">Testimonials</a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info%40gaurigoswami.com&su=Performance%20Booking%20Inquiry..." target="_blank" rel="noreferrer">Book Performance</a>
-        </div>
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇬🇧 London, UK (Phone &amp; WhatsApp)</span>
-            <a href="tel:+447587338945" style={{ fontSize: '0.88rem' }}>+44 7587 338945</a>
-          </div>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇮🇳 India (Phone &amp; WhatsApp)</span>
-            <a href="tel:+919864012345" style={{ fontSize: '0.88rem' }}>+91 98640 12345</a>
-          </div>
-        </div>
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      {/* 8. GLOBAL FOOTER */}
+      <Footer />
     </div>
   );
 }

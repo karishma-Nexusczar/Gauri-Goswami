@@ -49,9 +49,9 @@ const galleryItems: GalleryItem[] = [
   {
     id: "5",
     category: "International",
-    title: "High Commission of India",
-    subtitle: "Cultural Diplomacy",
-    caption: "Cultural diplomacy presentation at the High Commission of India Loktak Lake exhibition in London.",
+    title: "United Colours of North East India",
+    subtitle: "Indian Gymkhana Club, London",
+    caption: "Live stage presentation and cultural showcase at United Colours of North East India, Indian Gymkhana Club, London.",
     image: "/high-commission-loktak.jpg"
   },
   {
@@ -153,6 +153,7 @@ export default function GallerySlider() {
                     fill
                     sizes="(max-width: 640px) 195px, 220px"
                     quality={90}
+                    unoptimized
                   />
                   
                   {/* Hover overlay with title, subtitle/location, View Image button */}
@@ -218,6 +219,7 @@ export default function GallerySlider() {
                 fill
                 quality={95}
                 className="gallery-lightbox-img"
+                unoptimized
               />
             </div>
 

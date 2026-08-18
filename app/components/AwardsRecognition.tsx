@@ -69,6 +69,7 @@ export default function AwardsRecognition() {
                   sizes="35vw"
                   className="featured-story-img"
                   quality={95}
+                  unoptimized
                 />
               </div>
               <div
@@ -188,7 +189,7 @@ export default function AwardsRecognition() {
                 }
                 title="Click to view full image"
               >
-                <Image src="/academics-postgraduate-excellence-ceremony.jpg" alt="International Recognition" fill quality={85} />
+                <Image src="/academics-postgraduate-excellence-ceremony.jpg" alt="International Recognition" fill quality={85} unoptimized />
               </div>
               <div className="awards-visual-content">
                 <h4>International Recognition</h4>
@@ -228,7 +229,7 @@ export default function AwardsRecognition() {
                 }
                 title="Click to view full image"
               >
-                <Image src="/legal-scholar-law-library.jpg" alt="Research & Professional Development" fill quality={85} />
+                <Image src="/legal-scholar-law-library.jpg" alt="Research & Professional Development" fill quality={85} unoptimized />
               </div>
               <div className="awards-visual-content">
                 <h4>Research &amp; Professional Development</h4>
@@ -248,7 +249,7 @@ export default function AwardsRecognition() {
                 }
                 title="Click to view full image"
               >
-                <Image src="/kathak-jaapi-stage-recital.jpg" alt="Cultural Excellence" fill quality={85} />
+                <Image src="/kathak-jaapi-stage-recital.jpg" alt="Cultural Excellence" fill quality={85} unoptimized />
               </div>
               <div className="awards-visual-content">
                 <h4>Cultural Excellence</h4>

@@ -10,6 +10,7 @@ export interface TestimonialItem {
   quote: string;
   author: string;
   title: string;
+  company?: string;
   location: string;
   avatar: string;
   theme: "red" | "yellow";
@@ -18,10 +19,10 @@ export interface TestimonialItem {
 const initialTestimonials: TestimonialItem[] = [
   {
     id: "1",
-    category: "Proprietor & Industry Leader",
+    category: "Founder & Industry Leader",
     quote: "It was a pleasure working with Gauri Goswami during her student life when she undertook a modelling assignment with NISA'S. From the very beginning, Gauri displayed a highly professional attitude, punctuality, and a strong commitment to her work. She carried herself with confidence, followed directions exceptionally well, and maintained excellent discipline throughout the assignment. Her positive attitude, graceful presence, and willingness to learn made her a delight to work with. Despite being a student, she demonstrated maturity and professionalism that matched experienced models. I appreciate Gauri's dedication and work ethic and am confident that she will continue to excel in the modelling and fashion industry. I wish her every success in all her future endeavors.",
     author: "Nisa Sarma",
-    title: "Proprietor",
+    title: "Founder of Nisa’s Hand Made Collection",
     location: "Assam, India",
     avatar: "/nisa-sarma.jpg",
     theme: "red"
@@ -71,7 +72,8 @@ const initialTestimonials: TestimonialItem[] = [
     category: "Cultural Leaders",
     quote: "It has been a pleasure knowing Gauri. Her professionalism, creativity, and dedication are reflected in everything she undertakes. Whether representing her culture through dance or pursuing excellence in academics, she demonstrates confidence, discipline, and a genuine commitment to making a meaningful impact. I wish her continued success in all her future endeavors.",
     author: "Sisi Xi",
-    title: "International Professional & Cultural Supporter",
+    title: "Partner and Head of Global Marketing & Operations",
+    company: "Easy Transfer",
     location: "International",
     avatar: "/sisi-xi.jpg",
     theme: "yellow"
@@ -89,12 +91,23 @@ const initialTestimonials: TestimonialItem[] = [
 ];
 
 export default function TestimonialsSlider() {
+  const [cardsPerPage, setCardsPerPage] = useState<number>(3);
   const [page, setPage] = useState<number>(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  const CARDS_PER_PAGE = 3;
-  const totalPages = Math.ceil(initialTestimonials.length / CARDS_PER_PAGE);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 640) setCardsPerPage(1);
+      else if (window.innerWidth <= 1024) setCardsPerPage(2);
+      else setCardsPerPage(3);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(initialTestimonials.length / cardsPerPage);
 
   const handlePrev = () => {
     setPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
@@ -116,9 +129,10 @@ export default function TestimonialsSlider() {
     return () => clearInterval(timer);
   }, [isPaused, totalPages]);
 
-  const visibleCards = [0, 1, 2].map(
-    (offset) => initialTestimonials[(page * CARDS_PER_PAGE + offset) % initialTestimonials.length]
-  );
+  const visibleCards = Array.from({ length: cardsPerPage }).map((_, offset) => {
+    const startIdx = page * cardsPerPage;
+    return initialTestimonials[(startIdx + offset) % initialTestimonials.length];
+  });
 
   return (
     <section className="voices-testimonials-section" id="testimonials" aria-label="Testimonials">
@@ -168,9 +182,12 @@ export default function TestimonialsSlider() {
                 {/* 3. Closing Signature */}
                 <div className="voices-closing-wrap">
                   <p className="voices-best-wishes">Best wishes,</p>
-                  <p className="voices-from-line">
-                    From-{card.author} ({card.title})
-                  </p>
+                  <p className="voices-from-line">From, {card.author}</p>
+                  <p className="voices-author-loc">{card.title}</p>
+                  {card.company && (
+                    <p className="voices-author-loc">{card.company}</p>
+                  )}
+                  <p className="voices-author-loc" style={{ marginTop: '2px', fontSize: '0.65rem' }}>{card.location}</p>
                 </div>
 
                 {/* 4. Read More Toggle */}

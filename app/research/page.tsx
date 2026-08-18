@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import {
   FaGlobe,
   FaLeaf,
@@ -21,20 +24,24 @@ import {
   FaInstagram,
   FaFacebookF,
   FaYoutube,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa6";
 import styles from "./research.module.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const performanceInquiryUrl =
-  "mailto:info@gaurigoswami.com?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
+  "mailto:info@gaurigoswami.in?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
 
 interface DocumentModalData {
   title: string;
-  category: string;
-  venueOrPublisher: string;
-  date: string;
-  description: string;
+  category?: string;
+  venueOrPublisher?: string;
+  date?: string;
+  description?: string;
   imageSrc?: string;
+  src?: string;
   citation?: string;
   aboutAuthor?: string;
   metaGrid?: { label: string; val: string }[];
@@ -45,6 +52,8 @@ export default function ResearchPage() {
   const [showGreenwashingArticle, setShowGreenwashingArticle] = useState<boolean>(false);
   const [showLondonDiasporaArticle, setShowLondonDiasporaArticle] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("All");
+
+  const swiperRef = useRef<any>(null);
 
   React.useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -126,7 +135,7 @@ export default function ResearchPage() {
             src="/gauri-research-hero-desk-red-blazer.jpg"
             alt="Gauri Goswami — Commercial Law Research & Legal Publications"
             fill
-            style={{ objectFit: "contain", objectPosition: "right center", imageRendering: "-webkit-optimize-contrast" }}
+            className={styles.heroBgImg}
             unoptimized
           />
           <div className={styles.heroBgOverlay} />
@@ -142,9 +151,7 @@ export default function ResearchPage() {
             <p className={styles.heroSub}>
               Gauri&apos;s research and academic work explores contemporary questions in commercial law, climate regulation, technology, constitutionalism, human rights and global legal frameworks.
             </p>
-            
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "1.8rem" }}>
-              <span style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", color: "#B89A5A", lineHeight: 1 }}>G</span>
+            <div className={styles.heroAuthorBadge}>
               <div>
                 <span style={{ fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.18em", color: "#FCFBF8", display: "block" }}>GAURI GOSWAMI</span>
                 <span style={{ fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.18em", color: "#B89A5A", marginTop: "2px", display: "block" }}>LAW &bull; RESEARCH &bull; SCHOLARSHIP</span>
@@ -188,7 +195,7 @@ export default function ResearchPage() {
         <div className={styles.areasContainer}>
           <div className={styles.sectionHeaderCenter}>
             <span className={styles.kicker}>AREAS OF RESEARCH &mdash;</span>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2.2rem", color: "#252525", margin: 0 }}>
+            <h2 className={styles.sectionHeading} style={{ color: "#252525" }}>
               Specialised Domains of Legal Inquiry
             </h2>
           </div>
@@ -250,18 +257,20 @@ export default function ResearchPage() {
           ======================================================================== */}
       <section className={styles.featuredSection} id="greenwashing">
         <div className={styles.featuredContainer}>
-          <div>
+          <div className={styles.featuredLeft}>
             <span className={styles.kicker}>FEATURED RESEARCH &mdash;</span>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2.5rem", color: "#FCFBF8", margin: "0.2rem 0 0.5rem 0" }}>
+            <h2 className={styles.sectionHeading} style={{ color: "#FCFBF8", margin: "0.4rem 0 0.8rem 0" }}>
               Greenwashing Regulation
             </h2>
-            <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.15rem", fontStyle: "italic", color: "#B89A5A", margin: "0 0 1rem 0" }}>
+            <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.2rem", fontStyle: "italic", color: "#B89A5A", margin: "0 0 1.2rem 0" }}>
               Comparative Legal Study &mdash; European Union &times; United Kingdom
             </h4>
-            <p style={{ fontSize: "0.9rem", color: "rgba(252,251,248,0.85)", lineHeight: 1.68 }}>
+            <p style={{ fontSize: "0.95rem", color: "rgba(252,251,248,0.85)", lineHeight: 1.7, maxWidth: "600px" }}>
               Postgraduate research examining greenwashing regulation through a comparative study of the legal frameworks of the European Union and the United Kingdom.
             </p>
+          </div>
 
+          <div className={styles.featuredRight}>
             <div className={styles.featuredMetaGrid}>
               <div>
                 <span className={styles.metaLabel}>Research Area</span>
@@ -273,7 +282,7 @@ export default function ResearchPage() {
               </div>
               <div>
                 <span className={styles.metaLabel}>Academic Context</span>
-                <span className={styles.metaVal}>LL.M. Commercial Law</span>
+                <span className={styles.metaVal}>LL.M. International Commercial Law</span>
               </div>
               <div>
                 <span className={styles.metaLabel}>Supervisor</span>
@@ -289,11 +298,10 @@ export default function ResearchPage() {
                 venueOrPublisher: "University of Nottingham (School of Law)",
                 date: "2024–2025",
                 description: "Postgraduate research examining greenwashing regulation through a comparative study of the legal frameworks of the European Union and the United Kingdom under the supervision of Prof. Peter Cartwright.",
-                imageSrc: "/gauri-nottingham-law-hall-red-sofa.jpg",
                 metaGrid: [
                   { label: "Research Area", val: "Greenwashing Regulation" },
                   { label: "Jurisdictions", val: "European Union • UK" },
-                  { label: "Academic Context", val: "LL.M. Commercial Law" },
+                  { label: "Academic Context", val: "LL.M. International Commercial Law" },
                   { label: "Supervisor", val: "Prof. Peter Cartwright" }
                 ],
                 aboutAuthor: "Gauri Goswami is a law graduate from the University of Nottingham, United Kingdom, where she was awarded the South Asia Postgraduate Excellence Award and received both the Nottingham Advantage Award and the Nottingham Postgraduate Advantage Award in recognition of her academic and extracurricular engagement. She completed her BA LL.B. (Hons.) with First Class Honours from the National Law University and Judicial Academy, Assam, earning multiple subject topper awards during her studies. Gauri is soon to become a member of the Honourable Society of the Middle Temple and aspires to pursue a career at the Commercial Bar. Her visits to the Inns of Court, including Lincoln’s Inn and Gray’s Inn, have further strengthened her ambition to practise as a Commercial Barrister. Alongside her academic journey, she has remained actively engaged in professional and community initiatives, including volunteering with White Rose to support fundraising efforts for genocide prevention and working as a Library Porter at Nottingham Trent University, reflecting her commitment to advocacy, legal scholarship, and public engagement."
@@ -301,33 +309,6 @@ export default function ResearchPage() {
             >
               View Research &rarr;
             </button>
-          </div>
-
-          <div
-            className={styles.docMockupWrap}
-            onClick={() => setSelectedDoc({
-              title: "Greenwashing Regulation — Comparative Legal Study (EU × UK)",
-              category: "Featured Research",
-              venueOrPublisher: "University of Nottingham (School of Law)",
-              date: "2024–2025",
-              description: "Postgraduate research examining greenwashing regulation through a comparative study of the legal frameworks of the European Union and the United Kingdom under the supervision of Prof. Peter Cartwright.",
-              imageSrc: "/gauri-nottingham-law-hall-red-sofa.jpg",
-              metaGrid: [
-                { label: "Research Area", val: "Greenwashing Regulation" },
-                { label: "Jurisdictions", val: "European Union • UK" },
-                { label: "Academic Context", val: "LL.M. Commercial Law" },
-                { label: "Supervisor", val: "Prof. Peter Cartwright" }
-              ],
-              aboutAuthor: "Gauri Goswami is a law graduate from the University of Nottingham, United Kingdom, where she was awarded the South Asia Postgraduate Excellence Award and received both the Nottingham Advantage Award and the Nottingham Postgraduate Advantage Award in recognition of her academic and extracurricular engagement. She completed her BA LL.B. (Hons.) with First Class Honours from the National Law University and Judicial Academy, Assam, earning multiple subject topper awards during her studies. Gauri is soon to become a member of the Honourable Society of the Middle Temple and aspires to pursue a career at the Commercial Bar. Her visits to the Inns of Court, including Lincoln’s Inn and Gray’s Inn, have further strengthened her ambition to practise as a Commercial Barrister. Alongside her academic journey, she has remained actively engaged in professional and community initiatives, including volunteering with White Rose to support fundraising efforts for genocide prevention and working as a Library Porter at Nottingham Trent University, reflecting her commitment to advocacy, legal scholarship, and public engagement."
-            })}
-          >
-            <Image
-              src="/gauri-nottingham-law-hall-red-sofa.jpg"
-              alt="Gauri Goswami — Greenwashing Regulation Comparative Study — University of Nottingham"
-              fill
-              style={{ objectFit: "cover", objectPosition: "center 20%", imageRendering: "-webkit-optimize-contrast" }}
-              unoptimized
-            />
           </div>
         </div>
       </section>
@@ -342,7 +323,7 @@ export default function ResearchPage() {
             {/* LEFT COLUMN: PUBLICATIONS & PUBLISHED RESEARCH */}
             <div>
               <span className={styles.kicker}>PUBLICATIONS &mdash;</span>
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "#252525", margin: "0.2rem 0 0.3rem 0" }}>
+              <h2 className={styles.sectionHeading} style={{ color: "#252525", margin: "0.2rem 0 0.3rem 0" }}>
                 Publications
               </h2>
               <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "1.8rem" }}>
@@ -371,19 +352,6 @@ export default function ResearchPage() {
                     Read Publication &rarr;
                   </button>
                 </div>
-                <div
-                  style={{ position: "relative", width: "100%", height: "130px", borderRadius: "6px", overflow: "hidden", border: "1px solid rgba(184, 154, 90, 0.3)", background: "#171717", cursor: "pointer" }}
-                  onClick={() => setShowGreenwashingArticle(true)}
-                  title="Click to read full publication"
-                >
-                  <Image
-                    src="/bars-across-greenwashing-banner.png"
-                    alt="Regulating Greenwashing: Are the EU, UK, and US Doing Enough? — Bars Across London"
-                    fill
-                    style={{ objectFit: "cover", imageRendering: "-webkit-optimize-contrast" }}
-                    unoptimized
-                  />
-                </div>
               </div>
 
               {/* STEP 6: PUBLISHED INTERNATIONAL PRESS & CULTURAL REPRESENTATION */}
@@ -407,19 +375,6 @@ export default function ResearchPage() {
                   >
                     Read Publication &rarr;
                   </button>
-                </div>
-                <div
-                  style={{ position: "relative", width: "100%", height: "130px", borderRadius: "6px", overflow: "hidden", border: "1px solid rgba(184, 154, 90, 0.3)", background: "#171717", cursor: "pointer" }}
-                  onClick={() => setShowLondonDiasporaArticle(true)}
-                  title="Click to read full publication"
-                >
-                  <Image
-                    src="/united-colours-of-northeast-india-london-stage.jpg"
-                    alt="NorthEast Indian diaspora brings region's colours to London — Indian Gymkhana Club"
-                    fill
-                    style={{ objectFit: "cover", objectPosition: "center center", imageRendering: "-webkit-optimize-contrast" }}
-                    unoptimized
-                  />
                 </div>
               </div>
 
@@ -458,40 +413,13 @@ export default function ResearchPage() {
                     Read Publication &rarr;
                   </button>
                 </div>
-                <div
-                  style={{ position: "relative", width: "100%", height: "130px", borderRadius: "6px", overflow: "hidden", border: "1px solid rgba(184, 154, 90, 0.3)", background: "#171717", cursor: "pointer" }}
-                  onClick={() => setSelectedDoc({
-                    title: "Fighting Extremism: The Legal Propositions",
-                    category: "Peer-Reviewed Journal Article",
-                    venueOrPublisher: "Indian Journal of Law and Justice (University of North Bengal)",
-                    date: "March 2020",
-                    description: "Published journal paper analyzing statutory counter-terrorism measures, legal propositions for combating extremism, and fundamental rights safeguards under Indian constitutional jurisprudence.",
-                    imageSrc: "/nbu-journal-logo.png",
-                    metaGrid: [
-                      { label: "Journal", val: "Indian Journal of Law and Justice" },
-                      { label: "Volume & Issue", val: "Vol-11 No.1 Part 2 (pp. 167–182)" },
-                      { label: "Publisher", val: "University of North Bengal, Dept. of Law" },
-                      { label: "Publication Date", val: "March 2020" },
-                      { label: "ISSN No", val: "0976-3570" },
-                      { label: "URI / Access", val: "https://ir.nbu.ac.in/handle/123456789/3999" }
-                    ]
-                  })}
-                >
-                  <Image
-                    src="/nbu-journal-logo.png"
-                    alt="Fighting Extremism: The Legal Propositions — Indian Journal of Law and Justice"
-                    fill
-                    style={{ objectFit: "contain", objectPosition: "center", padding: "8px", background: "#FFFFFF" }}
-                    unoptimized
-                  />
-                </div>
               </div>
             </div>
 
             {/* RIGHT COLUMN: STEP 7 — RESEARCH PAPERS & ACADEMIC PRESENTATIONS */}
             <div id="conferences">
               <span className={styles.kicker}>PRESENTATIONS &mdash;</span>
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "#252525", margin: "0.2rem 0 0.3rem 0" }}>
+              <h2 className={styles.sectionHeading} style={{ color: "#252525", margin: "0.2rem 0 0.3rem 0" }}>
                 Research Papers &amp; Academic Presentations
               </h2>
               <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "1.8rem" }}>
@@ -639,7 +567,7 @@ export default function ResearchPage() {
           <div className={styles.clinicalGrid}>
             <div>
               <span className={styles.kicker}>LAW BEYOND THE CLASSROOM &mdash;</span>
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "#252525", margin: "0.2rem 0 0.2rem 0" }}>
+              <h2 className={styles.sectionHeading} style={{ color: "#252525", margin: "0.2rem 0 0.2rem 0" }}>
                 Public Interest Lawyering, Legal Aid &amp; Para-Legal Services
               </h2>
               <div style={{ fontSize: "0.85rem", color: "#B89A5A", fontWeight: 600, marginBottom: "1rem" }}>
@@ -720,7 +648,7 @@ export default function ResearchPage() {
         <div className={styles.areasContainer}>
           <div className={styles.sectionHeaderCenter}>
             <span className={styles.kicker}>ACADEMIC ENGAGEMENT &mdash;</span>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2.2rem", color: "#252525", margin: 0 }}>
+            <h2 className={styles.sectionHeading} style={{ color: "#252525" }}>
               Seminars, Workshops &amp; Academic Symposia
             </h2>
           </div>
@@ -767,38 +695,41 @@ export default function ResearchPage() {
       <section className={styles.featuresSection}>
         <div className={styles.areasContainer}>
           <span className={styles.kicker}>SELECTED FEATURES &mdash;</span>
-          <div className={styles.pubCardLarge} style={{ margin: 0, gridTemplateColumns: "1fr 200px" }}>
+          <div className={`${styles.pubCardLarge} ${styles.featuredMediaCard}`} style={{ margin: 0 }}>
             <div>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.4rem", color: "#252525", margin: "0 0 0.4rem 0" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.45rem", color: "#252525", margin: "0 0 0.3rem 0", lineHeight: 1.25 }}>
                 NorthEast Indian Diaspora Brings Region&apos;s Colours to London
               </h3>
-              <div style={{ fontSize: "0.8rem", color: "#B89A5A", fontWeight: 600, marginBottom: "0.6rem" }}>
-                EastMojo &bull; 2025
+              <div style={{ fontSize: "0.82rem", color: "#B89A5A", fontWeight: 700, letterSpacing: "0.04em", marginBottom: "0.75rem" }}>
+                EastMojo &bull; 2025 &bull; United Colours of North East India
               </div>
-              <p style={{ fontSize: "0.85rem", color: "#444", lineHeight: 1.6, marginBottom: "1rem" }}>
-                A feature highlighting the cultural presence, artistic heritage and community representation of the North-East Indian diaspora in London.
+              <p style={{ fontSize: "0.86rem", color: "#333333", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+                A feature highlighting the cultural presence, artistic heritage, and community representation of the North-East Indian diaspora in London.
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "#555555", lineHeight: 1.6, marginBottom: "1.2rem", fontStyle: "italic", borderLeft: "3px solid #B89A5A", paddingLeft: "0.85rem" }}>
+                Fashion Show representing the state of Assam with a graceful Red Muga Mekhela Chador paired with a matching Muga blouse and Riha, complemented by authentic Assamese jewellery, including Gamkharu, Dhulbiri, Jhunbiri, and Golpota. The look is completed with a traditional hair bun adorned with vibrant red flowers, adding a touch of elegance and cultural charm.
               </p>
               <button
                 className={styles.goldBtn}
                 onClick={() => setSelectedDoc({
                   title: "NorthEast Indian Diaspora Brings Region's Colours to London",
                   category: "Cultural & Media Feature",
-                  venueOrPublisher: "EastMojo",
+                  venueOrPublisher: "EastMojo — United Colours of North East India",
                   date: "2025",
-                  description: "Feature article documenting NorthEast Indian diaspora cultural representation and performing arts in London, UK.",
-                  imageSrc: "/culture-london-rongali-bihu-delegates.jpg"
+                  description: "Fashion Show representing the state of Assam with a graceful Red Muga Mekhela Chador paired with a matching Muga blouse and Riha, complemented by authentic Assamese jewellery, including Gamkharu, Dhulbiri, Jhunbiri, and Golpota. The look is completed with a traditional hair bun adorned with vibrant red flowers, adding a touch of elegance and cultural charm.",
+                  imageSrc: "/northeast-diaspora-london-mekhela-chador-full.png"
                 })}
               >
                 Read Feature &rarr;
               </button>
             </div>
 
-            <div style={{ position: "relative", width: "100%", height: "160px", borderRadius: "6px", overflow: "hidden", border: "1px solid rgba(184, 154, 90, 0.3)" }}>
+            <div style={{ position: "relative", width: "100%", height: "320px", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(184, 154, 90, 0.35)", background: "#FAF6F0", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Image
-                src="/culture-london-rongali-bihu-delegates.jpg"
-                alt="NorthEast Indian Diaspora London"
+                src="/northeast-diaspora-london-mekhela-chador-full.png"
+                alt="NorthEast Indian Diaspora London — Gauri Goswami Mekhela Chador"
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain", objectPosition: "center center", padding: "4px" }}
                 unoptimized
               />
             </div>
@@ -809,13 +740,57 @@ export default function ResearchPage() {
       {/* ========================================================================
           STEP 11 — RESEARCH ARCHIVE (#171717 DEEP CHARCOAL)
           ======================================================================== */}
-      <section className={styles.archiveSection}>
+      <section className={styles.archiveSection} id="publications">
         <div className={styles.areasContainer}>
-          <div className={styles.sectionHeaderCenter}>
+          <div className={styles.sectionHeaderCenter} style={{ position: "relative" }}>
             <span className={styles.kicker}>RESEARCH &amp; ACADEMIC ARCHIVE</span>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2.2rem", color: "#FCFBF8", margin: 0 }}>
+            <h2 className={styles.sectionHeading} style={{ color: "#FCFBF8", margin: "0 0 0.8rem 0" }}>
               Complete Document Collection
             </h2>
+
+            {/* Carousel Nav Arrow Controls */}
+            <div style={{ display: "flex", justifyContent: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+              <button
+                type="button"
+                aria-label="Slide Left"
+                onClick={() => swiperRef.current?.slidePrev()}
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(184, 154, 90, 0.4)",
+                  background: "rgba(25, 22, 19, 0.9)",
+                  color: "#B89A5A",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease"
+                }}
+              >
+                <FaChevronLeft style={{ fontSize: "0.85rem" }} />
+              </button>
+              <button
+                type="button"
+                aria-label="Slide Right"
+                onClick={() => swiperRef.current?.slideNext()}
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(184, 154, 90, 0.4)",
+                  background: "rgba(25, 22, 19, 0.9)",
+                  color: "#B89A5A",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease"
+                }}
+              >
+                <FaChevronRight style={{ fontSize: "0.85rem" }} />
+              </button>
+            </div>
           </div>
 
           {/* FILTER TABS */}
@@ -831,37 +806,51 @@ export default function ResearchPage() {
             ))}
           </div>
 
-          {/* ARCHIVE GRID */}
-          <div className={styles.archiveGrid}>
-            {filteredArchive.map((item, idx) => (
-              <div key={idx} className={styles.archiveCard}>
-                <div>
-                  <span style={{ fontSize: "0.68rem", color: "#B89A5A", fontWeight: 600, display: "block", marginBottom: "4px" }}>
-                    {item.type}
-                  </span>
-                  <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem", color: "#FCFBF8", margin: "0 0 0.4rem 0", lineHeight: 1.25 }}>
-                    {item.title}
-                  </h4>
-                  <span style={{ fontSize: "0.74rem", color: "#C8BFB5", display: "block", marginBottom: "0.8rem" }}>
-                    {item.date}
-                  </span>
-                </div>
-                <button
-                  className={styles.goldBtn}
-                  style={{ fontSize: "0.7rem", padding: "4px 8px", width: "100%", justifyContent: "center" }}
-                  onClick={() => setSelectedDoc({
-                    title: item.title,
-                    category: item.type,
-                    venueOrPublisher: "Academic Archive",
-                    date: item.date,
-                    description: item.description,
-                    imageSrc: item.imageSrc
-                  })}
-                >
-                  View Document &rarr;
-                </button>
-              </div>
-            ))}
+          {/* ARCHIVE SINGLE-ROW CAROUSEL TRACK */}
+          <div className={styles.archiveSwiperContainer}>
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 3200,
+                disableOnInteraction: false,
+              }}
+              onBeforeInit={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                }
+              }}
+              className="archive-mobile-swiper"
+            >
+              {filteredArchive.map((item, idx) => (
+                <SwiperSlide key={idx}>
+                  <div className={styles.archiveCard} style={{ margin: "0 auto", width: "100%", maxWidth: "340px", minHeight: "240px", display: "flex", flexDirection: "column" }}>
+                    <span style={{ fontSize: "0.68rem", color: "#B89A5A", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "4px" }}>
+                      {item.type}
+                    </span>
+                    <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "#FCFBF8", margin: "0 0 0.3rem 0", lineHeight: 1.3 }}>
+                      {item.title}
+                    </h4>
+                    <span style={{ fontSize: "0.74rem", color: "#D4AD62", fontWeight: 600, display: "block", marginBottom: "0.6rem" }}>
+                      {item.date}
+                    </span>
+                    {item.description && (
+                      <p style={{ fontSize: "0.82rem", color: "rgba(252, 251, 248, 0.85)", lineHeight: 1.55, margin: 0, flex: 1 }}>
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>
@@ -873,7 +862,7 @@ export default function ResearchPage() {
         <div className={styles.areasContainer}>
           <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
             <span className={styles.kicker}>CONTINUING THE INQUIRY &mdash;</span>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2.2rem", color: "#252525", margin: "0.2rem 0 0.6rem 0" }}>
+            <h2 className={styles.sectionHeading} style={{ color: "#252525", margin: "0.2rem 0 0.6rem 0" }}>
               Future Research Directions
             </h2>
             <p style={{ fontSize: "0.9rem", color: "#444", lineHeight: 1.68 }}>
@@ -919,13 +908,13 @@ export default function ResearchPage() {
             <Link href="/academics" className={styles.goldBtn}>
               Academic Journey &rarr;
             </Link>
-            <Link href="/#career" className={styles.goldBtn}>
+            <Link href="/about#career" className={styles.goldBtn}>
               Legal Career &rarr;
             </Link>
             <Link href="/about" className={styles.goldBtn}>
               Whole Journey &rarr;
             </Link>
-            <Link href="/#contact" className={styles.goldBtn}>
+            <Link href="/contact" className={styles.goldBtn}>
               Contact &rarr;
             </Link>
           </div>
@@ -951,13 +940,13 @@ export default function ResearchPage() {
               </div>
             )}
 
-            {selectedDoc.imageSrc && (
+            {(selectedDoc.imageSrc || selectedDoc.src) && (
               <div style={{ position: "relative", width: "100%", height: "240px", borderRadius: "8px", overflow: "hidden", marginBottom: "1.2rem", border: "1px solid rgba(184, 154, 90, 0.35)", background: "#0E0C0A" }}>
                 <Image
-                  src={selectedDoc.imageSrc}
+                  src={selectedDoc.imageSrc || selectedDoc.src || ""}
                   alt={selectedDoc.title}
                   fill
-                  style={{ objectFit: "cover", objectPosition: "center 20%", imageRendering: "-webkit-optimize-contrast" }}
+                  style={{ objectFit: "contain", objectPosition: "center", imageRendering: "-webkit-optimize-contrast" }}
                   unoptimized
                 />
               </div>
@@ -1020,16 +1009,7 @@ export default function ResearchPage() {
               <span style={{ background: "#B89A5A", color: "#171717", padding: "3px 10px", borderRadius: "14px", fontSize: "0.7rem", fontWeight: 700 }}>United Kingdom</span>
             </div>
 
-            {/* HEADER GRAPHIC BANNER */}
-            <div style={{ position: "relative", width: "100%", height: "240px", borderRadius: "8px", overflow: "hidden", marginBottom: "1.5rem", border: "1px solid rgba(184, 154, 90, 0.35)", background: "#171717" }}>
-              <Image
-                src="/bars-across-greenwashing-banner.png"
-                alt="Regulating Greenwashing: Are the EU, UK, and US Doing Enough? — Bars Across"
-                fill
-                style={{ objectFit: "cover", imageRendering: "-webkit-optimize-contrast" }}
-                unoptimized
-              />
-            </div>
+
 
             {/* ARTICLE TITLE & BYLINE */}
             <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "#FCFBF8", margin: "0 0 0.5rem 0", lineHeight: 1.25 }}>
@@ -1121,16 +1101,7 @@ export default function ResearchPage() {
               <span style={{ background: "#B89A5A", color: "#171717", padding: "3px 10px", borderRadius: "14px", fontSize: "0.7rem", fontWeight: 700 }}>UNITED KINGDOM</span>
             </div>
 
-            {/* HEADER GRAPHIC BANNER */}
-            <div style={{ position: "relative", width: "100%", height: "280px", borderRadius: "8px", overflow: "hidden", marginBottom: "1.5rem", border: "1px solid rgba(184, 154, 90, 0.35)", background: "#171717" }}>
-              <Image
-                src="/united-colours-of-northeast-india-london-stage.jpg"
-                alt="NorthEast Indian diaspora brings region's colours to London — Indian Gymkhana Club"
-                fill
-                style={{ objectFit: "cover", objectPosition: "center center", imageRendering: "-webkit-optimize-contrast" }}
-                unoptimized
-              />
-            </div>
+
 
             {/* ARTICLE TITLE & BYLINE */}
             <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "#FCFBF8", margin: "0 0 0.5rem 0", lineHeight: 1.25 }}>
@@ -1198,69 +1169,7 @@ export default function ResearchPage() {
       )}
 
       {/* GLOBAL FOOTER */}
-      <footer>
-        <div className="footer-brand">
-          <Link className="brand" href="/">
-            <Image
-              className="brand-logo"
-              src="/brand-logo.png"
-              alt="Gauri Goswami"
-              width={96}
-              height={96}
-              unoptimized
-            />
-          </Link>
-          <p className="footer-about">
-            Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
-          </p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-          </div>
-        </div>
-
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <Link href="/about">About</Link>
-              <Link href="/#career">Legal Career</Link>
-              <Link href="/academics">Academics</Link>
-              <Link href="/research">Research</Link>
-              <Link href="/kathak">Kathak</Link>
-            </div>
-            <div>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/#contact">Contact</Link>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4>Resources</h4>
-          <Link href="/academics">Academic Publications</Link>
-          <Link href="/#career">Representative Matters</Link>
-          <a href={performanceInquiryUrl} target="_blank" rel="noreferrer">
-            Book Performance
-          </a>
-        </div>
-
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <a href="tel:+447587338945">+44 7587 338945</a>
-          <p style={{ margin: "0.25rem 0 0.5rem", color: "#a49c91" }}>United Kingdom</p>
-          <a href="https://wa.me/447587338945" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <p style={{ margin: "0.25rem 0 0", color: "#a49c91" }}>New Delhi, India</p>
-        </div>
-
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

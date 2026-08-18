@@ -1,0 +1,639 @@
+/* --------------------------------------------------------------------------
+   RESEARCH & PUBLICATIONS PAGE STYLES — MATCHING EXACT REFERENCE MOCKUP
+   -------------------------------------------------------------------------- */
+
+/* STEP 1 — HERO (#171717) */
+.heroSection {
+  position: relative;
+  background: #0E0C0A;
+  color: #FCFBF8;
+  padding: 12rem 1.5rem 10rem 1.5rem;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.3);
+  min-height: 98vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heroBgWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroBgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(14, 12, 10, 0.98) 0%, rgba(14, 12, 10, 0.88) 38%, rgba(14, 12, 10, 0.35) 55%, transparent 72%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.kicker {
+  font-family: var(--font-sans, "Montserrat", Arial, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #B89A5A;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #FCFBF8;
+  margin: 0 0 1.4rem 0;
+}
+
+.heroSub {
+  font-size: 0.96rem;
+  color: rgba(252, 251, 248, 0.88);
+  line-height: 1.72;
+  max-width: 580px;
+  margin: 0 0 1.8rem 0;
+}
+
+.heroImgWrap {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  background: transparent;
+}
+
+/* STEP 2 — RESEARCH PHILOSOPHY (#F6F1E8) */
+.philosophySection {
+  background: #F6F1E8;
+  color: #252525;
+  padding: 4.5rem 1.5rem;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.2);
+}
+
+.philosophyContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.philosophyTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #252525;
+  margin: 0.2rem 0 0 0;
+  line-height: 1.2;
+}
+
+.philosophyText {
+  font-size: 0.94rem;
+  color: #444;
+  line-height: 1.72;
+  margin-bottom: 1rem;
+}
+
+.goldLine {
+  width: 120px;
+  height: 1px;
+  background: #B89A5A;
+  margin-top: 1rem;
+}
+
+/* STEP 3 — AREAS OF RESEARCH (Soft White #FFFFFF) */
+.areasSection {
+  background: #FFFFFF;
+  color: #252525;
+  padding: 4.5rem 1.5rem;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.2);
+}
+
+.areasContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sectionHeaderCenter {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.areasGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.areaBlock {
+  background: #FAF6F0;
+  border-top: 2px solid #B89A5A;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.areaBlock:hover {
+  transform: translateY(-3px);
+  background: #F4ECE0;
+}
+
+.areaNum {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #B89A5A;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.areaTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #252525;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+.areaDesc {
+  font-size: 0.76rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* STEP 4 — FEATURED RESEARCH (#171717) */
+.featuredSection {
+  background: #171717;
+  color: #FCFBF8;
+  padding: 5rem 1.5rem;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.25);
+}
+
+.featuredContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.featuredMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.metaLabel {
+  font-size: 0.68rem;
+  color: #B89A5A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.metaVal {
+  font-size: 0.78rem;
+  color: #FCFBF8;
+  font-weight: 600;
+}
+
+.docMockupWrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  background: #0E0C0A;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+/* STEP 5 & 6 — PUBLICATIONS (#FAF6F0) & STEP 7 PRESENTATIONS */
+.pubSection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 4.5rem 1.5rem;
+}
+
+.pubSplitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+}
+
+.pubCardLarge {
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 154, 90, 0.35);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+.featuredMediaCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 2rem;
+  align-items: center;
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(184, 154, 90, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #B89A5A;
+}
+
+.timelineYear {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #B89A5A;
+  display: block;
+}
+
+/* STEP 8 — LAW BEYOND CLASSROOM (#FAF6F0) */
+.clinicalSection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 4.5rem 1.5rem;
+  border-top: 1px solid rgba(184, 154, 90, 0.25);
+  border-bottom: 1px solid rgba(184, 154, 90, 0.25);
+}
+
+.clinicalGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  align-items: center;
+}
+
+.photoPairGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.photoBox {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  background: #0E0C0A;
+  cursor: pointer;
+}
+
+.photoLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #252525;
+  text-align: center;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+/* STEP 9 — ACADEMIC ENGAGEMENT (#FFFFFF) */
+.engagementSection {
+  background: #FFFFFF;
+  color: #252525;
+  padding: 4.5rem 1.5rem;
+}
+
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.engagementCol {
+  background: #FAF6F0;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.engagementYearHeader {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #B89A5A;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(184, 154, 90, 0.3);
+  padding-bottom: 0.4rem;
+}
+
+.engagementList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.engagementList li {
+  font-size: 0.82rem;
+  color: #444;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.engagementList li::before {
+  content: "•";
+  color: #B89A5A;
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* STEP 10 — SELECTED FEATURES (#FAF6F0) */
+.featuresSection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 4rem 1.5rem;
+}
+
+/* STEP 11 — ARCHIVE (#171717) */
+.archiveSection {
+  background: #171717;
+  color: #FCFBF8;
+  padding: 4.5rem 1.5rem;
+}
+
+.archiveTabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  color: #C8BFB5;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabBtn.activeTab,
+.tabBtn:hover {
+  background: #B89A5A;
+  color: #171717;
+  border-color: #B89A5A;
+  font-weight: 600;
+}
+
+.archiveGrid {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0.2rem 1.2rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.archiveGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.archiveCard {
+  flex: 0 0 340px;
+  min-width: 340px;
+  max-width: 340px;
+  background: rgba(25, 22, 19, 0.95);
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  border-radius: 12px;
+  padding: 1.35rem 1.4rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.archiveCard:hover {
+  transform: translateY(-4px);
+  border-color: #B89A5A;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* STEP 12 — CONTINUING INQUIRY (#FAF6F0) */
+.inquirySection {
+  background: #FAF6F0;
+  color: #252525;
+  padding: 4rem 1.5rem;
+}
+
+.inquiryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.inquiryItem {
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* STEP 13 — FINAL CTA (#171717) */
+.ctaSection {
+  background: #171717;
+  color: #FCFBF8;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(184, 154, 90, 0.25);
+}
+
+.ctaHeading {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.8rem;
+  color: #FCFBF8;
+  margin-bottom: 0.6rem;
+}
+
+.ctaBtnRow {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.goldBtn {
+  background: #17120F;
+  color: #D4AD62;
+  border: 1px solid rgba(184, 154, 90, 0.5);
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.goldBtn:hover {
+  background: #B89A5A;
+  color: #171717;
+  border-color: #B89A5A;
+}
+
+/* MODAL */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  backdrop-filter: none;
+}
+
+.modalContent {
+  background: #17120F;
+  border: 1px solid rgba(184, 154, 90, 0.45);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 980px;
+  width: 92%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  color: #FCFBF8;
+}
+
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: rgba(184, 154, 90, 0.5);
+  border-radius: 4px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 154, 90, 0.8);
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(184, 154, 90, 0.3);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AD62;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modalCloseBtn:hover {
+  background: #B89A5A;
+  color: #171717;
+}
+
+@media (max-width: 1024px) {
+  .heroContainer, .featuredContainer, .clinicalGrid {
+    grid-template-columns: 1fr;
+  }
+  .philosophyGrid, .pubSplitGrid {
+    grid-template-columns: 1fr;
+  }
+  .areasGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .archiveGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .engagementGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .featuredMediaCard {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .areasGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .inquiryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

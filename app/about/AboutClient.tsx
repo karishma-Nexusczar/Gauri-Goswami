@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import {
   FaBalanceScale,
   FaBookOpen,
@@ -74,7 +75,7 @@ const timelineData = [
   {
     year: "2023",
     title: "National Law University Assam",
-    desc: "Graduated B.A. LL.B. (Hons.) with First Class Distinction and multiple academic gold medals."
+    desc: "Graduated B.A. LL.B. (Hons.) with First Class Distinction."
   },
   {
     year: "2023",
@@ -102,12 +103,12 @@ const timelineData = [
 const academicsData = [
   { title: "Highest Marks in Constitutional Law", desc: "Rank 1 in Law School" },
   { title: "Highest Marks in Law of Evidence", desc: "Highest Distinction" },
-  { title: "Highest Marks in Environmental Law", desc: "Academic Medal Recipient" },
+  { title: "Highest Marks in Environmental Law", desc: "First Class Distinction" },
   { title: "Highest Marks in Intellectual Property", desc: "Top Honors" },
   { title: "Highest Marks in Mergers & Acquisitions", desc: "Commercial Law Excellence" },
+  { title: "Highest Marks in Law of Equity, Trusts, Suit Valuation and Registration", desc: "Highest Marks in the Whole Batch" },
   { title: "Highest Marks in Comparative Systems", desc: "International Legal Research" },
-  { title: "Certificate of Academic Excellence", desc: "NLUJA Assam Merit Award" },
-  { title: "University Gold Medallist", desc: "Summa Cum Laude Honors" }
+  { title: "Certificate of Academic Excellence", desc: "NLUJA Assam Merit Award" }
 ];
 
 // 4. Areas of Expertise (Section 7)
@@ -185,6 +186,10 @@ import React, { useEffect } from "react";
 import GetInTouchModal from "../components/GetInTouchModal";
 
 export default function AboutClient() {
+  const [showAllCredentials, setShowAllCredentials] = React.useState(false);
+  const [showAllAcademics, setShowAllAcademics] = React.useState(false);
+  const [showAllExpertise, setShowAllExpertise] = React.useState(false);
+
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
       const targetId = window.location.hash.substring(1);
@@ -222,15 +227,12 @@ export default function AboutClient() {
                 Bridging Law, Scholarship &amp; <em>Indian Cultural Heritage</em>
               </h1>
               <p className={styles.heroRole}>
-                Advocate · Commercial Law Scholar · Kathak Visharad-II · Cultural Ambassador
+                Advocate · Commercial Law Scholar · Classical Kathak Practitioner · Cultural Ambassador
               </p>
               <p className={styles.heroLead}>
                 From Assam, India to the United Kingdom, Gauri Goswami has built a distinguished journey at the intersection of commercial law, legal research, academic excellence and Indian cultural diplomacy. Her work combines courtroom advocacy, internationally recognised scholarship, published research and classical performing arts.
               </p>
               <div className={styles.actions}>
-                <a className={styles.btnGold} href="/Gauri-Goswami-CV.pdf" download>
-                  <FaDownload /> Download CV
-                </a>
                 <a className={styles.btnOutline} href="#who">
                   Explore Journey <FaArrowRight />
                 </a>
@@ -261,7 +263,7 @@ export default function AboutClient() {
             <div className={styles.whoImageFrame}>
               <Image
                 src="/gauri-academic-knowledge-meets-purpose.png"
-                alt="Gauri Goswami — Advocate, Commercial Law Researcher & Kathak Visharad-II"
+                alt="Gauri Goswami — Advocate, Commercial Law Researcher & Classical Kathak Practitioner"
                 fill
                 style={{ objectFit: "cover", objectPosition: "center 20%", imageRendering: "-webkit-optimize-contrast" }}
                 unoptimized
@@ -277,7 +279,7 @@ export default function AboutClient() {
                 A Multidisciplinary Journey Built on <em>Excellence &amp; Purpose</em>
               </h2>
               <p className={styles.whoParagraph}>
-                Gauri Goswami is an Advocate, Commercial Law Researcher, and Kathak Visharad-II with an international academic background in commercial law.
+                Gauri Goswami is an Advocate, Commercial Law Researcher, and Classical Kathak Practitioner (Kathak Visharad-II) with an international academic background in commercial law.
               </p>
               <p className={styles.whoParagraph}>
                 She completed her LL.M. in International Commercial Law from the University of Nottingham after graduating with First Class Honours with Distinction in B.A. LL.B. (Hons.) from the National Law University and Judicial Academy, Assam.
@@ -346,7 +348,7 @@ export default function AboutClient() {
 
           {/* 17 Professional Credentials Cards */}
           <div className={styles.highlightsGrid}>
-            {highlightsData.map((item, index) => {
+            {(showAllCredentials ? highlightsData : highlightsData.slice(0, 5)).map((item, index) => {
               const IconComp = item.icon;
               return (
                 <div className={styles.highlightCard} key={index}>
@@ -356,6 +358,18 @@ export default function AboutClient() {
               );
             })}
           </div>
+
+          {highlightsData.length > 5 && (
+            <div className={styles.centerBtn} style={{ marginTop: '2rem' }}>
+              <button 
+                onClick={() => setShowAllCredentials(!showAllCredentials)} 
+                className={styles.btnShowMore}
+              >
+                {showAllCredentials ? "Show Less" : "Show More"} 
+                <FaArrowRight style={{ transform: showAllCredentials ? 'rotate(-90deg)' : 'rotate(90deg)' }}/>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -413,7 +427,7 @@ export default function AboutClient() {
           </div>
 
           <div className={styles.academicGrid}>
-            {academicsData.map((item, index) => (
+            {(showAllAcademics ? academicsData : academicsData.slice(0, 6)).map((item, index) => (
               <div className={styles.academicBadgeCard} key={index}>
                 <FaAward className={styles.academicBadgeIcon} />
                 <div>
@@ -423,6 +437,18 @@ export default function AboutClient() {
               </div>
             ))}
           </div>
+
+          {academicsData.length > 6 && (
+            <div className={styles.centerBtn} style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>
+              <button 
+                onClick={() => setShowAllAcademics(!showAllAcademics)} 
+                className={styles.btnShowMore}
+              >
+                {showAllAcademics ? "Show Less" : "Show More"} 
+                <FaArrowRight style={{ transform: showAllAcademics ? 'rotate(-90deg)' : 'rotate(90deg)' }}/>
+              </button>
+            </div>
+          )}
 
           <div className={styles.centerBtn}>
             <Link className={styles.btnGold} href="/academics">
@@ -511,7 +537,7 @@ export default function AboutClient() {
           </div>
 
           <div className={styles.expertiseGrid}>
-            {expertiseData.map((item, index) => {
+            {(showAllExpertise ? expertiseData : expertiseData.slice(0, 5)).map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div className={styles.expertiseCard} key={index}>
@@ -521,6 +547,18 @@ export default function AboutClient() {
               );
             })}
           </div>
+
+          {expertiseData.length > 5 && (
+            <div className={styles.centerBtn} style={{ marginTop: '2rem' }}>
+              <button 
+                onClick={() => setShowAllExpertise(!showAllExpertise)} 
+                className={styles.btnShowMore}
+              >
+                {showAllExpertise ? "Show Less" : "Show More"} 
+                <FaArrowRight style={{ transform: showAllExpertise ? 'rotate(-90deg)' : 'rotate(90deg)' }}/>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -547,7 +585,7 @@ export default function AboutClient() {
               <h2 className={styles.title}>
                 Research &amp; <em>Publications</em>
               </h2>
-              <p className={styles.whoParagraph}>
+              <p className={styles.whoParagraph} style={{ color: "#E0D6C8", fontSize: "0.96rem", lineHeight: "1.7", marginBottom: "1rem" }}>
                 Gauri&apos;s scholarship focuses on contemporary legal challenges at the intersection of technology, corporate governance, environmental regulation, and international commercial law.
               </p>
 
@@ -582,14 +620,6 @@ export default function AboutClient() {
                 <Link className={styles.btnGold} href="/#research">
                   Research Publications <FaArrowRight />
                 </Link>
-                <a
-                  className={styles.btnOutline}
-                  href="https://scholar.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGlobe /> Google Scholar
-                </a>
               </div>
             </div>
           </div>
@@ -611,14 +641,14 @@ export default function AboutClient() {
                 Law Meets <em>Culture</em>
               </h2>
               <p className={styles.cultureParagraph}>
-                Beyond legal practice, Gauri is a Kathak Visharad-II and an active ambassador of Indian cultural heritage.
+                Beyond legal practice, Gauri is an accomplished Classical Kathak Practitioner (Kathak Visharad-II) and an active ambassador of Indian cultural heritage.
               </p>
               <p className={styles.cultureParagraph}>
                 Through recitals across India and the United Kingdom, she promotes Assamese and Indian classical traditions on international platforms, believing that culture strengthens identity, diplomacy and human connection.
               </p>
               <div className={styles.actions} style={{ marginTop: "1.5rem" }}>
-                <Link className={styles.btnGold} href="/#kathak">
-                  Explore Cultural Journey <FaArrowRight />
+                <Link className={styles.btnGold} href="/kathak">
+                  Explore Cultural &amp; Kathak Journey <FaArrowRight />
                 </Link>
               </div>
             </div>
@@ -734,83 +764,13 @@ export default function AboutClient() {
             </p>
             <div className={styles.ctaActions}>
               <GetInTouchModal />
-              <a className={styles.btnOutline} href="/Gauri-Goswami-CV.pdf" download>
-                <FaDownload /> Download CV
-              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="footer shell">
-        <div className="footer-brand">
-          <Link className="brand" href="/">
-            <Image
-              className="brand-logo"
-              src="/brand-logo.png"
-              alt="Gauri Goswami"
-              width={96}
-              height={96}
-              unoptimized
-            />
-          </Link>
-          <p className="footer-about">
-            Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
-          </p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-          </div>
-        </div>
-
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <Link href="/about">About</Link>
-              <Link href="/#career">Legal Career</Link>
-              <Link href="/academics">Academics</Link>
-              <Link href="/#research">Research</Link>
-              <Link href="/#kathak">Kathak</Link>
-            </div>
-            <div>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/#testimonials">Testimonials</Link>
-              <Link href="/research#publications">Blog</Link>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4>Resources</h4>
-          <Link href="/#research">Research Publications</Link>
-          <Link href="/#matters">Representative Matters</Link>
-          <Link href="/#awards">Awards</Link>
-          <a href="mailto:info@gaurigoswami.com">Book Performance</a>
-        </div>
-
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇬🇧 London, UK (Phone &amp; WhatsApp)</span>
-            <a href="tel:+447587338945" style={{ fontSize: '0.88rem' }}>+44 7587 338945</a>
-          </div>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇮🇳 India (Phone &amp; WhatsApp)</span>
-            <a href="tel:+919864012345" style={{ fontSize: '0.88rem' }}>+91 98640 12345</a>
-          </div>
-        </div>
-
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

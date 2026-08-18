@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import LegalCredentialsSection from "./components/LegalCredentialsSection";
 import MilestoneExhibition from "./components/MilestoneExhibition";
 import RepresentativeMatters from "./components/RepresentativeMatters";
 import ResearchPublications from "./components/ResearchPublications";
@@ -9,12 +10,13 @@ import AwardsRecognition from "./components/AwardsRecognition";
 import TestimonialsSlider from "./components/TestimonialsSlider";
 import GallerySlider from "./components/GallerySlider";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ClassInquiryModal from "./components/ClassInquiryModal";
 import GetInTouchModal from "./components/GetInTouchModal";
+import HomeGlobalEvents from "./components/HomeGlobalEvents";
 import {
   FaBalanceScale,
   FaBookOpen,
-  FaFacebookF,
   FaGlobe,
   FaGraduationCap,
   FaInstagram,
@@ -24,9 +26,38 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-export const metadata: Metadata = {
-  title: "Gauri Goswami — Law, Scholarship & Kathak",
-  description: "The official portfolio of Gauri Goswami — barrister, academic, Kathak artist, researcher and cultural storyteller.",
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://gaurigoswami.com/#person",
+      "name": "Gauri Goswami",
+      "url": "https://gaurigoswami.com",
+      "jobTitle": "Advocate, Legal Scholar & Kathak Artist",
+      "knowsAbout": [
+        "International Commercial Law",
+        "Classical Kathak Dance",
+        "Legal Research",
+        "Cultural Diplomacy"
+      ],
+      "almaMater": [
+        "University of Nottingham",
+        "National Law University and Judicial Academy Assam"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/gauri-goswami-a467771ab/",
+        "https://www.instagram.com/gaurigoswamiii/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gaurigoswami.com/#website",
+      "url": "https://gaurigoswami.com",
+      "name": "Gauri Goswami Portfolio",
+      "publisher": { "@id": "https://gaurigoswami.com/#person" }
+    }
+  ]
 };
 
 
@@ -66,8 +97,12 @@ const performanceInquiryUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=inf
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Navbar currentPath="/" />
       <section className="hero" id="home">
-        <Navbar currentPath="/" />
 
         <div className="hero-left-media" aria-hidden="true">
           <Image
@@ -106,15 +141,6 @@ export default function Home() {
             <FaInstagram aria-hidden="true" />
           </a>
           <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            title="Facebook"
-          >
-            <FaFacebookF aria-hidden="true" />
-          </a>
-          <a
             href="https://www.youtube.com/@gaurigoswami-j1q"
             target="_blank"
             rel="noopener noreferrer"
@@ -135,7 +161,7 @@ export default function Home() {
         </div>
 
         <div className="hero-content">
-          <p className="eyebrow">LAW • COMMERCIAL PRACTICE • RESEARCH • KATHAK</p>
+          <p className="eyebrow">LAW • COMMERCIAL PRACTICE • RESEARCH • DANCE</p>
           <h1>Gauri<br />Goswami</h1>
           <p className="roles">Advocate <i /> LL.M. (University of Nottingham)<br />Kathak Visharad-II <i /> Researcher <i /> Cultural Ambassador</p>
           <p className="tagline">Building a career in Commercial Law while representing India&apos;s classical heritage through legal scholarship, Kathak, and cultural diplomacy.</p>
@@ -215,6 +241,8 @@ export default function Home() {
       <section className="stats" aria-label="Professional achievements">
         {[["7+", "Legal Internships"], ["1", "Legal Associate"], ["8+", "Representative Matters"], ["5+", "Courts & Tribunals"], ["10+", "Research Projects"], ["20+", "Cultural Performances"]].map(([num, label]) => <div key={label}><strong>{num}</strong><span>{label}</span></div>)}
       </section>
+
+      <LegalCredentialsSection />
 
       <MilestoneExhibition />
 
@@ -362,129 +390,39 @@ export default function Home() {
           </div>
 
           {/* Bottom Link Button */}
-          <div className="academic-homepage-footer">
+          <div className="academic-homepage-footer" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
             <Link href="/academics" className="academic-profile-link">
               <span>Academic Profile</span> <span className="academic-arrow">→</span>
             </Link>
+            <a href="#experience" className="academic-profile-link">
+              <span>Read Scholarship</span> <span className="academic-arrow">↓</span>
+            </a>
           </div>
         </div>
       </section>
 
       <AwardsRecognition />
 
-      {/* SECTION 10 — CULTURE & KATHAK (DARK THEME BACKGROUND + REDDISH LEFT & YELLOWISH RIGHT CARDS) */}
-      <section className="culture-section dark-section" id="kathak" aria-label="Culture and Kathak">
-        <div className="section-header-block">
-          <p className="section-kicker">✦ CULTURE &amp; KATHAK</p>
-          <h2>Preserving Heritage Through Kathak &amp; Cultural Diplomacy</h2>
+      {/* SECTION 10 — GLOBAL EVENTS & CULTURAL ENGAGEMENT */}
+      <section className="culture-section dark-section" id="kathak" aria-label="Global Events and Cultural Engagement">
+        <div className="section-header-block" style={{ maxWidth: "880px", margin: "0 auto 2.5rem auto", textAlign: "center" }}>
+          <p className="section-kicker">✦ GLOBAL EVENTS &amp; CULTURAL ENGAGEMENT</p>
+          <h2 style={{ fontFamily: "var(--serif)", fontSize: "2.2rem", color: "#FFFFFF", margin: "0.5rem 0 0.85rem" }}>
+            Representing Indian Culture Across International Platforms
+          </h2>
+          <p className="section-desc" style={{ color: "#D1C5B8", fontSize: "0.98rem", lineHeight: 1.65, margin: "0 auto", maxWidth: "800px" }}>
+            From prestigious cultural festivals and diplomatic events to academic institutions and international forums, Gauri Goswami has proudly represented the rich cultural heritage of Assam and India through classical and folk dance performances, cultural exchange, and community engagement.
+          </p>
         </div>
 
-        {/* 2-Column Split Section: Reddish Left Card + Yellowish Right Card on Dark Background */}
-        <div className="anannya-split-grid">
-          {/* Left Column: Featured Performances & Engagements (Reddish Burgundy Card) */}
-          <div className="anannya-engagements-card">
-            <div className="anannya-card-content">
-              <div>
-                <span className="anannya-card-tag">FEATURED</span>
-                <h3 className="anannya-card-title">Performances &amp; Engagements</h3>
+        {/* 5 Event Cards Horizontal Grid */}
+        <HomeGlobalEvents />
 
-                <div className="anannya-events-list">
-                  <div className="anannya-event-row">
-                    <div className="anannya-date-badge">
-                      <span className="anannya-date-day">02</span>
-                      <span className="anannya-date-month">MAY</span>
-                      <span className="anannya-date-year">2026</span>
-                    </div>
-                    <div className="anannya-event-info">
-                      <h4>University of Nottingham</h4>
-                      <p>Churchill College / Law Faculty, UK</p>
-                    </div>
-                    <a href="#contact" className="anannya-event-link">VIEW DETAILS</a>
-                  </div>
-
-                  <div className="anannya-event-row">
-                    <div className="anannya-date-badge">
-                      <span className="anannya-date-day">25</span>
-                      <span className="anannya-date-month">APR</span>
-                      <span className="anannya-date-year">2026</span>
-                    </div>
-                    <div className="anannya-event-info">
-                      <h4>London Rongali Bihu</h4>
-                      <p>London Bihu Committee, London</p>
-                    </div>
-                    <a href="#contact" className="anannya-event-link">VIEW DETAILS</a>
-                  </div>
-
-                  <div className="anannya-event-row">
-                    <div className="anannya-date-badge">
-                      <span className="anannya-date-day">13</span>
-                      <span className="anannya-date-month">MAR</span>
-                      <span className="anannya-date-year">2026</span>
-                    </div>
-                    <div className="anannya-event-info">
-                      <h4>High Commission of India</h4>
-                      <p>The Nehru Centre, London</p>
-                    </div>
-                    <a href="#contact" className="anannya-event-link">VIEW DETAILS</a>
-                  </div>
-
-                  <div className="anannya-event-row">
-                    <div className="anannya-date-badge">
-                      <span className="anannya-date-day">08</span>
-                      <span className="anannya-date-month">NOV</span>
-                      <span className="anannya-date-year">2025</span>
-                    </div>
-                    <div className="anannya-event-info">
-                      <h4>North East Festival London</h4>
-                      <p>International Cultural Showcase, UK</p>
-                    </div>
-                    <a href="#contact" className="anannya-event-link">VIEW DETAILS</a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="anannya-card-btn-wrap">
-                <Link href="/research#publications" className="anannya-outline-btn">VIEW ALL EVENTS</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Learn With Gauri (Yellowish Golden Tan Card) */}
-          <div className="anannya-learn-card">
-            <div className="anannya-learn-left">
-              <div>
-                <span className="anannya-card-tag dark">LEARN</span>
-                <h3 className="anannya-card-title dark">Learn With Gauri</h3>
-                <p className="anannya-learn-desc">
-                  Join Gauri in exploring the beauty of Kathak and Bihu through classes, workshops, and interactive cultural sessions.
-                </p>
-
-                <ul className="anannya-checklist">
-                  <li><span className="anannya-check">✓</span> Kathak Foundations</li>
-                  <li><span className="anannya-check">✓</span> Bihu Workshops</li>
-                  <li><span className="anannya-check">✓</span> Cultural Immersion Sessions</li>
-                  <li><span className="anannya-check">✓</span> School &amp; Community Workshops</li>
-                  <li><span className="anannya-check">✓</span> Private / Group Sessions</li>
-                </ul>
-              </div>
-
-              <div className="anannya-card-btn-wrap">
-                <ClassInquiryModal />
-              </div>
-            </div>
-
-            <div className="anannya-learn-right">
-              <div className="anannya-learn-photo-frame">
-                <Image
-                  src="/kathak-high-pixel.jpg"
-                  alt="Kathak Dance Recital Gauri Goswami"
-                  fill
-                  sizes="260px"
-                  quality={90}
-                />
-              </div>
-            </div>
-          </div>
+        {/* Bottom Button to Comprehensive Archive */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "2.8rem" }}>
+          <Link href="/gallery#global-events" className="home-view-all-events-btn">
+            VIEW ALL EVENTS →
+          </Link>
         </div>
       </section>
 
@@ -503,64 +441,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <div className="footer-brand">
-          <a className="brand" href="#home"><Image className="brand-logo" src="/brand-logo.png" alt="Gauri Goswami" width={96} height={96} unoptimized suppressHydrationWarning /></a>
-          <p className="footer-about">Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.</p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-          </div>
-        </div>
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <a href="/about">About</a>
-              <a href="#career">Legal Career</a>
-              <a href="/academics">Academics</a>
-              <a href="#research">Research</a>
-              <a href="#kathak">Kathak</a>
-              <a href="#culture">Culture</a>
-            </div>
-            <div>
-              <a href="/about#travel">Travel</a>
-              <a href="#contact">Media</a>
-              <a href="/gallery">Gallery</a>
-              <a href="#testimonials">Testimonials</a>
-              <a href="/research#publications">Blog</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <a href="#research">Research Publications</a>
-          <a href="#matters">Representative Matters</a>
-          <a href="#awards">Awards</a>
-          <a href="#contact">Media</a>
-          <a href="#kathak">Testimonials</a>
-          <a href={performanceInquiryUrl} target="_blank" rel="noreferrer">Book Performance</a>
-        </div>
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇬🇧 London, UK (Phone &amp; WhatsApp)</span>
-            <a href="tel:+447587338945" style={{ fontSize: '0.88rem' }}>+44 7587 338945</a>
-          </div>
-          <div style={{ marginTop: '0.4rem' }}>
-            <span style={{ display: 'block', fontSize: '0.78rem', color: '#D4AD62', fontWeight: 600 }}>🇮🇳 India (Phone &amp; WhatsApp)</span>
-            <a href="tel:+919864012345" style={{ fontSize: '0.88rem' }}>+91 98640 12345</a>
-          </div>
-        </div>
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

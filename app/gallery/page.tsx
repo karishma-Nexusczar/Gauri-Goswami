@@ -1,27 +1,339 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import Footer from "../components/Footer";
+import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import "swiper/css/pagination";
 
 export interface GalleryPhoto {
   id: string;
-  category: "Law" | "Academics" | "Kathak" | "Research" | "Awards" | "Culture" | "Travel" | "Media";
+  category: "Law" | "Academics" | "Kathak" | "Research" | "Awards" | "Culture" | "Travel" | "Media" | "Fashion" | "Community" | "Networking";
   title: string;
   subtitle: string;
   location: string;
   date: string;
+  modalDate?: string;
   description: string;
+  modalDescription?: string;
   image: string;
-  aspect: "portrait" | "landscape" | "tall" | "square";
+  aspect: "square" | "landscape" | "portrait" | "tall" | "wide";
+  collection?: string;
 }
 
 const allGalleryPhotos: GalleryPhoto[] = [
+  {
+    id: "mc_1",
+    category: "Awards",
+    title: "Miss Congeniality",
+    subtitle: "Beauty Pageant: The Runway Look Book at the annual fest of NLU, Assam",
+    location: "Guwahati, Assam",
+    date: "2023",
+    description: "Crowning of Miss Congeniality at the Beauty Pageant: The Runway Look Book at the annual fest of NLU, Assam.",
+    image: "/miss-congeniality-sash.png",
+    aspect: "tall",
+    collection: "miss_congeniality_collection"
+  },
+  {
+    id: "mc_2",
+    category: "Fashion",
+    title: "ADUJ-ABHIVEERA, 2023",
+    subtitle: "Cultural and Sports Fest of NLU, Assam",
+    location: "Guwahati, Assam",
+    date: "2023",
+    description: "Stage performance during the ADUJ-ABHIVEERA, 2023 Cultural and Sports Fest of NLU, Assam.",
+    image: "/abhiveera-group-stage.png",
+    aspect: "landscape",
+    collection: "miss_congeniality_collection"
+  },
+  {
+    id: "mc_3",
+    category: "Fashion",
+    title: "Top 10 Finalist",
+    subtitle: "Beauty Pageant: Runway LookBook of NLU, Assam",
+    location: "Guwahati, Assam",
+    date: "2023",
+    description: "Top 10 finalist of the Beauty Pageant: Runway LookBook of NLU, Assam.",
+    image: "/top-10-finalist-walk.png",
+    aspect: "tall",
+    collection: "miss_congeniality_collection"
+  },
+  {
+    id: "mc_4",
+    category: "Fashion",
+    title: "Best Dancer Title",
+    subtitle: "National Law University and Judicial Academy, Assam",
+    location: "Guwahati, Assam",
+    date: "2024",
+    description: "Received the title 'Best Dancer' at the farewell event (National Law University and Judicial Academy, Assam).",
+    image: "/best-dancer-sash-black-dress.png",
+    aspect: "tall",
+    collection: "miss_congeniality_collection"
+  },
+  {
+    id: "mc_5",
+    category: "Academics",
+    title: "Early Careers Advice Team",
+    subtitle: "High Pavement College Outreach",
+    location: "Nottingham, UK",
+    date: "2024",
+    description: "Working with the Early Careers Advice Team.",
+    image: "/early-careers-advice-team.png",
+    aspect: "tall",
+    collection: "miss_congeniality_collection"
+  },
+  {
+    id: "li_1",
+    category: "Law",
+    title: "The Honourable Society of Lincoln’s Inn",
+    subtitle: "The Great Hall",
+    location: "London, UK",
+    date: "2024",
+    description: "Portrait at the historic Great Hall of The Honourable Society of Lincoln’s Inn, London.",
+    image: "/lincolns-inn-red-sofa-portrait.png",
+    aspect: "tall",
+    collection: "lincolns_inn_collection"
+  },
+  {
+    id: "li_2",
+    category: "Law",
+    title: "The Honourable Society of Gray’s Inn",
+    subtitle: "London",
+    location: "London, UK",
+    date: "2024",
+    description: "The Honourable Society of Gray’s Inn.",
+    image: "/grays-inn-group.png",
+    aspect: "tall",
+    collection: "lincolns_inn_collection"
+  },
+  {
+    id: "li_3",
+    category: "Law",
+    title: "Annual Mentorship Event",
+    subtitle: "University of Nottingham Bar Society",
+    location: "Nottingham, UK",
+    date: "2024",
+    description: "Participating in the Annual Mentorship Program at the East Midlands Centre, Nottingham, engaging with esteemed barristers. It was an invaluable experience.",
+    image: "/mentorship-event-bar-society.png",
+    aspect: "landscape",
+    collection: "lincolns_inn_collection"
+  },
+  {
+    id: "li_4",
+    category: "Law",
+    title: "The Great Hall",
+    subtitle: "The Honourable Society of Lincoln’s Inn",
+    location: "London, UK",
+    date: "2024",
+    description: "The Great Hall at The Honourable Society of Lincoln’s Inn.",
+    image: "/great-hall-lincolns-inn.png",
+    aspect: "tall",
+    collection: "lincolns_inn_collection"
+  },
+  {
+    id: "li_5",
+    category: "Academics",
+    title: "Campus Tours (Welcome Week)",
+    subtitle: "International Student Ambassador",
+    location: "University of Nottingham",
+    date: "2024",
+    description: "Leading campus tours as an International Student Ambassador during Welcome Week.",
+    image: "/campus-tours-welcome-week.png",
+    aspect: "landscape",
+    collection: "lincolns_inn_collection"
+  },
+  {
+    id: "na_1",
+    category: "Academics",
+    title: "School of Law, University of Nottingham",
+    subtitle: "45th World ranking for Law and 6th in the UK for Law",
+    location: "Nottingham, UK",
+    date: "2024",
+    description: "The historic Trent Building and School of Law at the University of Nottingham, consistently ranked among the top global institutions for legal studies.",
+    image: "/nottingham-trent-building.png",
+    aspect: "tall",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_2",
+    category: "Awards",
+    title: "South Asia Postgraduate Excellence Award",
+    subtitle: "University of Nottingham",
+    location: "Nottingham, UK",
+    date: "November 2024",
+    description: "Official certificate for the South Asia Postgraduate Excellence Award presented to Gauri Goswami by the University of Nottingham.",
+    image: "/nottingham-south-asia-excellence-certificate.png",
+    aspect: "tall",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_3",
+    category: "Academics",
+    title: "Last Day of Energy Law Class",
+    subtitle: "Dr. Marianthi Pappa",
+    location: "University of Nottingham, UK",
+    date: "2024",
+    description: "Last day of Energy Law class with Dr. Marianthi Pappa, an Associate Professor in Law specializing in International Law of the Sea and Energy Law at the University of Nottingham.",
+    image: "/nottingham-energy-law-class.png",
+    aspect: "landscape",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_4",
+    category: "Culture",
+    title: "Felicitation for Folk Dance Performance",
+    subtitle: "Scholarship Event",
+    location: "Great Hall, Trent Building",
+    date: "2024",
+    description: "Felicitation for an excellent folk dance performance at the Scholarship Event at Great Hall, Trent Building, University of Nottingham.",
+    image: "/nottingham-folk-dance-felicitation.png",
+    aspect: "tall",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_5",
+    category: "Culture",
+    title: "Folk Dance Performance",
+    subtitle: "Great Hall, Trent Building",
+    location: "University of Nottingham",
+    date: "2024",
+    description: "Folk Dance Performance at Great Hall, Trent Building, University of Nottingham.",
+    image: "/nottingham-folk-dance-performance.png",
+    aspect: "tall",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_6",
+    category: "Awards",
+    title: "South Asia Postgraduate Excellence Award",
+    subtitle: "Scholars Group Photograph",
+    location: "University of Nottingham",
+    date: "2024",
+    description: "South Asia Postgraduate Excellence Award group photograph on stage.",
+    image: "/nottingham-south-asia-excellence-group-vertical.png",
+    aspect: "tall",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_7",
+    category: "Awards",
+    title: "International Scholarship Celebration Event",
+    subtitle: "2024-25",
+    location: "University of Nottingham",
+    date: "2024",
+    description: "International Scholarship Celebration Event, 2024-25 at the University of Nottingham.",
+    image: "/nottingham-international-scholarship-celebration-group.png",
+    aspect: "landscape",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_8",
+    category: "Academics",
+    title: "Human Rights Law Centre Annual Lecture",
+    subtitle: "Intersectionality and Climate Change",
+    location: "University of Nottingham, UK",
+    date: "2024",
+    description: "Attending the Human Rights Law Centre Annual Lecture on the intersectionality and human rights implications of climate change.",
+    image: "/nottingham-human-rights-lecture.png",
+    aspect: "portrait",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_9",
+    category: "Academics",
+    title: "University of Nottingham Bar Society",
+    subtitle: "Annual Mentorship Dinner Setup",
+    location: "Nottingham, UK",
+    date: "2024",
+    description: "Table setting for Gauri Goswami at the University of Nottingham Bar Society Annual Mentorship Dinner.",
+    image: "/nottingham-bar-society-name-card.png",
+    aspect: "portrait",
+    collection: "nottingham_award"
+  },
+  {
+    id: "na_10",
+    category: "Academics",
+    title: "Annual Mentorship Dinner",
+    subtitle: "University of Nottingham Bar Society",
+    location: "Nottingham, UK",
+    date: "2024",
+    description: "Gauri Goswami at the Annual Mentorship Dinner hosted by the University of Nottingham Bar Society.",
+    image: "/nottingham-mentorship-dinner.png",
+    aspect: "portrait",
+    collection: "nottingham_award"
+  },
+  {
+    id: "f_dior_sunglasses",
+    category: "Fashion",
+    title: "Editorial Sunglasses Portrait",
+    subtitle: "Street Style & High Fashion",
+    location: "London, UK",
+    date: "2025",
+    description: "Outdoor editorial portrait featuring Dior sunglasses and winter styling in London.",
+    image: "/fashion-dior-sunglasses.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "f_grey_shirt",
+    category: "Fashion",
+    title: "Studio Editorial Portrait",
+    subtitle: "Contemporary Minimalist Fashion",
+    location: "Nottingham, United Kingdom",
+    date: "2025",
+    description: "Close-up portrait showcasing minimalist contemporary styling.",
+    image: "/fashion-grey-shirt-portrait.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "f_blue_apron",
+    category: "Community",
+    title: "Nottingham UK Volunteer Event",
+    subtitle: "Community Volunteering & Cultural Engagement",
+    location: "Nottingham, United Kingdom",
+    date: "2025",
+    description: "Gauri Goswami participating as a volunteer in a community event in Nottingham, United Kingdom, supporting community engagement and cultural initiatives.",
+    image: "/fashion-blue-apron-outdoor.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "f1",
+    category: "Fashion",
+    title: "Traditional Mekhela Chador Photoshoot",
+    subtitle: "Traditional Assamese Editorial",
+    location: "Assam, India",
+    date: "2023",
+    description: "Traditional Assamese silk Mekhela Chador fashion photoshoot featuring Gauri Goswami.",
+    image: "/ps_1.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "f2",
+    category: "Fashion",
+    title: "NISA'S Fashion Studio Photoshoot",
+    subtitle: "Fashion Studio Portfolio",
+    location: "Assam, India",
+    date: "2023",
+    description: "Professional studio fashion photoshoot assignment for NISA'S Fashion Studio.",
+    image: "/ps_2.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "f3",
+    category: "Fashion",
+    title: "Group Editorial Photoshoot",
+    subtitle: "Fashion & Style Editorial",
+    location: "Assam, India",
+    date: "2023",
+    description: "Group editorial fashion photoshoot featuring Gauri Goswami and Nisa Sarma.",
+    image: "/ps_3.jpg",
+    aspect: "portrait"
+  },
   {
     id: "p16",
     category: "Law",
@@ -57,25 +369,16 @@ const allGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: "p7",
-    category: "Law",
-    title: "Delhi High Court Counsel",
-    subtitle: "Legal Practice & Advisory",
-    location: "New Delhi, India",
-    date: "2023–Present",
-    description: "Counsel portrait representing commercial litigation practice across Delhi High Court and Supreme Court of India.",
+    category: "Networking",
+    title: "Networking Dinner at Lincoln’s Inn",
+    subtitle: "Professional Networking & Engagement",
+    location: "The Honourable Society of Lincoln’s Inn, London",
+    date: "Lincoln’s Inn",
+    modalDate: "Event",
+    description: "A distinguished networking dinner at Lincoln’s Inn, bringing together legal professionals and distinguished guests for meaningful conversations, professional engagement, and relationship-building.",
+    modalDescription: "A distinguished professional gathering at one of London’s historic legal institutions, centred on meaningful connections, conversation, and professional engagement.",
     image: "/delhi-high-court-red-blazer.png",
     aspect: "tall"
-  },
-  {
-    id: "p13",
-    category: "Law",
-    title: "High Court Chambers & Advisory",
-    subtitle: "Litigation & Commercial Practice",
-    location: "New Delhi, India",
-    date: "2023–2024",
-    description: "Legal practice advisory session and commercial litigation research presentation in advocate chambers.",
-    image: "/gallery-1-red-blazer-sofa.jpg",
-    aspect: "landscape"
   },
   {
     id: "p14",
@@ -111,14 +414,14 @@ const allGalleryPhotos: GalleryPhoto[] = [
     aspect: "landscape"
   },
   {
-    id: "a1",
-    category: "Academics",
-    title: "Postgraduate Excellence Awardees",
-    subtitle: "University of Nottingham",
-    location: "Nottingham, United Kingdom",
-    date: "November 2024",
-    description: "Postgraduate Excellence Award scholars celebrating academic honours at the University of Nottingham Great Hall.",
-    image: "/academics-postgraduate-excellence-ceremony.jpg",
+    id: "r4",
+    category: "Law",
+    title: "Gothic Vaulted Law Hall",
+    subtitle: "Historic Faculty Chambers & Library",
+    location: "United Kingdom",
+    date: "2024–2025",
+    description: "Historic gothic vaulted hall and arched ceilings connecting academic law chambers and research archives.",
+    image: "/research-gothic-vaulted-library-hall.jpg",
     aspect: "tall"
   },
   {
@@ -131,28 +434,6 @@ const allGalleryPhotos: GalleryPhoto[] = [
     description: "Official presentation of the University of Nottingham insignia tote bag to Gauri Goswami for academic engagement.",
     image: "/academics-nottingham-gift-presentation.jpg",
     aspect: "tall"
-  },
-  {
-    id: "a3",
-    category: "Academics",
-    title: "High Pavement College Outreach",
-    subtitle: "Postgraduate Student Ambassador",
-    location: "Nottingham, United Kingdom",
-    date: "2024–2025",
-    description: "Gauri Goswami with student ambassadors at High Pavement Sixth Form, Nottingham College for legal academic outreach.",
-    image: "/academics-high-pavement-college-outreach.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "a4",
-    category: "Academics",
-    title: "South Asia Postgraduate Celebration",
-    subtitle: "Scholarship Ceremony Stage",
-    location: "University of Nottingham, UK",
-    date: "29th November 2024",
-    description: "Official University of Nottingham South Asia Postgraduate Excellence Award celebration group photograph on stage.",
-    image: "/academics-scholarship-celebration-stage.jpg",
-    aspect: "landscape"
   },
   {
     id: "a5",
@@ -243,50 +524,6 @@ const allGalleryPhotos: GalleryPhoto[] = [
     aspect: "landscape"
   },
   {
-    id: "a13",
-    category: "Academics",
-    title: "University UK Hall & Faculty Suite",
-    subtitle: "International Postgraduate Studies",
-    location: "United Kingdom",
-    date: "2024–2025",
-    description: "Gauri Goswami at the university academic hall during a postgraduate faculty gathering.",
-    image: "/gauri-uk-hall.jpg",
-    aspect: "portrait"
-  },
-  {
-    id: "a14",
-    category: "Academics",
-    title: "Nottingham Law Hall Lounge",
-    subtitle: "School of Law Commons",
-    location: "University of Nottingham, UK",
-    date: "2024–2025",
-    description: "Gauri Goswami seated in the Nottingham Law Hall lounge during a break between commercial law seminars.",
-    image: "/gauri-nottingham-law-hall-red-sofa.jpg",
-    aspect: "landscape"
-  },
-  {
-    id: "a15",
-    category: "Academics",
-    title: "South Asia Excellence Award Certificate Presentation",
-    subtitle: "University of Nottingham International Scholars",
-    location: "Nottingham, United Kingdom",
-    date: "November 2024",
-    description: "Gauri Goswami in traditional Assamese silk holding the South Asia Postgraduate Excellence Award certificate alongside fellow international award scholars at Nottingham Great Hall.",
-    image: "/nottingham-south-asia-excellence-award-scholars-stage.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "a16",
-    category: "Academics",
-    title: "Nottingham Advantage Award Certificate",
-    subtitle: "Professional Leadership & Excellence",
-    location: "Nottingham, United Kingdom",
-    date: "2025",
-    description: "Official Nottingham Advantage Award certificate recognizing leadership, skills, and postgraduate academic excellence.",
-    image: "/nottingham-advantage-award-certificate.png",
-    aspect: "landscape"
-  },
-  {
     id: "a17",
     category: "Academics",
     title: "NLUJA Provisional Degree Certificate",
@@ -320,25 +557,47 @@ const allGalleryPhotos: GalleryPhoto[] = [
     aspect: "landscape"
   },
   {
-    id: "a20",
+    id: "r0",
     category: "Academics",
-    title: "University Insignia Presentation & Honour",
-    subtitle: "Postgraduate Scholar Recognition",
-    location: "Nottingham, United Kingdom",
+    title: "University Law Library Archives",
+    subtitle: "Multi-Level Legal Research Complex",
+    location: "University of Nottingham, UK",
     date: "2024–2025",
-    description: "Official presentation of the University of Nottingham insignia tote bag to Gauri Goswami.",
-    image: "/nottingham-university-gift-presentation.jpg",
+    description: "The grand multi-level Law Library and research archives at the University of Nottingham housing international commercial law collections.",
+    image: "/research-multilevel-law-library.jpg",
     aspect: "tall"
   },
   {
-    id: "k_pure1",
-    category: "Kathak",
-    title: "Kathak Red Spin Cutout Pose",
-    subtitle: "Hero Backdrop Classical Pose",
-    location: "Section 1 — Hero",
-    date: "Kathak Repertoire",
-    description: "Full length uncropped backdrop pose of Gauri Goswami demonstrating Kathak classical spin in traditional red silk.",
-    image: "/kathak-red-spin-transparent.png",
+    id: "r2",
+    category: "Academics",
+    title: "Oxford Bodleian Library Research",
+    subtitle: "Radcliffe Camera Legal Studies",
+    location: "University of Oxford, UK",
+    date: "2024–2025",
+    description: "Gauri Goswami at Radcliffe Camera, University of Oxford Bodleian Library during commercial law academic research.",
+    image: "/research-oxford-radcliffe-camera.png",
+    aspect: "tall"
+  },
+  {
+    id: "r3",
+    category: "Academics",
+    title: "Academic & Legal Research Dialogue",
+    subtitle: "Scholarly Collaboration & Exchange",
+    location: "United Kingdom",
+    date: "2024–2025",
+    description: "Gauri Goswami collaborating with fellow postgraduate legal researchers during academic symposium proceedings.",
+    image: "/research-academic-scholars-dialogue.jpg",
+    aspect: "portrait"
+  },
+  {
+    id: "r5",
+    category: "Academics",
+    title: "Cathedral Spire Academic Forum",
+    subtitle: "International Legal Research",
+    location: "United Kingdom",
+    date: "2024–2025",
+    description: "Gauri Goswami participating in international legal research symposium events in historic UK academic settings.",
+    image: "/research-cathedral-spire-portrait.jpg",
     aspect: "tall"
   },
   {
@@ -385,7 +644,6 @@ const allGalleryPhotos: GalleryPhoto[] = [
     image: "/card-childhood.jpg",
     aspect: "square"
   },
-
   {
     id: "k_pure7",
     category: "Kathak",
@@ -393,19 +651,19 @@ const allGalleryPhotos: GalleryPhoto[] = [
     subtitle: "TeenTaal, Tukdas, Parans & Abhinaya",
     location: "Section 3 — The Artist's Journey",
     date: "2015–2018",
-    description: "Stage performance repertoire showcasing Lucknow & Jaipur Gharana compositions with live Tabla and Harmonium.",
+    description: "Repertoire of pure classical Kathak recitals showcasing TeenTaal, Tukdas, Parans and expressive Abhinaya.",
     image: "/card-recitals.jpg",
     aspect: "landscape"
   },
   {
-    id: "k_pure8",
+    id: "k_pure8_black_gold",
     category: "Kathak",
-    title: "Performance Journey — Red Spin Recital",
+    title: "Performance Journey — Black & Gold Silk Kathak Recital",
     subtitle: "Performing Tradition Across Borders",
     location: "Section 7 — Performance Journey",
     date: "Stage Recital",
-    description: "Stage recital capturing footwork speed and chakkars in traditional red attire.",
-    image: "/pj-1.jpg",
+    description: "Stage recital capturing footwork speed, grace, and classical chakkars in traditional black & gold silk attire.",
+    image: "/kathak-black-gold-hero.png",
     aspect: "tall"
   },
   {
@@ -431,6 +689,28 @@ const allGalleryPhotos: GalleryPhoto[] = [
     aspect: "tall"
   },
   {
+    id: "k_pure_seated_saree",
+    category: "Kathak",
+    title: "Seated Classical Kathak Portrait",
+    subtitle: "Traditional Silk Saree & Heritage Jewelry",
+    location: "Kathak Attire & Cultural Heritage",
+    date: "Classical Cultural Showcase",
+    description: "Graceful portrait of Gauri in traditional silk saree, embellished with traditional neckpieces, maang tikka, gajra, and bronze cuffs.",
+    image: "/kathak-seated-saree-portrait.jpg",
+    aspect: "tall"
+  },
+  {
+    id: "k_guidance_mentorship_portrait",
+    category: "Kathak",
+    title: "Performance & Artistic Guidance — Classical Mentorship",
+    subtitle: "Kathak Sadhana with Live Tabla & Harmonium Exponents",
+    location: "Classical Kathak Mentorship & Training",
+    date: "Childhood & Onwards",
+    description: "Gauri in classical Kathak Anarkali attire depicting Kathak Sadhana and guidance under Shri Bipul Das, Smt. Moromi Medhi & Megharanjani Medhi.",
+    image: "/kathak-red-classical-pose.jpg",
+    aspect: "tall"
+  },
+  {
     id: "k_pure11",
     category: "Kathak",
     title: "Authentic Kathak Ghungroo Close-Up",
@@ -440,216 +720,6 @@ const allGalleryPhotos: GalleryPhoto[] = [
     description: "Close-up of traditional brass ghungroos tied around dancer's ankles with red Alta marks.",
     image: "/ghungroo-close-up.jpg",
     aspect: "square"
-  },
-  {
-    id: "k_pure12",
-    category: "Kathak",
-    title: "Kathak Red Spin Classical Pose",
-    subtitle: "Lucknow & Jaipur Gharana Aesthetics",
-    location: "Kathak Showcase",
-    date: "Classical Recital",
-    description: "Pure classical Kathak spin (Chakkar) in traditional red silk attire demonstrating speed and precision.",
-    image: "/kathak-red-spin-hero.jpg",
-    aspect: "tall"
-  },
-
-  {
-    id: "r0",
-    category: "Research",
-    title: "University Law Library Archives",
-    subtitle: "Multi-Level Legal Research Complex",
-    location: "University of Nottingham, UK",
-    date: "2024–2025",
-    description: "The grand multi-level Law Library and research archives at the University of Nottingham housing international commercial law collections.",
-    image: "/research-multilevel-law-library.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "r1",
-    category: "Research",
-    title: "Grays Inn Legal Society Cohort",
-    subtitle: "The Honorable Society of Grays Inn",
-    location: "London, United Kingdom",
-    date: "2024–2025",
-    description: "International legal scholars and LL.M. research cohort gathered in front of the historic Honorable Society of Grays Inn entrance in London.",
-    image: "/research-grays-inn-society-cohort.png",
-    aspect: "tall"
-  },
-  {
-    id: "r2",
-    category: "Research",
-    title: "Oxford Bodleian Library Research",
-    subtitle: "Radcliffe Camera Legal Studies",
-    location: "University of Oxford, UK",
-    date: "2024–2025",
-    description: "Gauri Goswami at Radcliffe Camera, University of Oxford Bodleian Library during commercial law academic research.",
-    image: "/research-oxford-radcliffe-camera.png",
-    aspect: "tall"
-  },
-  {
-    id: "r3",
-    category: "Research",
-    title: "Academic & Legal Research Dialogue",
-    subtitle: "Scholarly Collaboration & Exchange",
-    location: "United Kingdom",
-    date: "2024–2025",
-    description: "Gauri Goswami collaborating with fellow postgraduate legal researchers during academic symposium proceedings.",
-    image: "/research-academic-scholars-dialogue.jpg",
-    aspect: "portrait"
-  },
-  {
-    id: "r4",
-    category: "Research",
-    title: "Gothic Vaulted Law Hall",
-    subtitle: "Historic Faculty Chambers & Library",
-    location: "United Kingdom",
-    date: "2024–2025",
-    description: "Historic gothic vaulted hall and arched ceilings connecting academic law chambers and research archives.",
-    image: "/research-gothic-vaulted-library-hall.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "r5",
-    category: "Research",
-    title: "Cathedral Spire Academic Forum",
-    subtitle: "International Legal Research",
-    location: "United Kingdom",
-    date: "2024–2025",
-    description: "Gauri Goswami participating in international legal research symposium events in historic UK academic settings.",
-    image: "/research-cathedral-spire-portrait.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "p3",
-    category: "Awards",
-    title: "South Asia Excellence Award",
-    subtitle: "Scholarship Ceremony",
-    location: "Nottingham, UK",
-    date: "Nov 2024",
-    description: "Official University of Nottingham South Asia Postgraduate Excellence Award celebration event on stage.",
-    image: "/south-asia-excellence-award.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "aw1",
-    category: "Awards",
-    title: "Miss Congeniality Award Ceremony",
-    subtitle: "Abhiveera '23 Cultural & Sports Festival",
-    location: "NLUJA, Guwahati, Assam",
-    date: "April 2023",
-    description: "Felicitation and crowning of Gauri Goswami as Miss Congeniality at the Abhiveera '23 Annual Festival of National Law University Assam.",
-    image: "/nlu-assam-miss-congeniality-beauty-pageant.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "aw2",
-    category: "Awards",
-    title: "South Asia Excellence Award Celebration",
-    subtitle: "University of Nottingham Great Hall",
-    location: "Nottingham, United Kingdom",
-    date: "November 2024",
-    description: "Official University of Nottingham South Asia Postgraduate Excellence Award celebration group photograph on stage.",
-    image: "/nottingham-south-asia-excellence-award-celebration.jpg",
-    aspect: "landscape"
-  },
-  {
-    id: "aw3",
-    category: "Awards",
-    title: "South Asia Excellence Award Certificate",
-    subtitle: "University of Nottingham Official Honour",
-    location: "Nottingham, United Kingdom",
-    date: "November 2024",
-    description: "Official Postgraduate Excellence Award certificate awarded by the University of Nottingham.",
-    image: "/nottingham-south-asia-excellence-award-certificate.png",
-    aspect: "tall"
-  },
-  {
-    id: "aw4",
-    category: "Awards",
-    title: "Nottingham Advantage Award Certificate",
-    subtitle: "Professional Leadership Recognition",
-    location: "Nottingham, United Kingdom",
-    date: "2025",
-    description: "Official Nottingham Advantage Award certificate recognizing leadership, skills, and postgraduate academic excellence.",
-    image: "/nottingham-advantage-award-certificate.png",
-    aspect: "landscape"
-  },
-  {
-    id: "aw5",
-    category: "Awards",
-    title: "Bhatkhande Kathak Visharad Degree",
-    subtitle: "6-Year Classical Dance Graduation",
-    location: "Bhatkhande Sangit Vidyapith, Lucknow",
-    date: "2020",
-    description: "Official Visharad Degree Certificate in Classical Kathak Dance from Bhatkhande Sangit Vidyapith with Distinction.",
-    image: "/bhatkhande-visharad-kathak-certificate.png",
-    aspect: "landscape"
-  },
-  {
-    id: "aw6",
-    category: "Awards",
-    title: "B.A., LL.B. (Hons.) Degree Certificate",
-    subtitle: "National Law University & Judicial Academy",
-    location: "Guwahati, Assam, India",
-    date: "2023",
-    description: "Official Law Degree Certificate awarded by NLUJA Assam for B.A., LL.B. (Hons.) graduation with First Class honours.",
-    image: "/nlu-assam-ballb-honours-degree-certificate.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "aw7",
-    category: "Awards",
-    title: "Pandit Birju Maharaj Masterclass Certificate",
-    subtitle: "Legendary Kathak Guru Workshop",
-    location: "India",
-    date: "2018",
-    description: "Masterclass Kathak Workshop certificate under Legendary Guru Padma Vibhushan Pandit Birju Maharaj and Vidushi Saswati Sen.",
-    image: "/birju-maharaj-saswati-sen-kathak-workshop-certificate.png",
-    aspect: "landscape"
-  },
-  {
-    id: "aw8",
-    category: "Awards",
-    title: "UK Assamese Cultural Felicitation Honor",
-    subtitle: "Asam Sahitya Sabha UK Recognition",
-    location: "London, United Kingdom",
-    date: "2024",
-    description: "Felicitation honor awarded to Gauri Goswami for promoting Assamese cultural heritage and classical Kathak in the UK.",
-    image: "/nottingham-felicitation-folk-dance-performance.jpg",
-    aspect: "landscape"
-  },
-  {
-    id: "aw9",
-    category: "Awards",
-    title: "Lok Adalat Certificate of Merit",
-    subtitle: "State Legal Services Authority",
-    location: "Kamrup Metro, Assam",
-    date: "2022",
-    description: "Certificate of Appreciation for conciliation work and public legal assistance at National Lok Adalat.",
-    image: "/nlu-assam-lok-adalat-declaration-certificate.png",
-    aspect: "landscape"
-  },
-  {
-    id: "aw10",
-    category: "Awards",
-    title: "University of Nottingham Insignia Presentation",
-    subtitle: "University Scholars Recognition & Honour",
-    location: "Nottingham, United Kingdom",
-    date: "2024–2025",
-    description: "Official presentation of the University of Nottingham official insignia tote bag and academic recognition to Gauri Goswami.",
-    image: "/nottingham-university-gift-presentation.jpg",
-    aspect: "tall"
-  },
-  {
-    id: "aw11",
-    category: "Awards",
-    title: "Postgraduate Excellence Award Certificate Presentation",
-    subtitle: "University of Nottingham International Scholars",
-    location: "Nottingham, United Kingdom",
-    date: "November 2024",
-    description: "Gauri Goswami in traditional Assamese silk holding the South Asia Postgraduate Excellence Award certificate alongside fellow international award scholars at Nottingham Great Hall.",
-    image: "/nottingham-south-asia-excellence-award-scholars-stage.jpg",
-    aspect: "tall"
   },
   {
     id: "c1",
@@ -731,11 +801,11 @@ const allGalleryPhotos: GalleryPhoto[] = [
   {
     id: "c8",
     category: "Culture",
-    title: "High Commission Stage Recital",
-    subtitle: "Loktak Lake Exhibition Presentation",
-    location: "High Commission of India, London",
+    title: "United Colours of North East India",
+    subtitle: "Indian Gymkhana Club Stage Showcase",
+    location: "Indian Gymkhana Club, London",
     date: "2024",
-    description: "Live stage recital and cultural presentation in traditional silk attire at the High Commission of India in London.",
+    description: "Live stage recital and cultural presentation in traditional silk attire at United Colours of North East India, Indian Gymkhana Club, London.",
     image: "/culture-high-commission-loktak-presentation.jpg",
     aspect: "portrait"
   },
@@ -764,35 +834,57 @@ const allGalleryPhotos: GalleryPhoto[] = [
   {
     id: "p5",
     category: "Culture",
-    title: "High Commission of India",
-    subtitle: "Cultural Diplomacy",
-    location: "London, UK",
+    title: "United Colours of North East India",
+    subtitle: "Indian Gymkhana Club, London",
+    location: "Indian Gymkhana Club, London",
     date: "2024",
-    description: "Cultural diplomacy presentation at the High Commission of India Loktak Lake exhibition in London.",
+    description: "Cultural presentation and stage recital at United Colours of North East India, Indian Gymkhana Club, London.",
     image: "/high-commission-loktak.jpg",
     aspect: "tall"
   },
   {
-    id: "p6",
-    category: "Culture",
-    title: "North East Festival London",
-    subtitle: "International Representation",
-    location: "London, UK",
-    date: "2024",
-    description: "Official North-East India Cultural Circuit presentation showcasing Assamese heritage in the UK.",
-    image: "/gallery-6-northeast-festival.jpg",
+    id: "aw5",
+    category: "Awards",
+    title: "Bhatkhande Kathak Visharad Degree",
+    subtitle: "6-Year Classical Dance Graduation",
+    location: "Bhatkhande Sangit Vidyapith, Lucknow",
+    date: "2020",
+    description: "Official Visharad Degree Certificate in Classical Kathak Dance from Bhatkhande Sangit Vidyapith with Distinction.",
+    image: "/bhatkhande-visharad-kathak-certificate.png",
     aspect: "landscape"
   },
   {
-    id: "p10",
-    category: "Culture",
-    title: "High Commission Exhibition",
-    subtitle: "Loktak Lake & Heritage Presentation",
-    location: "High Commission of India, London",
+    id: "aw7",
+    category: "Awards",
+    title: "Pandit Birju Maharaj Masterclass Certificate",
+    subtitle: "Legendary Kathak Guru Workshop",
+    location: "India",
+    date: "2018",
+    description: "Masterclass Kathak Workshop certificate under Legendary Guru Padma Vibhushan Pandit Birju Maharaj and Vidushi Saswati Sen.",
+    image: "/birju-maharaj-saswati-sen-kathak-workshop-certificate.png",
+    aspect: "landscape"
+  },
+  {
+    id: "aw8",
+    category: "Awards",
+    title: "UK Assamese Cultural Felicitation Honor",
+    subtitle: "Asam Sahitya Sabha UK Recognition",
+    location: "London, United Kingdom",
     date: "2024",
-    description: "Gauri Goswami in golden Assamese silk sari at the High Commission of India Loktak Lake cultural exhibition.",
-    image: "/high-commission-loktak.jpg",
-    aspect: "tall"
+    description: "Felicitation honor awarded to Gauri Goswami for promoting Assamese cultural heritage and classical Kathak in the UK.",
+    image: "/nottingham-felicitation-folk-dance-performance.jpg",
+    aspect: "landscape"
+  },
+  {
+    id: "aw9",
+    category: "Awards",
+    title: "Lok Adalat Certificate of Merit",
+    subtitle: "State Legal Services Authority",
+    location: "Kamrup Metro, Assam",
+    date: "2022",
+    description: "Certificate of Appreciation for conciliation work and public legal assistance at National Lok Adalat.",
+    image: "/nlu-assam-lok-adalat-declaration-certificate.png",
+    aspect: "landscape"
   }
 ];
 
@@ -828,9 +920,9 @@ const verifiedEventsRow1 = [
   },
   {
     role: "CULTURAL PERFORMANCE",
-    title: "High Commission of India",
-    location: "📍 London, United Kingdom",
-    summary: "Participated in cultural programmes celebrating Indian heritage and strengthening Indo-UK cultural exchange.",
+    title: "United Colours of North East India",
+    location: "📍 Indian Gymkhana Club, London",
+    summary: "Participated in cultural programmes celebrating Indian heritage at United Colours of North East India, Indian Gymkhana Club, London.",
     image: "/high-commission-loktak-stage-full.jpg",
     cat: "Culture"
   }
@@ -864,21 +956,42 @@ const allVerifiedEvents = [
 const videoCards = [
   { 
     id: "v1",
-    title: "Sonowal Kachari | Assamese Bihu Song 2024", 
-    label: "Official Bihu Music Video", 
-    duration: "YouTube Video", 
-    image: "/sonowal-kachari-bihu-song-cover.png",
-    youtubeId: "8N-uDHqPi-E",
-    youtubeUrl: "https://youtu.be/8N-uDHqPi-E?si=NjlPzEcV9YIfbQG9"
-  },
-  { 
-    id: "v2",
-    title: "ADUJ x ABHIVEERA 2023 || NLU Assam", 
-    label: "National Law University & Judicial Academy", 
-    duration: "YouTube Video", 
-    image: "/aduj-abhiveera-23-stage-wide-banner.png",
+    title: "National Law University & Judicial Academy\nADUJ x ABHIVEERA 2023 || NLU Assam", 
+    label: "ADUJ x ABHIVEERA 2023", 
+    duration: "YouTube", 
+    image: "https://img.youtube.com/vi/hXfBr71eY7o/maxresdefault.jpg",
     youtubeId: "hXfBr71eY7o",
-    youtubeUrl: "https://youtu.be/hXfBr71eY7o?si=8KJefpptwsQ0D4Gr"
+    youtubeUrl: "https://youtu.be/hXfBr71eY7o",
+    videoUrl: "",
+    external: true,
+    alt: "ADUJ x ABHIVEERA 2023 at National Law University & Judicial Academy, Assam",
+    ariaLabel: "Watch ADUJ x ABHIVEERA 2023 on YouTube"
+  },
+  {
+    id: "v3",
+    title: "United Colours of North East India Stage Recital",
+    label: "Live Stage Performance • London Showcase",
+    duration: "Live Recital",
+    image: "/united-colours-northeast-stage-cover.jpg",
+    youtubeId: "",
+    youtubeUrl: "",
+    videoUrl: "/videos/united-colours-northeast-stage-recital.mp4",
+    external: false,
+    alt: "United Colours of North East India Stage Recital — Live Stage Performance London Showcase",
+    ariaLabel: "Play United Colours of North East India Stage Recital video"
+  },
+  {
+    id: "v4",
+    title: "ABHIVEERA 2023 || NLU Assam Fashion Recital",
+    label: "Live Stage Performance",
+    duration: "Live Recital",
+    image: "/abhiveera-fashion-video-cover.jpg",
+    youtubeId: "",
+    youtubeUrl: "",
+    videoUrl: "/last-walk-video.mp4",
+    external: false,
+    alt: "",
+    ariaLabel: ""
   }
 ];
 
@@ -887,16 +1000,27 @@ export default function EditorialGalleryPage() {
   const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
   const [showAllCategories, setShowAllCategories] = useState<boolean>(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
+  const [activeCollection, setActiveCollection] = useState<string | null>(null);
+  const [selectedCertImage, setSelectedCertImage] = useState<string | null>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<typeof videoCards[0] | null>(null);
-  const [eventStartIndex, setEventStartIndex] = useState<number>(0);
+  const [isFullVideoLightbox, setIsFullVideoLightbox] = useState<boolean>(false);
+  const eventsSwiperRef = useRef<any>(null);
 
-  const handlePrevEvent = () => {
-    setEventStartIndex((prev) => (prev > 0 ? prev - 1 : allVerifiedEvents.length - 3));
-  };
-
-  const handleNextEvent = () => {
-    setEventStartIndex((prev) => (prev < allVerifiedEvents.length - 3 ? prev + 1 : 0));
-  };
+  // Close modals on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (isFullVideoLightbox) {
+          setIsFullVideoLightbox(false);
+        } else if (selectedVideo) {
+          setSelectedVideo(null);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isFullVideoLightbox, selectedVideo]);
 
   const heroSlideImages = [
     "/hero-slide-1-kathak.jpg",
@@ -920,23 +1044,30 @@ export default function EditorialGalleryPage() {
 
   const visiblePhotos = showAllPhotos ? filteredPhotos : filteredPhotos.slice(0, 8);
 
-  const currentPhoto = selectedPhotoIndex !== null ? filteredPhotos[selectedPhotoIndex] : null;
+  const modalPhotos = activeCollection 
+    ? allGalleryPhotos.filter(p => p.collection === activeCollection)
+    : filteredPhotos;
+
+  const currentPhoto = selectedPhotoIndex !== null ? modalPhotos[selectedPhotoIndex] : null;
 
   // Keyboard navigation for Lightbox modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedPhotoIndex === null) return;
-      if (e.key === "Escape") setSelectedPhotoIndex(null);
+      if (e.key === "Escape") {
+        setSelectedPhotoIndex(null);
+        setActiveCollection(null);
+      }
       if (e.key === "ArrowRight") {
-        setSelectedPhotoIndex((prev) => (prev !== null ? (prev + 1) % filteredPhotos.length : null));
+        setSelectedPhotoIndex((prev) => (prev !== null ? (prev + 1) % modalPhotos.length : null));
       }
       if (e.key === "ArrowLeft") {
-        setSelectedPhotoIndex((prev) => (prev !== null ? (prev - 1 + filteredPhotos.length) % filteredPhotos.length : null));
+        setSelectedPhotoIndex((prev) => (prev !== null ? (prev - 1 + modalPhotos.length) % modalPhotos.length : null));
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedPhotoIndex, filteredPhotos.length]);
+  }, [selectedPhotoIndex, modalPhotos.length]);
 
   return (
     <div className="editorial-gallery-page">
@@ -953,6 +1084,7 @@ export default function EditorialGalleryPage() {
             priority
             quality={100}
             className="ed-widescreen-bg-img"
+            unoptimized
           />
           <div className="ed-hero-red-dark-overlay" />
         </div>
@@ -980,8 +1112,39 @@ export default function EditorialGalleryPage() {
         </div>
       </section>
 
-      {/* SECTION 2 — GALLERY INTRODUCTION (STEP 2) */}
+      {/* SECTION 2 — GALLERY INTRODUCTION (STEP 2: TEXT | STATIC CAMERA | AUTO SLIDER) */}
       <section className="ed-gallery-intro-step2" id="featured">
+        <style dangerouslySetInnerHTML={{__html: `
+          @media (max-width: 900px) {
+            .ed-intro-step2-grid {
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              text-align: center !important;
+              gap: 2.2rem !important;
+              width: 100% !important;
+              overflow: hidden !important;
+            }
+            .ed-intro-step2-left {
+              width: 100% !important;
+              max-width: 100% !important;
+              text-align: center !important;
+              flex: none !important;
+            }
+            .ed-camera-illustration-wrapper {
+              display: none !important;
+            }
+            .ed-auto-slider-container {
+              width: 100% !important;
+              max-width: 320px !important;
+              flex: none !important;
+              margin: 0 auto !important;
+            }
+            .ed-auto-slide-frame {
+              height: 220px !important;
+            }
+          }
+        `}} />
         <div id="moments" />
         <div className="ed-container">
           <div className="ed-intro-step2-grid">
@@ -993,21 +1156,116 @@ export default function EditorialGalleryPage() {
                 Every photograph reflects a chapter of my journey—from courtrooms and legal scholarship to international stages, cultural diplomacy and academic excellence.
               </p>
             </div>
-            <div className="ed-intro-step2-right">
-              <div className="ed-camera-illustration-wrapper">
-                <Image
-                  src="/gallery-camera-illustration.png"
-                  alt="Vintage Camera Illustration"
-                  width={480}
-                  height={340}
-                  className="ed-camera-img"
-                  priority
-                />
-              </div>
+
+            {/* Static Camera Illustration (Unchanged) */}
+            <div className="ed-camera-illustration-wrapper">
+              <Image
+                src="/gallery-camera-illustration.png"
+                alt="Vintage Camera Illustration"
+                width={360}
+                height={260}
+                className="ed-camera-img"
+                priority
+                unoptimized
+              />
+            </div>
+
+            {/* New Automatic Image Slider (Immediately on Camera's Right Side) */}
+            <div className="ed-auto-slider-container">
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                autoplay={{ delay: 2500, disableOnInteraction: false }}
+                loop={true}
+                speed={800}
+                onSwiper={(swiper) => setSwiperInstance(swiper)}
+                pagination={{ clickable: true, el: ".ed-auto-slider-pagination" }}
+                className="ed-auto-swiper"
+              >
+                {[
+                  { src: "/supreme-court-advocate-internship-certificate-2023.png", alt: "Supreme Court Advocate Internship Certificate 2023" },
+                  { src: "/nlu-assam-lachit-diwas-certificate-2019.png", alt: "Lachit Diwas Certificate of Merit NLUJA Assam" },
+                  { src: "/birju-maharaj-saswati-sen-kathak-workshop-certificate.png", alt: "Kathak Dance Workshop Pt. Birju Maharaj Certificate" },
+                  { src: "/north-bengal-moot-court-certificate-2020.png", alt: "National Moot Court Competition Certificate" },
+                  { src: "/nlu-assam-mediation-tournament-certificate-2018.png", alt: "1st Luitor Paror Intra-University Mediation Tournament Certificate NLUJA Assam" },
+                  { src: "/nlu-assam-asian-parliamentary-debate-probatio-2019.png", alt: "PROBATIO Asian Parliamentary Debate Certificate NLUJA Assam" },
+                  { src: "/gauhati-music-college-kathak-certificate.png", alt: "Gauhati Music College Kathak Dance Certificate" },
+                  { src: "/bhatkhande-kathak-prathama-marksheet-2011.png", alt: "Bhatkhande Sangit Vidyapith Kathak Prathama Certificate" },
+                  { src: "/bhatkhande-kathak-visharad-degree-marksheet-2016.png", alt: "Bhatkhande Sangit Vidyapith Kathak Visharad II Certificate" }
+                ].map((item, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div 
+                      className="ed-auto-slide-frame"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        if (swiperInstance && swiperInstance.autoplay) {
+                          swiperInstance.autoplay.stop();
+                        }
+                        setSelectedCertImage(item.src);
+                      }}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 500px"
+                        className="ed-auto-slide-img contain-fit"
+                        unoptimized
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="ed-auto-slider-pagination" />
             </div>
           </div>
         </div>
       </section>
+
+      {/* FULLSCREEN CERTIFICATE POPUP PREVIEW LIGHTBOX */}
+      {selectedCertImage && (
+        <div
+          className="ed-lightbox-backdrop"
+          onClick={() => {
+            setSelectedCertImage(null);
+            if (swiperInstance && swiperInstance.autoplay) {
+              swiperInstance.autoplay.start();
+            }
+          }}
+          role="dialog"
+          aria-modal="true"
+          style={{ zIndex: 99999 }}
+        >
+          <div 
+            className="ed-lightbox-content" 
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: "92vw", width: "950px", background: "#0d0b09", padding: "1.5rem", borderRadius: "16px", border: "1px solid #D4AD62" }}
+          >
+            <button
+              type="button"
+              className="ed-lightbox-close"
+              onClick={() => {
+                setSelectedCertImage(null);
+                if (swiperInstance && swiperInstance.autoplay) {
+                  swiperInstance.autoplay.start();
+                }
+              }}
+            >
+              ✕
+            </button>
+
+            <div style={{ position: "relative", width: "100%", height: "82vh", minHeight: "450px" }}>
+              <Image
+                src={selectedCertImage}
+                alt="Full Size Certificate Preview"
+                fill
+                quality={100}
+                style={{ objectFit: "contain" }}
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* SECTION 3 — FEATURED COLLECTION (STEP 3) */}
       <section className="ed-featured-collection-step3">
@@ -1026,59 +1284,168 @@ export default function EditorialGalleryPage() {
                 fill
                 quality={100}
                 className="ed-showcase-large-img"
+                unoptimized
               />
               <div className="ed-showcase-card-overlay">
                 <span className="ed-showcase-tag">FEATURED</span>
-                <h3>Cultural Heritage</h3>
-                <p>North East Festival London • Stage Recital Showcase</p>
+                <h3>Cultural Representation</h3>
+                <p>United Colours of North East India • Cultural Performance</p>
                 <button type="button" className="ed-showcase-sm-btn">VIEW COLLECTION →</button>
               </div>
             </div>
 
             {/* Right Side Square Cards Grid */}
             <div className="ed-showcase-square-stack">
-              <div className="ed-showcase-sq-card" onClick={() => setSelectedPhotoIndex(1)}>
+              <div 
+                className="ed-showcase-sq-card" 
+                onClick={() => {
+                  setActiveCollection("nottingham_award");
+                  setSelectedPhotoIndex(0); // Opens modal with just this collection
+                }}
+              >
                 <Image
                   src="/academics-postgraduate-excellence-ceremony.jpg"
                   alt="University of Nottingham Postgraduate Excellence"
                   fill
                   quality={100}
                   className="ed-showcase-sq-img"
+                  unoptimized
                 />
                 <div className="ed-showcase-sm-overlay">
-                  <h4>University</h4>
-                  <p>LL.M. International Commercial Law</p>
+                  <h4>University of Nottingham</h4>
+                  <p>Nottingham Advantage Award</p>
                 </div>
               </div>
 
-              <div className="ed-showcase-sq-card" onClick={() => setSelectedPhotoIndex(6)}>
+              <div 
+                className="ed-showcase-sq-card" 
+                onClick={() => {
+                  setActiveCollection("lincolns_inn_collection");
+                  setSelectedPhotoIndex(0);
+                }}
+              >
                 <Image
-                  src="/delhi-high-court-red-blazer.png"
-                  alt="Delhi High Court Advocate Practice"
+                  src="/the-honourable-society-of-lincolns-inn-london.jpg"
+                  alt="The Honourable Society of Lincoln's Inn"
                   fill
                   quality={100}
                   className="ed-showcase-sq-img portrait-pos"
+                  unoptimized
                 />
                 <div className="ed-showcase-sm-overlay">
-                  <h4>Delhi High Court</h4>
-                  <p>Advocacy &amp; Commercial Disputes</p>
+                  <h4>Lincoln&apos;s Inn</h4>
+                  <p>The Great Hall • London</p>
                 </div>
               </div>
 
-              <div className="ed-showcase-sq-card wide-sq" onClick={() => setSelectedPhotoIndex(2)}>
+              <div 
+                className="ed-showcase-sq-card wide-sq" 
+                onClick={() => {
+                  setActiveCollection("miss_congeniality_collection");
+                  setSelectedPhotoIndex(0);
+                }}
+              >
                 <Image
-                  src="/south-asia-excellence-award.jpg"
-                  alt="South Asia Excellence Award Ceremony"
+                  src="/miss-congeniality-sash.png"
+                  alt="Miss Congeniality"
                   fill
                   quality={100}
                   className="ed-showcase-sq-img award-pos"
+                  unoptimized
                 />
                 <div className="ed-showcase-sm-overlay">
-                  <h4>South Asia Excellence Award</h4>
-                  <p>Scholarship Ceremony • Nov 2024</p>
+                  <h4>Miss Congeniality</h4>
+                  <p>Beauty Pageant: The Runway Look Book at the annual fest of NLU, Assam</p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION — FASHION & MODELLING IMAGES */}
+      <section
+        id="fashion-modelling"
+        style={{
+          background: "linear-gradient(180deg, #0A0A0A 0%, #0F0E0D 50%, #0A0A0A 100%)",
+          color: "#FCFBF8",
+          padding: "45px 24px",
+          borderTop: "1px solid rgba(212, 173, 98, 0.25)",
+          borderBottom: "1px solid rgba(212, 173, 98, 0.25)",
+          fontFamily: "var(--font-sans), sans-serif",
+        }}
+      >
+        <div style={{ maxWidth: "1220px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+            <span style={{ color: "#D4AD62", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
+              STYLE &bull; CONFIDENCE &bull; EXPRESSION
+            </span>
+            <h2 style={{ fontFamily: "var(--font-serif), Playfair Display, Georgia, serif", fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)", fontWeight: 600, color: "#E2C382", letterSpacing: "0.08em", margin: "0 0 8px 0", textTransform: "uppercase" }}>
+              FASHION &amp; MODELLING IMAGES
+            </h2>
+            <p style={{ fontFamily: "var(--font-serif), Georgia, serif", fontSize: "1.05rem", fontStyle: "italic", color: "#D4D0C8", margin: 0 }}>
+              &ldquo;Every frame tells a story; make yours unforgettable.&rdquo;
+            </p>
+          </div>
+
+          <div className="ed-fashion-grid">
+            {[
+              {
+                src: "/ps_1.jpg",
+                title: "Traditional Mekhela Chador Photoshoot — Gauri Goswami",
+                tag: "Traditional Editorial",
+                pos: "top center",
+              },
+              {
+                src: "/ps_2.jpg",
+                title: "NISA'S Fashion Studio Photoshoot — Gauri Goswami",
+                tag: "Fashion Studio",
+                pos: "center",
+              },
+              {
+                src: "/ps_3.jpg",
+                title: "Group Editorial Photoshoot — Gauri Goswami & Nisa Sarma",
+                tag: "Group Editorial",
+                pos: "top center",
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx}
+                style={{
+                  background: "rgba(255, 255, 255, 0.025)",
+                  border: "1px solid rgba(212, 173, 98, 0.35)",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setActiveFilter("Fashion");
+                  setShowAllPhotos(true);
+                  const foundIdx = filteredPhotos.findIndex(p => p.image === card.src);
+                  if (foundIdx !== -1) setSelectedPhotoIndex(foundIdx);
+                  else setSelectedPhotoIndex(idx);
+                }}
+              >
+                <div style={{ position: "relative", height: "320px", width: "100%", background: "#080808" }}>
+                  <Image
+                    src={card.src}
+                    alt={card.title}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: card.pos }}
+                    unoptimized
+                  />
+                </div>
+                <div style={{ padding: "16px", borderTop: "1px solid rgba(212, 173, 98, 0.2)" }}>
+                  <span style={{ color: "#D4AD62", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
+                    {card.tag}
+                  </span>
+                  <h4 style={{ fontFamily: "var(--font-serif), Georgia, serif", fontSize: "0.98rem", color: "#FCFBF8", fontWeight: 600, margin: 0, lineHeight: 1.4 }}>
+                    {card.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1096,23 +1463,22 @@ export default function EditorialGalleryPage() {
               const allCategories = [
                 { title: "Legal Practice", count: "8 Photos", img: "/legal-practice-riverside-cohort.jpg", cat: "Law" },
                 { title: "Academic Excellence", count: "20 Photos", img: "/academics-scholarship-celebration-stage.jpg", cat: "Academics" },
+                { title: "Fashion & Modelling", count: "8 Photos", img: "/fashion-modelling-collection-cover.jpg", cat: "Fashion" },
                 { title: "Kathak Performances", count: "11 Photos", img: "/kathak-lawn-classical-pose.jpg", cat: "Kathak" },
-                { title: "Cultural Diplomacy", count: "10 Photos", img: "/cultural-heritage-london-stage.jpg", cat: "Culture" },
-                { title: "Research & Conferences", count: "6 Photos", img: "/research-multilevel-law-library.jpg", cat: "Research" },
-                { title: "Behind the Journey", count: "14 Photos", img: "/gallery-8-academic-engagement.jpg", cat: "Travel" }
+                { title: "Cultural Diplomacy", count: "10 Photos", img: "/cultural-heritage-london-stage.jpg", cat: "Culture" }
               ];
-              const visibleCategories = showAllCategories ? allCategories : allCategories.slice(0, 3);
+              const visibleCategories = showAllCategories ? allCategories : allCategories.slice(0, 4);
               return visibleCategories.map((c, i) => (
                 <div 
                   key={i} 
                   className={`ed-cat-card cat-${c.cat.toLowerCase()}`}
                   onClick={() => {
-                    setActiveFilter(c.cat as any);
+                    setActiveFilter(c.cat);
                     setSelectedPhotoIndex(0);
                   }}
                 >
                   <div className="ed-cat-img-frame">
-                    <Image src={c.img} alt={c.title} fill quality={90} />
+                    <Image src={c.img} alt={c.title} fill quality={90} unoptimized />
                   </div>
                   <div className="ed-cat-info">
                     <h3>{c.title}</h3>
@@ -1131,7 +1497,7 @@ export default function EditorialGalleryPage() {
                 className="ed-btn-gold ed-view-all-btn"
                 onClick={() => setShowAllCategories(true)}
               >
-                View All Collections (6) <span className="ed-btn-arrow">↓</span>
+                View All <span className="ed-btn-arrow">↓</span>
               </button>
             </div>
           )}
@@ -1195,47 +1561,67 @@ export default function EditorialGalleryPage() {
             <button
               type="button"
               className="ed-slider-arrow-btn side-arrow prev-arrow"
-              onClick={handlePrevEvent}
+              onClick={() => eventsSwiperRef.current?.slidePrev()}
               aria-label="Previous event"
             >
               ‹
             </button>
 
-            <div className="ed-events-carousel-viewport">
-              <div
-                className="ed-events-carousel-track"
-                style={{ transform: `translateX(-${eventStartIndex * (100 / 3)}%)` }}
+            <div className="ed-events-carousel-viewport" style={{ overflow: "hidden" }}>
+              <Swiper
+                modules={[Autoplay]}
+                spaceBetween={24}
+                slidesPerView={1}
+                loop={true}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                onBeforeInit={(swiper) => {
+                  eventsSwiperRef.current = swiper;
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  }
+                }}
+                className="events-slider-swiper"
               >
                 {allVerifiedEvents.map((ev, idx) => (
-                  <div
-                    key={idx}
-                    className="ed-event-card"
-                    onClick={() => {
-                      setActiveFilter(ev.cat as any);
-                      setSelectedPhotoIndex(0);
-                    }}
-                  >
-                    <div className="ed-event-img-wrap">
-                      <Image src={ev.image} alt={ev.title} fill quality={90} />
-                    </div>
-                    <div className="ed-event-body">
-                      <div>
-                        <span className="ed-event-role">{ev.role}</span>
-                        <h3>{ev.title}</h3>
-                        <p className="ed-event-loc">{ev.location}</p>
-                        <p className="ed-event-summary">{ev.summary}</p>
+                  <SwiperSlide key={idx}>
+                    <div
+                      className="ed-event-card"
+                      style={{ margin: "0 auto", width: "100%", minHeight: "380px", display: "flex", flexDirection: "column" }}
+                      onClick={() => {
+                        setActiveFilter(ev.cat);
+                        setSelectedPhotoIndex(0);
+                      }}
+                    >
+                      <div className="ed-event-img-wrap" style={{ position: "relative", width: "100%", height: "200px" }}>
+                        <Image src={ev.image} alt={ev.title} fill quality={90} unoptimized />
                       </div>
-                      <span className="ed-event-link">View Event →</span>
+                      <div className="ed-event-body" style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                        <div>
+                          <span className="ed-event-role">{ev.role}</span>
+                          <h3 style={{ fontSize: "1.1rem", lineHeight: "1.3", margin: "4px 0 6px" }}>{ev.title}</h3>
+                          <p className="ed-event-loc">{ev.location}</p>
+                          <p className="ed-event-summary">{ev.summary}</p>
+                        </div>
+                        <span className="ed-event-link" style={{ marginTop: "auto" }}>View Event →</span>
+                      </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
             </div>
 
             <button
               type="button"
               className="ed-slider-arrow-btn side-arrow next-arrow"
-              onClick={handleNextEvent}
+              onClick={() => eventsSwiperRef.current?.slideNext()}
               aria-label="Next event"
             >
               ›
@@ -1253,41 +1639,112 @@ export default function EditorialGalleryPage() {
           </div>
 
           <div className="ed-video-grid">
-            {videoCards.map((v) => (
-              <div 
-                key={v.id} 
-                className="ed-video-card"
-                onClick={() => setSelectedVideo(v)}
-              >
-                <div className="ed-video-thumb">
-                  <Image src={v.image} alt={v.title} fill quality={90} />
-                  <div className="ed-play-overlay">
-                    <div className="ed-play-btn">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0B09">
-                        <polygon points="6,3 20,12 6,21" />
-                      </svg>
+            {videoCards.map((v) => {
+              const altText = v.alt || v.title.replace(/\n/g, " — ");
+              const ariaLabel = v.ariaLabel || `Watch ${v.title.replace(/\n/g, " — ")}`;
+              const isExternal = Boolean(v.external || (v.youtubeUrl && !v.videoUrl));
+
+              if (isExternal) {
+                return (
+                  <a 
+                    key={v.id} 
+                    href={v.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ed-video-card"
+                    aria-label={ariaLabel}
+                  >
+                    <div className="ed-video-thumb">
+                      <Image 
+                        src={v.image} 
+                        alt={altText} 
+                        fill 
+                        quality={90} 
+                        unoptimized 
+                        style={{ objectFit: "cover" }}
+                      />
+                      <div className="ed-play-overlay">
+                        <div className="ed-play-btn" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0B09">
+                            <polygon points="6,3 20,12 6,21" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className="ed-video-badge">
+                        <svg width="14" height="10" viewBox="0 0 24 17" fill="#FF0000" style={{ marginRight: '5px' }}>
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
+                          <polygon points="9.545,15.568 15.818,12 9.545,8.432" fill="#FFFFFF" />
+                        </svg>
+                        YouTube ↗
+                      </span>
                     </div>
+                    <div className="ed-video-info">
+                      <span className="ed-video-label">{v.label}</span>
+                      <h3 style={{ whiteSpace: "pre-line" }}>{v.title}</h3>
+                      <div className="ed-video-watch-link">Watch Video ▶</div>
+                    </div>
+                  </a>
+                );
+              }
+
+              return (
+                <div 
+                  key={v.id} 
+                  className="ed-video-card"
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Play ${v.title.replace(/\n/g, " — ")}`}
+                  onClick={() => setSelectedVideo(v)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedVideo(v);
+                    }
+                  }}
+                >
+                  <div className="ed-video-thumb">
+                    <Image 
+                      src={v.image} 
+                      alt={altText} 
+                      fill 
+                      quality={90} 
+                      unoptimized 
+                      style={{ objectFit: "cover" }}
+                    />
+                    <div className="ed-play-overlay">
+                      <div className="ed-play-btn" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0B09">
+                          <polygon points="6,3 20,12 6,21" />
+                        </svg>
+                      </div>
+                    </div>
+                    <span className="ed-video-badge">
+                      {v.videoUrl ? (
+                        <>🎥 Live Recital • {v.duration}</>
+                      ) : (
+                        <>
+                          <svg width="14" height="10" viewBox="0 0 24 17" fill="#FF0000" style={{ marginRight: '5px' }}>
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
+                            <polygon points="9.545,15.568 15.818,12 9.545,8.432" fill="#FFFFFF" />
+                          </svg>
+                          YouTube • {v.duration}
+                        </>
+                      )}
+                    </span>
                   </div>
-                  <span className="ed-video-badge">
-                    <svg width="14" height="10" viewBox="0 0 24 17" fill="#FF0000" style={{ marginRight: '5px' }}>
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
-                      <polygon points="9.545,15.568 15.818,12 9.545,8.432" fill="#FFFFFF" />
-                    </svg>
-                    YouTube • {v.duration}
-                  </span>
+                  <div className="ed-video-info">
+                    <span className="ed-video-label">{v.label}</span>
+                    <h3 style={{ whiteSpace: "pre-line" }}>{v.title}</h3>
+                    <div className="ed-video-watch-link">Watch Video ▶</div>
+                  </div>
                 </div>
-                <div className="ed-video-info">
-                  <span className="ed-video-label">{v.label}</span>
-                  <h3>{v.title}</h3>
-                  <div className="ed-video-watch-link">Watch Video ▶</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* YOUTUBE VIDEO PLAYER MODAL OVERLAY */}
+      {/* YOUTUBE / LIVE VIDEO PLAYER MODAL OVERLAY */}
       {selectedVideo && (
         <div className="ed-video-modal-overlay" onClick={() => setSelectedVideo(null)}>
           <div className="ed-video-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -1301,13 +1758,25 @@ export default function EditorialGalleryPage() {
             </button>
 
             <div className="ed-video-modal-player-wrap">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="ed-youtube-iframe"
-              />
+              {selectedVideo.videoUrl ? (
+                <video
+                  src={selectedVideo.videoUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", borderRadius: "12px", objectFit: "contain", background: "#000000" }}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                  title={selectedVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="ed-youtube-iframe"
+                />
+              )}
             </div>
 
             <div className="ed-video-modal-details">
@@ -1315,15 +1784,62 @@ export default function EditorialGalleryPage() {
                 <span className="ed-video-label">{selectedVideo.label}</span>
                 <h3>{selectedVideo.title}</h3>
               </div>
-              <a 
-                href={selectedVideo.youtubeUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="ed-btn-gold ed-youtube-external-btn"
-              >
-                Watch on YouTube ↗
-              </a>
+              {selectedVideo.youtubeUrl ? (
+                <a 
+                  href={selectedVideo.youtubeUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="ed-btn-gold ed-youtube-external-btn"
+                >
+                  Watch on YouTube ↗
+                </a>
+              ) : (
+                <button 
+                  type="button"
+                  className="ed-btn-gold ed-youtube-external-btn"
+                  onClick={() => setIsFullVideoLightbox(true)}
+                  aria-label="Open Fullscreen Video"
+                >
+                  Open Full Video ↗
+                </button>
+              )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* FULLSCREEN LIGHTBOX VIDEO MODAL */}
+      {isFullVideoLightbox && selectedVideo && (
+        <div 
+          className="ed-video-fullscreen-overlay" 
+          onClick={() => setIsFullVideoLightbox(false)}
+        >
+          <button 
+            type="button" 
+            className="ed-video-fullscreen-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsFullVideoLightbox(false);
+            }}
+            aria-label="Close Fullscreen Video"
+          >
+            ✕
+          </button>
+
+          <div 
+            className="ed-video-fullscreen-wrap" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              src={selectedVideo.videoUrl}
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              style={{ maxHeight: "85vh", maxWidth: "92vw", width: "auto", height: "auto", objectFit: "contain", borderRadius: "16px" }}
+            >
+              Your browser does not support the video element.
+            </video>
           </div>
         </div>
       )}
@@ -1338,7 +1854,7 @@ export default function EditorialGalleryPage() {
 
           {/* Filter Tabs */}
           <div className="ed-filter-tabs">
-            {["All", "Law", "Academics", "Kathak", "Culture", "Awards"].map((cat) => (
+            {["All", "Fashion", "Law", "Networking", "Academics", "Kathak", "Culture", "Awards"].map((cat) => (
               <button
                 key={cat}
                 type="button"
@@ -1371,6 +1887,7 @@ export default function EditorialGalleryPage() {
                       sizes="(max-width: 768px) 100vw, 25vw"
                       quality={90}
                       className="ed-masonry-img"
+                      unoptimized
                     />
                     <div className="ed-masonry-overlay">
                       <div className="ed-zoom-icon">
@@ -1421,7 +1938,7 @@ export default function EditorialGalleryPage() {
       {currentPhoto && selectedPhotoIndex !== null && (
         <div
           className="ed-lightbox-backdrop"
-          onClick={() => setSelectedPhotoIndex(null)}
+          onClick={() => { setSelectedPhotoIndex(null); setActiveCollection(null); }}
           role="dialog"
           aria-modal="true"
         >
@@ -1429,45 +1946,46 @@ export default function EditorialGalleryPage() {
             <button
               type="button"
               className="ed-lightbox-close"
-              onClick={() => setSelectedPhotoIndex(null)}
+              onClick={() => { setSelectedPhotoIndex(null); setActiveCollection(null); }}
             >
               ✕
             </button>
 
-            {/* Prev / Next Controls */}
-            <button
-              type="button"
-              className="ed-lightbox-nav prev"
-              onClick={() => setSelectedPhotoIndex((selectedPhotoIndex - 1 + filteredPhotos.length) % filteredPhotos.length)}
-            >
-              ‹
-            </button>
-
-            <button
-              type="button"
-              className="ed-lightbox-nav next"
-              onClick={() => setSelectedPhotoIndex((selectedPhotoIndex + 1) % filteredPhotos.length)}
-            >
-              ›
-            </button>
-
             <div className="ed-lightbox-main">
               <div className="ed-lightbox-img-box">
+                {/* Prev / Next Controls inside image box for perfect centering */}
+                <button
+                  type="button"
+                  className="ed-lightbox-nav prev"
+                  onClick={() => setSelectedPhotoIndex((selectedPhotoIndex - 1 + modalPhotos.length) % modalPhotos.length)}
+                >
+                  ‹
+                </button>
+
+                <button
+                  type="button"
+                  className="ed-lightbox-nav next"
+                  onClick={() => setSelectedPhotoIndex((selectedPhotoIndex + 1) % modalPhotos.length)}
+                >
+                  ›
+                </button>
+
                 <Image
                   src={currentPhoto.image}
                   alt={currentPhoto.title}
                   fill
                   quality={95}
                   className="ed-lightbox-img"
+                  unoptimized
                 />
               </div>
 
               <div className="ed-lightbox-details">
-                <span className="ed-lb-cat">{currentPhoto.category} • {currentPhoto.date}</span>
+                <span className="ed-lb-cat">{currentPhoto.category} • {currentPhoto.modalDate || currentPhoto.date}</span>
                 <h2 className="ed-lb-title">{currentPhoto.title}</h2>
                 <h3 className="ed-lb-sub">{currentPhoto.subtitle}</h3>
                 <p className="ed-lb-loc">📍 {currentPhoto.location}</p>
-                <p className="ed-lb-desc">{currentPhoto.description}</p>
+                <p className="ed-lb-desc">{currentPhoto.modalDescription || currentPhoto.description}</p>
               </div>
             </div>
           </div>
@@ -1482,78 +2000,14 @@ export default function EditorialGalleryPage() {
           <p>Whether you&apos;re seeking legal collaboration, academic engagement, research partnerships, Kathak performances, cultural events, workshops, or speaking sessions, I welcome opportunities to connect, collaborate, and create meaningful experiences.</p>
           <a 
             className="gold-button" 
-            href="mailto:info@gaurigoswami.com?subject=Inquiry%20%26%20Collaboration%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20a%20collaboration%20%2F%20inquiry.%0A%0AName%3A%0AOrganization%20%2F%20Institution%3A%0AMessage%20%2F%20Inquiry%20Details%3A%0APhone%20%2F%20Contact%3A%0A%0ABest%20regards%2C"
+            href="mailto:info@gaurigoswami.in?subject=Inquiry%20%26%20Collaboration%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20a%20collaboration%20%2F%20inquiry.%0A%0AName%3A%0AOrganization%20%2F%20Institution%3A%0AMessage%20%2F%20Inquiry%20Details%3A%0APhone%20%2F%20Contact%3A%0A%0ABest%20regards%2C"
           >
             Get in Touch
           </a>
         </div>
       </section>
 
-      <footer>
-        <div className="footer-brand">
-          <Link className="brand" href="/" aria-label="Gauri Goswami home">
-            <Image
-              className="brand-logo"
-              src="/brand-logo.png"
-              alt="Gauri Goswami Logo"
-              width={96}
-              height={96}
-              unoptimized
-            />
-          </Link>
-          <p className="footer-about">
-            Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
-          </p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-          </div>
-        </div>
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <Link href="/about">About</Link>
-              <Link href="/#career">Legal Career</Link>
-              <Link href="/academics">Academics</Link>
-              <Link href="/#research">Research</Link>
-              <Link href="/#kathak">Kathak</Link>
-              <Link href="/#culture">Culture</Link>
-            </div>
-            <div>
-              <Link href="/about#travel">Travel</Link>
-              <Link href="/#contact">Media</Link>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/#testimonials">Testimonials</Link>
-              <Link href="/research#publications">Blog</Link>
-              <Link href="/#contact">Contact</Link>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <Link href="/#research">Research Publications</Link>
-          <Link href="/#matters">Representative Matters</Link>
-          <Link href="/#awards">Awards</Link>
-          <Link href="/#contact">Media</Link>
-          <Link href="/#kathak">Testimonials</Link>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info%40gaurigoswami.com&su=Performance%20Booking%20Inquiry" target="_blank" rel="noreferrer">Book Performance</a>
-        </div>
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <a href="tel:+447587338945">+44 7587 338945</a>
-          <p style={{ margin: '0.25rem 0 0.5rem', color: '#a49c91' }}>United Kingdom</p>
-          <a href="https://wa.me/447587338945" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <p style={{ margin: '0.25rem 0 0', color: '#a49c91' }}>New Delhi, India</p>
-        </div>
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

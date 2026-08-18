@@ -9,17 +9,17 @@ import {
   FaChevronUp,
   FaLinkedinIn,
   FaInstagram,
-  FaFacebookF,
   FaYoutube,
   FaXmark,
 } from "react-icons/fa6";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import styles from "./kathak.module.css";
 
 import TempleArchSvg from "./TempleArchSvg";
 
 const performanceInquiryUrl =
-  "mailto:info@gaurigoswami.com?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
+  "mailto:info@gaurigoswami.in?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
 
 // Recitals data with full original content for Read More modal
 const recitalsData = [
@@ -67,17 +67,17 @@ const recitalsData = [
 
 // 18-24 real performance images for Masonry Gallery
 const galleryImages = [
-  { src: "/kathak-red-spin-hero.jpg", alt: "Kathak Red Spin Classical Pose" },
+  { src: "/kathak-black-gold-hero.png", alt: "Kathak Black & Gold Dress Classical Pose" },
   { src: "/kathak-hero-editorial.jpg", alt: "Kathak Editorial Spotlight Pose" },
   { src: "/cultural-heritage-london-stage.jpg", alt: "London Stage Recital" },
   { src: "/kathak-lawn-classical-pose.jpg", alt: "Classical Kathak Lawn Recital" },
-  { src: "/high-commission-loktak-stage-full.jpg", alt: "High Commission India House London" },
+  { src: "/high-commission-loktak-stage-full.jpg", alt: "United Colours of North East India — Indian Gymkhana Club, London" },
   { src: "/culture-asam-sahitya-sabha-stage-recital.jpg", alt: "Assam Sahitya Sabha UK Recital" },
   { src: "/northeast-festival-london-stage-cover.jpg", alt: "Northeast Festival London Stage" },
   { src: "/kathak-abhiveera-gold-dress-portrait.jpg", alt: "Abhiveera Classical Gold Dress" },
   { src: "/kathak-jaapi-stage-recital.jpg", alt: "Assam Traditional Jaapi Stage Recital" },
   { src: "/kathak-golden-chador-stage.jpg", alt: "Golden Chador Kathak Recital" },
-  { src: "/kathak-loktak-exhibit-portrait.jpg", alt: "Loktak Cultural Exhibit Recital" },
+  { src: "/kathak-loktak-exhibit-portrait.jpg", alt: "United Colours of North East India Stage Recital" },
   { src: "/kathak-london-rongali-bihu-2024.jpg", alt: "London Rongali Bihu 2024" },
   { src: "/kathak-spotlight-stage.jpg", alt: "Kathak Spotlight Stage Recital" },
   { src: "/aduj-abhiveera-nlu-assam-stage-cover.jpg", alt: "NLU Assam Stage Recital" },
@@ -96,8 +96,10 @@ export default function KathakPage() {
 
   const [isEditorialExpanded, setIsEditorialExpanded] = useState(false);
   const [expandedMilestones, setExpandedMilestones] = useState<Record<number, boolean>>({});
+  const [expandedArtistCards, setExpandedArtistCards] = useState<Record<number, boolean>>({});
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0);
   const [isTimelinePaused, setIsTimelinePaused] = useState(false);
+  const [selectedDoc, setSelectedDoc] = useState<{ src: string; title: string; detailsText?: string } | null>(null);
 
   React.useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -221,12 +223,24 @@ export default function KathakPage() {
       <section className={styles.hero} id="hero">
         {/* Right Side Full Length Uncropped Backdrop Artwork Pose */}
         <div className={styles.heroBackdropImageWrap}>
+          {/* Desktop Version: dance-removebg */}
           <Image
-            src="/kathak-red-spin-transparent.png"
-            alt="Gauri Goswami Kathak Classical Dance Recital Full Transparent Cutout Pose"
+            src="/dance-removebg.png"
+            alt="Gauri Goswami Kathak Classical Dance Recital Pose - Desktop"
             fill
             priority
-            className={styles.heroBackdropImg}
+            quality={100}
+            className={`${styles.heroBackdropImg} ${styles.heroDesktopImg}`}
+            unoptimized
+          />
+          {/* Mobile Version: dance */}
+          <Image
+            src="/dance.jpeg"
+            alt="Gauri Goswami Kathak Classical Dance Recital Pose - Mobile"
+            fill
+            priority
+            quality={100}
+            className={`${styles.heroBackdropImg} ${styles.heroMobileImg}`}
             unoptimized
           />
           <div className={styles.heroBackdropOverlay} />
@@ -234,7 +248,7 @@ export default function KathakPage() {
 
         <div className={styles.heroContainer}>
           <div className={styles.heroCopy}>
-            <span className={styles.heroTagline}>ABOUT KATHAK</span>
+            <span className={styles.heroTagline}>ABOUT KATHAK(DANCE)</span>
             <h1 className={styles.heroTitle}>
               The Art That Shapes<br />
               Discipline, Identity<br />
@@ -270,6 +284,7 @@ export default function KathakPage() {
               sizes="(max-width: 900px) 100vw, 50vw"
               className={styles.introImg}
               priority
+              unoptimized
             />
           </div>
 
@@ -353,8 +368,8 @@ export default function KathakPage() {
             <div className={styles.editorialLeft55}>
               <div className={styles.editorialImageFrame}>
                 <Image
-                  src="/artistic-journey-stage-left.jpg"
-                  alt="Gauri Goswami Performing Kathak Recital"
+                  src="/kathak-red-classical-pose.jpg"
+                  alt="Gauri Goswami Classical Kathak Dance Recital Pose"
                   fill
                   sizes="(max-width: 1024px) 100vw, 680px"
                   className={styles.editorialRealImg}
@@ -408,7 +423,15 @@ export default function KathakPage() {
               <div className={styles.kickerLotusIcon}>❖</div>
             </div>
 
-            <div className={styles.evolutionCarouselContainer}>
+            <div
+              className={styles.evolutionCarouselContainer}
+              onMouseEnter={() => setIsTimelinePaused(true)}
+              onMouseLeave={() => {
+                if (!Object.values(expandedMilestones).some(Boolean)) {
+                  setIsTimelinePaused(false);
+                }
+              }}
+            >
               <button
                 type="button"
                 onClick={handlePrevTimelineSlide}
@@ -419,13 +442,13 @@ export default function KathakPage() {
               </button>
 
               <div className={styles.evolutionTrackWrapper} ref={evolutionTrackRef}>
-                <div className={styles.evolutionMarqueeTrack}>
+                <div className={`${styles.evolutionMarqueeTrack} ${isTimelinePaused || selectedDoc ? styles.pausedMarquee : ""}`}>
                   {(() => {
                     const singleSet = [
                       {
-                        year: "AGE 5",
-                        title: "THE FIRST GHUNGROOS",
-                        desc: "My journey with Kathak began at the age of five. I still cherish the memories of walking into my dance school with a tiny pair of ghungroos around my ankles and learning my very first bols — “Ta Thei Thei Tat.”",
+                        year: "2005 • AGE 5",
+                        title: "THE JOURNEY BEGINS — MADHUKALYA SCHOOL OF DANCE & DRAMA",
+                        desc: "Gauri began her Kathak journey in 2005 at the age of five at Madhukalya School of Dance and Drama under the guidance of her mother, Smt. Rupali Goswami. Walking into her dance school with her first pair of ghungroos around her ankles, she learned her very first bols — “Ta Thei Thei Tat”.\n\nCertificate: Madhukalya School of Dance and Drama.",
                         isFeatured: false,
                       },
                       {
@@ -471,6 +494,7 @@ export default function KathakPage() {
                         <div
                           key={`${item.year}-${idx}`}
                           onClick={() => {
+                            setIsTimelinePaused(true);
                             setActiveMilestoneIndex(idx % 7);
                             if (evolutionTrackRef.current) {
                               evolutionTrackRef.current.scrollTo({
@@ -494,7 +518,9 @@ export default function KathakPage() {
 
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsTimelinePaused(true);
                           setExpandedMilestones((prev) => ({
                             ...prev,
                             [idx]: !prev[idx],
@@ -525,7 +551,7 @@ export default function KathakPage() {
           {/* 4. THIRD PART — THE ARTIST'S JOURNEY CAROUSEL */}
           <div className={styles.artistsJourneyCarouselBlock}>
             <div className={styles.timelineHeaderBox}>
-              <span className={styles.timelineSectionKicker}>THE ARTIST'S JOURNEY</span>
+              <span className={styles.timelineSectionKicker}>THE ARTIST&apos;S JOURNEY</span>
               <div className={styles.kickerLotusIcon}>❖</div>
             </div>
 
@@ -544,84 +570,168 @@ export default function KathakPage() {
               </button>
 
               <div className={styles.carouselTrackWrapper} ref={artistCarouselRef}>
-                <div className={styles.carouselMarqueeTrack}>
+                <div className={`${styles.carouselMarqueeTrack} ${isTimelinePaused || selectedDoc ? styles.pausedMarquee : ""}`}>
                   {(() => {
                     const artistCards = [
                       {
                         title: "CHILDHOOD",
-                        subtitle: "The journey begins",
-                        detail: "Age 5 • First ghungroos • “Ta Thei Thei Tat”",
-                        img: "/card-childhood.jpg",
+                        subtitle: "The Journey Begins",
+                        year: "2005 • Age 5",
+                        institution: "Madhukalya School of Dance and Drama",
+                        guidance: "Trained under the foundational guidance of her mother, Smt. Rupali Goswami, at Madhukalya School of Dance and Drama.",
+                        detail: "Began her classical Kathak journey at age five with her first pair of ghungroos, mastering foundational bols — “Ta Thei Thei Tat”.",
+                        certText: "Documented Certificate: Madhukalya School of Dance and Drama",
+                        img: "/madhukalya-school-of-dance-certificate-2005.jpg",
                         icon: "/icon-childhood-gold.png",
                       },
                       {
                         title: "WORKSHOP",
                         subtitle: "Learning from legendary Kathak exponents",
-                        detail: "Pt. Birju Maharaj • Smt. Saswati Sen • 2013",
+                        year: "2013",
+                        institution: "Pt. Birju Maharaj & Smt. Saswati Sen",
+                        guidance: "Participated in a Kathak workshop conducted by the legendary Pt. Birju Maharaj and renowned Kathak exponent Smt. Saswati Sen in Guwahati, Assam, India.",
+                        detail: "Also performed in a Kathak group presentation at the Guwahati Medical College Auditorium under the guidance of Shri Bipul Das, Smt. Moromi Medhi and Megharanjani Medhi.",
+                        certText: "Documented Certificate: Kathak Workshop & Presentation",
                         img: "/birju-maharaj-saswati-sen-kathak-workshop-certificate.png",
                         icon: "/icon-performances-gold.png",
                       },
                       {
                         title: "GUIDANCE",
                         subtitle: "Performance & artistic guidance",
-                        detail: "Shri Bipul Das • Smt. Moromi Medhi • Megharanjani Medhi",
-                        img: "/card-training.jpg",
+                        year: "Childhood & Onwards",
+                        institution: "Classical Kathak Mentors",
+                        guidance: "Mentored under classical Kathak exponents Shri Bipul Das, Smt. Moromi Medhi, and Megharanjani Medhi.",
+                        detail: "Comprehensive training in Nritta, Nritya, Abhinaya, Bhav, Laya, and Taal control accompanied by live Tabla and Harmonium.",
+                        certText: "Classical Mentorship & Performance Training",
                         icon: "/icon-training-gold.png",
                       },
                       {
                         title: "VISHARAD",
                         subtitle: "A major classical milestone",
-                        detail: "Visharad Part-II • Distinction • 2017",
+                        year: "2017",
+                        institution: "Bhatkhande Sangeet Vidyapith, Lucknow",
+                        guidance: "Successfully completed Visharad Part-II (Degree in Kathak Dance) from Bhatkhande Sangeet Vidyapith, Lucknow, with Distinction.",
+                        detail: "Secured Distinction in practical and theory exams, followed by a solo/group classical performance at Rajdhani College, University of Delhi.",
+                        certText: "Documented Certificate: Bhatkhande Sangeet Vidyapith — Visharad Part-II",
                         img: "/bhatkhande-visharad-kathak-certificate.png",
                         icon: "/icon-journey-gold.png",
                       },
                       {
                         title: "RECITALS",
                         subtitle: "Rhythm meets expression",
-                        detail: "Kathak performances • 2013–2018",
+                        year: "2013–2018",
+                        institution: "Classical Stage Recitals & University Fests",
+                        guidance: "Performed pure classical Kathak recitals at Cotton College Auditorium, Guwahati, and Laxmibai College, University of Delhi.",
+                        detail: "Demonstrated classical elements including Tatkār (footwork), Chakkars (spins), Abhinaya, Bhāva, Hasta Mudrās, Nṛtta, and Nritya with live traditional musicians.",
+                        certText: "Stage Recitals & University Performances",
                         img: "/card-recitals.jpg",
                         icon: "/icon-performances-gold.png",
                       },
                       {
                         title: "CULTURAL REPRESENTATION",
                         subtitle: "Indian heritage on international platforms",
-                        detail: "United Kingdom • 2024–2026",
+                        year: "2024–2026",
+                        institution: "International Cultural Stages (UK)",
+                        guidance: "Represented Indian classical dance and Northeast folk heritage across premier cultural venues in the United Kingdom.",
+                        detail: "Performances at University of Nottingham Scholarship Celebration (2024), London Shankar Jayanti & Assam Sahitya Sabha (2025), and Leicester & London Rongali Bihu & United Colours of North East India (2026).",
+                        certText: "UK Cultural Representation & International Recitals",
                         img: "/card-representation.jpg",
                         icon: "/icon-representation-gold.png",
                       },
                     ];
-                    return [...artistCards, ...artistCards].map((card, idx) => (
-                      <div key={`${card.title}-${idx}`} className={styles.editorialMuseumCard}>
-                        {/* Top Thumbnail Image */}
-                        <div className={styles.cardImageHeader}>
-                          <Image
-                            src={card.img}
-                            alt={card.title}
-                            fill
-                            className={styles.cardHeaderImg}
-                            unoptimized
-                          />
-                          {/* Overlaid Gold Circular Icon Badge */}
-                          <div className={styles.cardIconBadgeWrap}>
-                            <Image
-                              src={card.icon}
-                              alt=""
-                              width={22}
-                              height={22}
-                              className={styles.cardIconBadgeImg}
-                              unoptimized
-                            />
+                    return [...artistCards, ...artistCards].map((card, idx) => {
+                      const isExpanded = expandedArtistCards[idx];
+                      return (
+                        <div
+                          key={`${card.title}-${idx}`}
+                          className={`${styles.editorialMuseumCard} ${isExpanded ? styles.editorialMuseumCardExpanded : ''}`}
+                        >
+                          {/* Top Thumbnail Image Header */}
+                          {card.img ? (
+                            <div
+                              className={styles.cardImageHeader}
+                              onClick={() => setSelectedDoc({
+                                src: card.img!,
+                                title: `${card.title} — ${card.subtitle}`,
+                                detailsText: `${card.year} | ${card.institution}\n${card.guidance}\n\n${card.detail}\n${card.certText}`
+                              })}
+                              style={{ cursor: "pointer" }}
+                              title="Click to view full document/certificate"
+                            >
+                              <Image
+                                src={card.img}
+                                alt={card.title}
+                                fill
+                                className={styles.cardHeaderImg}
+                                style={{ objectFit: "contain", background: "rgba(18, 14, 10, 0.95)", padding: "4px" }}
+                                unoptimized
+                              />
+                              <div className={styles.cardIconBadgeWrap}>
+                                <Image
+                                  src={card.icon}
+                                  alt=""
+                                  width={22}
+                                  height={22}
+                                  className={styles.cardIconBadgeImg}
+                                  unoptimized
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            <div style={{ padding: "18px 0 6px", display: "flex", justifyContent: "center", width: "100%" }}>
+                              <div style={{ background: "rgba(200, 157, 88, 0.12)", border: "1px solid rgba(200, 157, 88, 0.4)", borderRadius: "50%", padding: "10px" }}>
+                                <Image
+                                  src={card.icon}
+                                  alt=""
+                                  width={30}
+                                  height={30}
+                                  unoptimized
+                                />
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Content Area — Centered Alignment & Uniform Button Placement */}
+                          <div className={styles.cardContentBody}>
+                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "100%" }}>
+                              <h4 className={styles.cardTitleText}>{card.title}</h4>
+                              <p className={styles.cardSubtitleText}>{card.subtitle}</p>
+                              <span style={{ fontSize: "0.72rem", color: "#D4AD62", fontWeight: 700, display: "block", marginTop: "2px", textAlign: "center" }}>
+                                {card.year}
+                              </span>
+                              <span style={{ fontSize: "0.72rem", color: "#FAF6EE", fontWeight: 600, display: "block", marginTop: "2px", textAlign: "center" }}>
+                                {card.institution}
+                              </span>
+
+                              {isExpanded && (
+                                <div style={{ marginTop: "8px", borderTop: "1px dashed rgba(184, 154, 90, 0.3)", paddingTop: "6px", width: "100%", textAlign: "center" }}>
+                                  <p className={styles.cardDetailText} style={{ color: "#C8BFB5", margin: "3px 0", textAlign: "center" }}>{card.guidance}</p>
+                                  <p className={styles.cardDetailText} style={{ fontStyle: "italic", color: "#B89A5A", margin: "3px 0", textAlign: "center" }}>{card.detail}</p>
+                                  <span style={{ fontSize: "0.68rem", color: "#A89A8A", display: "block", marginTop: "4px", textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "center" }}>
+                                    {card.certText}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+
+                            <button
+                              type="button"
+                              className={styles.cardReadMoreBtn}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setIsTimelinePaused(true);
+                                setExpandedArtistCards((prev) => ({
+                                  ...prev,
+                                  [idx]: !prev[idx],
+                                }));
+                              }}
+                            >
+                              {isExpanded ? "Read Less ↑" : "Read More ↓"}
+                            </button>
                           </div>
                         </div>
-
-                        {/* Content Area */}
-                        <div className={styles.cardContentBody}>
-                          <h4 className={styles.cardTitleText}>{card.title}</h4>
-                          <p className={styles.cardSubtitleText}>{card.subtitle}</p>
-                          <p className={styles.cardDetailText}>{card.detail}</p>
-                        </div>
-                      </div>
-                    ));
+                      );
+                    });
                   })()}
                 </div>
               </div>
@@ -761,32 +871,52 @@ export default function KathakPage() {
           <div className={styles.cleanWorkshopsTimelineTrack}>
             <div className={styles.cleanTimelineVerticalLine} />
 
-            {/* 2013 Pandit Birju Maharaj */}
+            {/* 2004 Modern Dance Workshop */}
             <div className={styles.cleanTimelineItem}>
-              <span className={styles.cleanTimelineBadge}>2013</span>
+              <span className={styles.cleanTimelineBadge}>2004</span>
               <div className={styles.cleanTimelineDot} />
               <div className={styles.cleanTimelineContent}>
-                <h3 className={styles.cleanTimelineWorkshopTitle}>Kathak Workshop</h3>
+                <h3 className={styles.cleanTimelineWorkshopTitle}>MODERN DANCE WORKSHOP</h3>
                 <div className={styles.cleanTimelineMaestro}>
-                  Pandit Birju Maharaj — Guwahati, Assam
+                  Ashim Baishya — Guwahati, Assam
                 </div>
                 <p className={styles.cleanTimelineDesc}>
-                  Successfully completed a Kathak dance workshop conducted by Pandit Birju Maharaj, gaining exposure to the classical Indian dance tradition under one of its most celebrated maestros.
+                  Completed a Modern Dance Workshop conducted by Ashim Baishya, expanding technical skills and artistic versatility across contemporary dance forms.
                 </p>
               </div>
             </div>
 
-            {/* 2014 Ashim Baishya */}
+            {/* 2005 Madhukalya School of Dance & Drama */}
             <div className={styles.cleanTimelineItem}>
-              <span className={styles.cleanTimelineBadge}>2014</span>
+              <span className={styles.cleanTimelineBadge}>2005 • AGE 5</span>
               <div className={styles.cleanTimelineDot} />
               <div className={styles.cleanTimelineContent}>
-                <h3 className={styles.cleanTimelineWorkshopTitle}>Modern Dance Workshop</h3>
+                <h3 className={styles.cleanTimelineWorkshopTitle}>THE JOURNEY BEGINS — MADHUKALYA SCHOOL OF DANCE &amp; DRAMA</h3>
                 <div className={styles.cleanTimelineMaestro}>
-                  Ashim Baishya
+                  Under the guidance of her mother, Smt. Rupali Goswami
                 </div>
                 <p className={styles.cleanTimelineDesc}>
-                  Expanded technical skills and artistic versatility across contemporary dance forms.
+                  Gauri began her Kathak journey in 2005 at the age of five at Madhukalya School of Dance and Drama under the guidance of her mother, Smt. Rupali Goswami. Walking into her dance school with her first pair of ghungroos around her ankles, she learned her very first bols — “Ta Thei Thei Tat”.
+                </p>
+                <div style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#d4ad62", fontWeight: 600 }}>
+                  Certificate: Madhukalya School of Dance and Drama.
+                </div>
+              </div>
+            </div>
+
+            {/* 2013 Pt. Birju Maharaj & Smt. Saswati Sen */}
+            <div className={styles.cleanTimelineItem}>
+              <span className={styles.cleanTimelineBadge}>2013</span>
+              <div className={styles.cleanTimelineDot} />
+              <div className={styles.cleanTimelineContent}>
+                <h3 className={styles.cleanTimelineWorkshopTitle}>KATHAK WORKSHOP &amp; GROUP PRESENTATION</h3>
+                <div className={styles.cleanTimelineMaestro}>
+                  Pt. Birju Maharaj &amp; Smt. Saswati Sen — Guwahati, Assam
+                </div>
+                <p className={styles.cleanTimelineDesc}>
+                  Participated in a Kathak workshop conducted by the legendary Pt. Birju Maharaj and renowned Kathak exponent Smt. Saswati Sen in Guwahati, Assam, India.
+                  <br /><br />
+                  Also performed in a Kathak group presentation at the Guwahati Medical College Auditorium under the guidance of Shri Bipul Das, Smt. Moromi Medhi and Megharanjani Medhi.
                 </p>
               </div>
             </div>
@@ -807,13 +937,13 @@ export default function KathakPage() {
             </p>
           </div>
 
-          {/* 3-Image Single Row Grid */}
+          {/* 4-Image Single Row Grid */}
           <div className={styles.pj3ImageRow}>
             <div className={styles.pjImageCard}>
               <div className={styles.pjImageCardFrame}>
                 <Image
-                  src="/pj-1.jpg"
-                  alt="Kathak Recital Red Spin"
+                  src="/kathak-black-gold-hero.png"
+                  alt="Kathak Recital Black & Gold Dress"
                   fill
                   sizes="(max-width: 768px) 100vw, 350px"
                   className={styles.pjRealImg}
@@ -927,17 +1057,20 @@ export default function KathakPage() {
 
             {/* Right Column: Text Content */}
             <div className={styles.acTextColumn}>
-              <span className={styles.acEyebrow}>HERITAGE &amp; IDENTITY</span>
+              <span className={styles.acEyebrow}>CULTURAL REPRESENTATION</span>
               <h2 className={styles.acMainHeading}>
-                Where Classical Expression Meets Cultural Heritage
+                Celebrating the Cultural Heritage of Northeast India
               </h2>
 
               <div className={styles.acParagraphs}>
                 <p>
-                  Growing up in a traditional Assamese family, Gauri has always remained deeply connected to the cultural traditions of Assam.
+                  Gauri has actively represented Assam and Northeast Indian cultural traditions through performances in the United Kingdom.
                 </p>
                 <p>
-                  Dance has provided a bridge between her Indian roots and her international journey, allowing her to share the richness of Indian culture with audiences beyond India.
+                  This photograph captures a cultural performance at United Colours of North East India, showcasing traditional dance and the rich artistic heritage of the region.
+                </p>
+                <p>
+                  Through such cultural engagements, she contributes to preserving and sharing Northeast India&rsquo;s diverse traditions with audiences in the UK.
                 </p>
               </div>
             </div>
@@ -1044,8 +1177,8 @@ export default function KathakPage() {
             <div className={styles.gfCard}>
               <div className={styles.gfImageFrame}>
                 <Image
-                  src="/pj-1.jpg"
-                  alt="Classical Kathak Recital on Stage"
+                  src="/kathak-black-gold-hero.png"
+                  alt="Classical Kathak Recital Black & Gold Dress on Stage"
                   fill
                   sizes="(max-width: 900px) 100vw, 360px"
                   className={styles.gfImgFramed}
@@ -1266,7 +1399,7 @@ export default function KathakPage() {
               Book a Performance →
             </a>
             <a
-              href="mailto:info@gaurigoswami.com"
+              href="mailto:info@gaurigoswami.in"
               className={styles.fcSecondaryBtn}
             >
               Get in Touch →
@@ -1275,72 +1408,73 @@ export default function KathakPage() {
         </div>
       </section>
 
-      {/* FOOTER — EXACT SAME AS HOME PAGE */}
-      <footer>
-        <div className="footer-brand">
-          <Link className="brand" href="/">
-            <Image
-              className="brand-logo"
-              src="/brand-logo.png"
-              alt="Gauri Goswami"
-              width={96}
-              height={96}
-              unoptimized
-            />
-          </Link>
-          <p className="footer-about">
-            Gauri Goswami is an Advocate, LL.M. in International Commercial Law, Kathak Visharad-II, researcher, and cultural ambassador.
-          </p>
-          <div className="footer-social" aria-label="Social media links">
-            <a href="https://www.instagram.com/goswamigauri1999/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
-            <a href="https://www.youtube.com/@gaurigoswami-j1q" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><FaYoutube aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/in/gauri-goswami-68b1a3162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
+      {/* DOCUMENT / CERTIFICATE LIGHTBOX MODAL */}
+      {selectedDoc && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            background: "rgba(0, 0, 0, 0.65)",
+            backdropFilter: "none",
+            WebkitBackdropFilter: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "1.5rem",
+          }}
+          onClick={() => setSelectedDoc(null)}
+        >
+          <div
+            style={{
+              position: "relative",
+              maxWidth: "850px",
+              width: "100%",
+              maxHeight: "90vh",
+              background: "#181410",
+              border: "1px solid #B89A5A",
+              borderRadius: "12px",
+              padding: "1.2rem",
+              display: "flex",
+              flexDirection: "column",
+              boxShadow: "0 15px 40px rgba(0,0,0,0.8)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              style={{
+                position: "absolute",
+                top: "12px",
+                right: "14px",
+                background: "transparent",
+                border: "none",
+                color: "#B89A5A",
+                fontSize: "1.4rem",
+                cursor: "pointer",
+              }}
+              onClick={() => setSelectedDoc(null)}
+              title="Close preview"
+            >
+              <FaXmark />
+            </button>
+            <h4 style={{ color: "#D4AD62", fontFamily: "var(--font-serif)", fontSize: "1.1rem", margin: "0 0 0.8rem 0", paddingRight: "30px" }}>
+              {selectedDoc.title}
+            </h4>
+            <div style={{ position: "relative", width: "100%", height: "65vh", borderRadius: "8px", overflow: "hidden", background: "#000" }}>
+              <Image
+                src={selectedDoc.src}
+                alt={selectedDoc.title}
+                fill
+                style={{ objectFit: "contain" }}
+                unoptimized
+              />
+            </div>
           </div>
         </div>
-        <div className="footer-quick-links-col">
-          <h4>Quick Links</h4>
-          <div className="footer-quick-links-grid">
-            <div>
-              <Link href="/about">About</Link>
-              <Link href="/#career">Legal Career</Link>
-              <Link href="/academics">Academics</Link>
-              <Link href="/#research">Research</Link>
-              <Link href="/kathak">Kathak</Link>
-              <Link href="/#culture">Culture</Link>
-            </div>
-            <div>
-              <Link href="/about#travel">Travel</Link>
-              <Link href="/#contact">Media</Link>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/#testimonials">Testimonials</Link>
-              <Link href="/research#publications">Blog</Link>
-              <Link href="/#contact">Contact</Link>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <Link href="/#research">Research Publications</Link>
-          <Link href="/#matters">Representative Matters</Link>
-          <Link href="/#awards">Awards</Link>
-          <Link href="/#contact">Media</Link>
-          <Link href="/#testimonials">Testimonials</Link>
-          <a href={performanceInquiryUrl} target="_blank" rel="noreferrer">Book Performance</a>
-        </div>
-        <div id="footer-contact">
-          <h4>Get in Touch</h4>
-          <a href="mailto:info@gaurigoswami.com">info@gaurigoswami.com</a>
-          <a href="tel:+447587338945">+44 7587 338945</a>
-          <p style={{ margin: '0.25rem 0 0.5rem', color: '#a49c91' }}>United Kingdom</p>
-          <a href="https://wa.me/447587338945" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <p style={{ margin: '0.25rem 0 0', color: '#a49c91' }}>New Delhi, India</p>
-        </div>
-        <div className="copyright">
-          © 2026 Nexus Czar Pvt. Ltd. All Rights Reserved.
-          <span>www.gaurigoswami.com</span>
-        </div>
-      </footer>
+      )}
+
+      {/* FOOTER */}
+      <Footer />
     </main>
   );
 }

@@ -36,7 +36,19 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
+tsconfig.tsbuildinfo
 /dist/
 /.wrangler/
 /outputs/
 /work/
+
+# zip files
+*.zip
+
+# temporary files and agent folders
+temp_*
+/.agents/
+/.openai/
+
+# build backups
+/gaurigoswami_PERFECT_STATIC/
