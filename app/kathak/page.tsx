@@ -255,7 +255,7 @@ export default function KathakPage() {
               &amp; Cultural Heritage
             </h1>
             <p className={styles.heroSubtext}>
-              A lifelong journey of rhythm, expression, storytelling and devotion — preserving the timeless traditions of Kathak while representing Assam and India on international stages.
+              A lifelong journey of rhythm, expression, storytelling, and devotion — preserving the timeless traditions of <strong>Classical Kathak, Semi-Classical and Feminist expressions</strong>, while exploring the beauty of <strong>classical and folk dances</strong> and representing <strong>Assam and India on international stages</strong>.
             </p>
             <div className={styles.heroActions}>
               <a href="#journey" className={styles.primaryBtn}>
