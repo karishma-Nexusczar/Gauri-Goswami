@@ -205,7 +205,7 @@ ${formData.message || `Interested in ${formData.classType}`}`.trim();
                       marginBottom: "14px",
                     }}
                   >
-                    Thank you, <strong>{formData.name}</strong>. Your enquiry regarding <strong>{formData.classType}</strong> has been transmitted to Gauri Goswami (info@gaurigoswami.in).
+                    Thank you, <strong>{formData.name}</strong>. Your enquiry regarding <strong>{formData.classType}</strong> has been transmitted to Gauri Goswami (info@gaurigoswami.com).
                   </p>
                   <button
                     type="button"

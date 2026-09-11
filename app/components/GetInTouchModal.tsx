@@ -208,7 +208,7 @@ ${formData.message}`.trim();
                       marginBottom: "14px",
                     }}
                   >
-                    Thank you, <strong>{formData.name}</strong>. Your inquiry regarding <strong>{formData.inquiryType}</strong> has been transmitted to Gauri Goswami (info@gaurigoswami.in).
+                    Thank you, <strong>{formData.name}</strong>. Your inquiry regarding <strong>{formData.inquiryType}</strong> has been transmitted to Gauri Goswami (info@gaurigoswami.com).
                   </p>
                   <button
                     type="button"

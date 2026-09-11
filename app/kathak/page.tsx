@@ -19,7 +19,7 @@ import styles from "./kathak.module.css";
 import TempleArchSvg from "./TempleArchSvg";
 
 const performanceInquiryUrl =
-  "mailto:info@gaurigoswami.in?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
+  "mailto:info@gaurigoswami.com?subject=Kathak%20Performance%20%26%20Event%20Booking%20—%20Gauri%20Goswami&body=Hello%20Gauri%20Goswami%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20Kathak%20performance%20%2F%20cultural%20event.%0A%0AName%3A%0AOrganization%20%2F%20Event%3A%0AEvent%20Date%3A%0AVenue%20%2F%20City%3A%0APerformance%20Requirements%3A%0APhone%20Number%3A%0A%0ABest%20regards%2C";
 
 // Recitals data with full original content for Read More modal
 const recitalsData = [
@@ -1399,7 +1399,7 @@ export default function KathakPage() {
               Book a Performance →
             </a>
             <a
-              href="mailto:info@gaurigoswami.in"
+              href="mailto:info@gaurigoswami.com"
               className={styles.fcSecondaryBtn}
             >
               Get in Touch →

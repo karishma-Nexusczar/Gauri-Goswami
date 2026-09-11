@@ -10,8 +10,8 @@ export default function TopInfoBar() {
             <FaMapMarkerAlt className="top-icon gold-icon" /> Nottingham, United Kingdom &amp; India
           </span>
           <span className="top-bar-divider" aria-hidden="true">•</span>
-          <a href="mailto:info@gaurigoswami.in" className="top-bar-item top-bar-link">
-            <FaEnvelope className="top-icon gold-icon" /> info@gaurigoswami.in
+          <a href="mailto:info@gaurigoswami.com" className="top-bar-item top-bar-link">
+            <FaEnvelope className="top-icon gold-icon" /> info@gaurigoswami.com
           </a>
         </div>
         <div className="top-bar-right">

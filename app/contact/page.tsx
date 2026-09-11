@@ -179,8 +179,8 @@ ${formData.message}`.trim();
                   </div>
                   <div className={styles.infoContent}>
                     <span className={styles.infoLabel}>Email</span>
-                    <a href="mailto:info@gaurigoswami.in" className={styles.infoValue}>
-                      info@gaurigoswami.in
+                    <a href="mailto:info@gaurigoswami.com" className={styles.infoValue}>
+                      info@gaurigoswami.com
                     </a>
                   </div>
                 </div>
@@ -251,7 +251,7 @@ ${formData.message}`.trim();
                     Thank you for your enquiry!
                   </strong>
                   <p style={{ margin: "0 0 1.2rem", fontSize: "0.88rem", color: "#4A443E", lineHeight: "1.6" }}>
-                    Your message has been sent directly to <strong>info@gaurigoswami.in</strong>. Gauri will review your enquiry and get back to you shortly.
+                    Your message has been sent directly to <strong>info@gaurigoswami.com</strong>. Gauri will review your enquiry and get back to you shortly.
                   </p>
                   <button
                     type="button"
@@ -563,7 +563,7 @@ ${formData.message}`.trim();
               </div>
             </a>
 
-            <a href="mailto:info@gaurigoswami.in" className={styles.connectCard}>
+            <a href="mailto:info@gaurigoswami.com" className={styles.connectCard}>
               <div className={styles.connectIconBadge}>
                 <FaEnvelope aria-hidden="true" />
               </div>
